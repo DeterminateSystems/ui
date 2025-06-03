@@ -1,0 +1,23 @@
+on:
+  push:
+    # TODO: Figure out how to limit tags to things that look like semver
+    # (maybe it's not something we care about?)
+    tags: ['v*']
+
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+    - uses: actions/setup-node@v4
+      with:
+        scope: '@determinate-systems'
+        node-version: '22'
+    - run: npm version "$TAG"
+      env:
+        TAG: ${{ github.ref_name }}
+    - run: npm publish --provenance
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

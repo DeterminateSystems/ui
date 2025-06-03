@@ -1,0 +1,15 @@
+@use 'sass:map';
+
+@use "tokens";
+
+
+@mixin light-mode {
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+}
+
+@mixin transition($property, $duration) {
+  transition-property: $property;
+  transition-duration: map.get(tokens.$duration, $duration);
+}
