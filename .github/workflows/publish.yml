@@ -19,6 +19,7 @@ jobs:
     - run: npm version --no-git-tag-version "$TAG"
       env:
         TAG: ${{ github.ref_name }}
+    - run: npm ci
     - run: npm publish --provenance
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
