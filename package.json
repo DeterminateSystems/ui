@@ -46,5 +46,12 @@
   },
   "peerDependencies": {
     "react": "^19.1.0"
+  },
+  "dependencies": {
+    "@shikijs/core": "^3.5.0",
+    "@shikijs/engine-javascript": "^3.5.0",
+    "@shikijs/langs": "^3.5.0",
+    "@shikijs/themes": "^3.5.0",
+    "@shikijs/types": "^3.5.0"
   }
 }
