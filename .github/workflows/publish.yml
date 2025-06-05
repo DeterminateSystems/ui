@@ -15,7 +15,8 @@ jobs:
       with:
         scope: '@determinate-systems'
         node-version: '22'
-    - run: npm version "$TAG"
+    # We're getting tags from GitHub, so this is irrelevant
+    - run: npm version --no-git-tag-version "$TAG"
       env:
         TAG: ${{ github.ref_name }}
     - run: npm publish --provenance
