@@ -11,6 +11,10 @@
   "files": [
     "lib/"
   ],
+  "repository": "github:DeterminateSystems/ui",
+  "publishConfig": {
+    "provenance": true
+  },
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
     "storybook": "storybook dev -p 6006",
