@@ -12,6 +12,20 @@ $brand: (
   black: #231f20,
 );
 
+$code: (
+  // Default values taken from Shiki's 'classic' output type
+  bg-dark: #24292e,
+  bg-light: #fff,
+);
+
+$fonts: (
+  default: '"Work Sans", sans-serif',
+);
+
 $duration: (
   short: 150ms,
+);
+
+$spacing: (
+  xs: 0.25rem,
 );

@@ -1,0 +1,28 @@
+@use "sass:map";
+
+@use "../sass/tokens";
+@use "../sass/mixins";
+
+// Default values taken from Shiki's 'classic' output type
+$shiki-dark-bg: #24292e;
+$shiki-light-bg: #fff;
+
+.highlight {
+  background-color: var(--shiki-dark-bg, map.get(tokens.$code, bg-dark));
+
+  @include mixins.light-mode {
+    background-color: var(--shiki-light-bg, map.get(tokens.$code, bg-light));
+  }
+
+  &.highlight--inline {
+    display: inline-block;
+  }
+}
+
+.highlight span {
+  color: var(--shiki-dark);
+
+  @include mixins.light-mode {
+    color: var(--shiki-light);
+  }
+}
