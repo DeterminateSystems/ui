@@ -1,0 +1,17 @@
+@use "sass:map";
+
+@use "../sass/mixins";
+@use "../sass/tokens";
+
+.link {
+  color: map.get($map: tokens.$brand, $key: orange);
+  @include mixins.transition(color, short);
+
+  &:hover {
+    color: map.get($map: tokens.$brand, $key: red);
+  }
+
+  &.link--external::after {
+    content: " ↗";
+  }
+}

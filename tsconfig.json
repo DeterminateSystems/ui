@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "moduleResolution": "bundler",
+    "module": "Preserve",
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "jsx": "react-jsx",
+    
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true
+  }
+}

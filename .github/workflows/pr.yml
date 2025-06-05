@@ -1,0 +1,23 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  Checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: DeterminateSystems/determinate-nix-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - run: nix develop -c npm ci
+      - run: nix develop -c codespell src
+        if: success() || failure()
+      - run: nix develop -c npm run build
+        if: success() || failure()
