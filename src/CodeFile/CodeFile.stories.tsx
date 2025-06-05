@@ -1,33 +1,26 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import CodeBlock from "./";
+import CodeFile from "./";
 
 const meta = {
-  title: "Molecules/CodeBlock",
-  component: CodeBlock,
+  title: "Molecules/CodeFile",
+  component: CodeFile,
   parameters: {
     layout: "centered",
   },
   argTypes: {
     language: { control: "select", options: ["shell", "yaml", "terraform", "text"] },
     code: { control: "text" },
+    filename: { control: 'text', },
     allowCopy: { control: "boolean" },
+    allowDownload: { control: "boolean" },
   },
-} satisfies Meta<typeof CodeBlock>;
+} satisfies Meta<typeof CodeFile>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const InstallDeterminate: Story = {
-  args: {
-    language: "shell",
-    code: "curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate",
-    title: "Install Determinate",
-    allowCopy: true,
-  },
-};
-
-export const UseActions: Story = {
+export const GithubCI: Story = {
   args: {
     language: "yaml",
     code: `on:
@@ -50,7 +43,32 @@ jobs:
       - uses: DeterminateSystems/flakehub-cache-action@main
       - uses: DeterminateSystems/nix-flake-checker-action@main
       - run: nix flake check`,
-    title: "Use in GitHub Actions",
+    filename: ".github/workflows/nix-ci.yaml",
+    download: "github-nix-ci.yaml",
     allowCopy: true,
+    allowDownload: true,
+  },
+};
+
+export const AWS: Story = {
+  args: {
+    language: "terraform",
+    code: `data "aws_ami" "detsys_nixos" {
+  owners      = ["535002876703"]
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["determinate/nixos/epoch-1/*"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"] # or "ARM64" for Graviton
+  }
+}`,
+    filename: 'aws_ami.tf',
+    allowCopy: true,
+    allowDownload: true,
   },
 };

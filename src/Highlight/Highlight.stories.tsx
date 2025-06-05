@@ -9,7 +9,7 @@ const meta = {
     layout: "centered",
   },
   argTypes: {
-    language: { control: "select", options: ["shell", "yaml", "text"] },
+    language: { control: "select", options: ["shell", "yaml", "terraform", "text"] },
     code: { control: "text" },
     inline: { control: "boolean" },
   },

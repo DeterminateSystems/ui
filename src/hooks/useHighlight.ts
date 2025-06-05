@@ -1,6 +1,7 @@
 import { createHighlighterCoreSync } from "@shikijs/core";
 import { createJavaScriptRegexEngine } from "@shikijs/engine-javascript";
 import langShell from "@shikijs/langs/shellscript";
+import langTerraform from "@shikijs/langs/terraform";
 import langYaml from "@shikijs/langs/yaml";
 import themeGitHubDark from "@shikijs/themes/github-dark";
 import themeGitHubLight from "@shikijs/themes/github-light";
@@ -9,14 +10,14 @@ import { useMemo } from "react";
 /**
  * Languages understood by the UI system's highlighter. The `text` option prevents highlighting.
  */
-export type HighlightLanguage = "shell" | "yaml" | "text";
+export type HighlightLanguage = "shell" | "yaml" | "terraform" | "text";
 
 // Lazily instantiate the Shiki renderer to avoid paying (some) startp costs
 let shiki: ReturnType<typeof createHighlighterCoreSync>;
 function getShiki() {
   return (shiki ??= createHighlighterCoreSync({
     themes: [themeGitHubLight, themeGitHubDark],
-    langs: [langShell, langYaml],
+    langs: [langShell, langTerraform, langYaml],
     engine: createJavaScriptRegexEngine(),
   }));
 }
@@ -29,10 +30,7 @@ function getShiki() {
  *
  * @returns Safe-to-inject HTML representing highlighting.
  */
-function useHighlight(
-  language: HighlightLanguage,
-  code: string,
-): string {
+function useHighlight(language: HighlightLanguage, code: string): string {
   return useMemo(() => {
     const html = getShiki().codeToHtml(code, {
       lang: language,
