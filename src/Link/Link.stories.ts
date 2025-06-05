@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>;
 export const Internal: Story = {
   args: {
     href: "#",
-    children: "Internal Link"
+    children: "Internal Link",
   },
 };
 
@@ -29,6 +29,6 @@ export const External: Story = {
   args: {
     href: "#",
     external: true,
-    children: "External Link"
+    children: "External Link",
   },
 };
