@@ -1,0 +1,5 @@
+.code-block {
+  & > .code-block__heading {
+    font-family: var(--dsui-font-family, sans-serif);
+  }
+}

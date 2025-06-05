@@ -1,0 +1,24 @@
+@use "sass:map";
+
+@use "../sass/tokens";
+
+.copy-button {
+  all: unset;
+
+  background-color: map.get(tokens.$brand, gray);
+  padding: 0.25rem;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: 1px solid red;
+  }
+
+  & > svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    stroke-width: 2px;
+    fill: none;
+  }
+}
