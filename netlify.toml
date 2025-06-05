@@ -1,0 +1,9 @@
+[build]
+command = "npm ci && npm run build-storybook"
+publish = "storybook-static"
+
+[build.environment]
+# This is a hack that prevents Netlify from running `npm install`, as we
+# only want to run `npm ci`, which actually uses the `package-lock.json` lockfile.
+# Source: https://answers.netlify.com/t/how-can-i-use-npm-ci-instead-of-npm-install/12570/14
+NPM_FLAGS = "--version"
