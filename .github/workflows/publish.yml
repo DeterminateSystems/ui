@@ -13,6 +13,7 @@ jobs:
         persist-credentials: false
     - uses: actions/setup-node@v4
       with:
+        registry-url: 'https://registry.npmjs.org'
         scope: '@determinate-systems'
         node-version: '22'
     # We're getting tags from GitHub, so this is irrelevant
@@ -20,6 +21,6 @@ jobs:
       env:
         TAG: ${{ github.ref_name }}
     - run: npm ci
-    - run: npm publish --provenance
+    - run: npm publish --provenance --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
