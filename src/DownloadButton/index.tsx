@@ -1,6 +1,9 @@
 import { type FC } from "react";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 
 import useObjectURL from "../hooks/useObjectURL";
+
+import './index.scss';
 
 export interface DownloadButtonProps {
   /**
@@ -18,8 +21,13 @@ const DownloadButton: FC<DownloadButtonProps> = ({ filename, data }) => {
   const url = useObjectURL(data);
 
   return (
-    <a className="download-button" href={url} download={filename}>
-      download
+    <a
+      className="download-button"
+      href={url}
+      download={filename}
+      aria-label="Download code"
+    >
+      <ArrowDownTrayIcon />
     </a>
   );
 };

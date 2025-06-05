@@ -1,8 +1,5 @@
-@use "sass:map";
-
 @use "../sass/mixins";
-@use "../sass/tokens";
 
-.copy-button {
+.download-button {
   @include mixins.svg-button;
 }

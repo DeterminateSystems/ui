@@ -11,18 +11,18 @@ export default defineConfig({
   output: {
     dir: "lib",
     format: "esm",
-    sourcemap: "inline",
+    sourcemap: true,
   },
   jsx: {
     mode: "automatic",
   },
-  external: [/node_modules/],
+  external: [/node_modules\/react\//],
   plugins: [
     resolve(),
     ts({
       declaration: true,
-      declarationDir: 'lib',
-      exclude: ['**/*.stories.ts', '**/*.stories.d.ts']
+      declarationDir: "lib",
+      exclude: ["**/*.stories.ts", "**/*.stories.d.ts"],
     }),
     sass({
       output: "lib/index.css",

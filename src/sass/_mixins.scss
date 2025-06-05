@@ -12,3 +12,32 @@
   transition-property: $property;
   transition-duration: map.get(tokens.$duration, $duration);
 }
+
+@mixin svg-button {
+  all: unset;
+
+  width: 24px;
+  height: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: map.get(tokens.$brand, gray);
+  padding: 0.25rem;
+
+  // TODO: make better
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: 1px solid red;
+  }
+
+  & > svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    stroke-width: 2px;
+    fill: none;
+  }
+}
