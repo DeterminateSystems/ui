@@ -19,6 +19,11 @@ export interface InstallCTAProps {
   initialTab?: InstallTarget;
 }
 
+/**
+ * A call-to-action component for downloading Determinate Nix.
+ *
+ * Due to the numerous options available,
+ */
 const InstallCTA: FC<InstallCTAProps> = ({ initialTab }) => {
   const [activeTab, setActiveTab] = useState<InstallTarget>(() => {
     if (initialTab) {

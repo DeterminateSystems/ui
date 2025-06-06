@@ -4,6 +4,9 @@ import url from "./macPackageData";
 
 import "./index.scss";
 
+/**
+ * A call to action for downloading the Determinate Nix universal Mac installer.
+ */
 const MacInstaller: FC = () => (
   <a
     href="https://install.determinate.systems/determinate-pkg/stable/Universal"

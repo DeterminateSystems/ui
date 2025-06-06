@@ -6,7 +6,7 @@ const config: StorybookConfig = {
     {
       name: "@storybook/addon-essentials",
       options: {
-        docs: false,
+        docs: true,
       },
     },
     "@storybook/addon-interactions",
@@ -19,4 +19,5 @@ const config: StorybookConfig = {
     },
   },
 };
+
 export default config;
