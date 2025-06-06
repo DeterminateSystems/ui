@@ -13,7 +13,8 @@ const config: StorybookConfig = {
       }
     },
     "@storybook/addon-onboarding",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
+    "@whitespace/storybook-addon-html",
   ],
   "framework": {
     "name": "@storybook/react-vite",
