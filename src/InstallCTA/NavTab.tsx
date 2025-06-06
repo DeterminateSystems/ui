@@ -31,4 +31,3 @@ const NavTab: FC<NavTabProps> = ({
 );
 
 export default NavTab;
-

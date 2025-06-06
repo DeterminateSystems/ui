@@ -9,9 +9,12 @@ const meta = {
     layout: "centered",
   },
   argTypes: {
-    language: { control: "select", options: ["shell", "yaml", "terraform", "text"] },
+    language: {
+      control: "select",
+      options: ["shell", "yaml", "terraform", "text"],
+    },
     code: { control: "text" },
-    filename: { control: 'text', },
+    filename: { control: "text" },
     allowCopy: { control: "boolean" },
     allowDownload: { control: "boolean" },
   },
@@ -67,7 +70,7 @@ export const AWS: Story = {
     values = ["x86_64"] # or "ARM64" for Graviton
   }
 }`,
-    filename: 'aws_ami.tf',
+    filename: "aws_ami.tf",
     allowCopy: true,
     allowDownload: true,
   },

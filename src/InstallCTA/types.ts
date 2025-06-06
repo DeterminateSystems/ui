@@ -13,7 +13,9 @@ export enum InstallTarget {
  *
  * @param userAgent The user agent. Defaults to the browser's `navigator.userAgent`.
  */
-export function detectInstallTarget(userAgent = navigator.userAgent): InstallTarget {
+export function detectInstallTarget(
+  userAgent = navigator.userAgent,
+): InstallTarget {
   if (userAgent.includes("Windows")) {
     return InstallTarget.WSL;
   }

@@ -31,4 +31,3 @@ const CopyButton: FC<CopyButtonProps> = ({ data }) => {
 };
 
 export default CopyButton;
-

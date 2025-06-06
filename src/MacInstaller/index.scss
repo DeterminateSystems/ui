@@ -22,7 +22,10 @@
 
   &:hover,
   &:focus {
-    background-color: color.scale(map.get(tokens.$brand, purple), $blackness: 50%);
+    background-color: color.scale(
+      map.get(tokens.$brand, purple),
+      $blackness: 50%
+    );
   }
 }
 

@@ -27,11 +27,7 @@ export interface HighlightProps {
  * composite components, but it's more likely you want the `<CodeBlock />`
  * component, which handles (optional) copying to clipboard and downloading.
  */
-const Highlight: FC<HighlightProps> = ({
-  language,
-  code,
-  inline = false,
-}) => {
+const Highlight: FC<HighlightProps> = ({ language, code, inline = false }) => {
   const html = useHighlight(language, code);
 
   return (

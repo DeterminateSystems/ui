@@ -3,7 +3,7 @@ import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 
 import useObjectURL from "../hooks/useObjectURL";
 
-import './index.scss';
+import "./index.scss";
 
 export interface DownloadButtonProps {
   /**

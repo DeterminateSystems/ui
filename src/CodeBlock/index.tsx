@@ -4,7 +4,7 @@ import type { HighlightLanguage } from "../hooks/useHighlight";
 import Highlight from "../Highlight";
 import CopyButton from "../CopyButton";
 
-import './index.scss';
+import "./index.scss";
 
 export interface CodeBlockProps {
   language: HighlightLanguage;
