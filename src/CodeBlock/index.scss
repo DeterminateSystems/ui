@@ -1,3 +1,7 @@
+@use "sass:map";
+
+@use "../sass/tokens";
+
 .code-block__heading {
-  font-family: var(--dsui-font-family, sans-serif);
+  font-family: map.get(tokens.$fonts, sans);
 }

@@ -4,11 +4,11 @@
 @use "../sass/tokens";
 
 .link {
-  color: map.get($map: tokens.$brand, $key: orange);
+  color: map.get(tokens.$brand, orange);
   @include mixins.transition(color, short);
 
   &:hover {
-    color: map.get($map: tokens.$brand, $key: red);
+    color: map.get(tokens.$brand, red);
   }
 
   &.link--external::after {
