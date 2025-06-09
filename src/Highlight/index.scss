@@ -17,12 +17,12 @@ $shiki-light-bg: #fff;
   &.highlight--inline {
     display: inline-block;
   }
-}
 
-.highlight span {
-  color: var(--shiki-dark);
+  span {
+    color: var(--shiki-dark);
 
-  @include mixins.light-mode {
-    color: var(--shiki-light);
+    @include mixins.light-mode {
+      color: var(--shiki-light);
+    }
   }
 }
