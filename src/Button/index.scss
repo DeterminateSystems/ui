@@ -1,0 +1,20 @@
+@use "sass:map";
+
+@use "../sass/tokens";
+
+.button {
+  display: inline-flex;
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  font-family: map.get(tokens.$fonts, sans);
+
+  &.button--black {
+    color: map.get(tokens.$brand, white);
+    background-color: map.get(tokens.$brand, black);
+  }
+
+  &.button--white {
+    color: map.get(tokens.$brand, black);
+    background-color: map.get(tokens.$brand, white);
+  }
+}
