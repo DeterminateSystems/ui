@@ -21,6 +21,8 @@ $shiki-light-bg: #fff;
   span {
     color: var(--shiki-dark);
 
+    font-family: map.get(tokens.$fonts, mono);
+
     @include mixins.light-mode {
       color: var(--shiki-light);
     }
