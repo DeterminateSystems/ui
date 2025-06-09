@@ -12,7 +12,7 @@ export interface ButtonProps {
   /**
    * The button's color scheme.
    */
-  color?: "black" | "white";
+  color?: "black" | "white" | "dark-blue" | "red" | "blue-a";
 
   /**
    * Whether the button is rounded.
@@ -50,6 +50,9 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       size === "lg" && "button--lg",
       color === "black" && "button--black",
       color === "white" && "button--white",
+      color === "dark-blue" && "button--dark-blue",
+      color === "red" && "button--red",
+      color === "blue-a" && "button--blue-a",
     )}
     aria-label={ariaLabel}
     onClick={onClick}

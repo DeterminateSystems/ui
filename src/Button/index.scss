@@ -24,12 +24,10 @@
     font-size: 1.5rem;
   }
 
-  &.button--black {
-    @include mixins.invert-colors-on-hover(black, white);
-  }
-
-  &.button--white {
-    @include mixins.invert-colors-on-hover(white, black);
+  @each $name, $color in tokens.$brand {
+    &.button--#{"" + $name} {
+      @include mixins.invert-colors-on-hover($name);
+    }
   }
 
   &.button--rounded {

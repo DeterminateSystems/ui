@@ -13,13 +13,13 @@
   transition-duration: map.get(tokens.$duration, $duration);
 }
 
-@mixin invert-colors-on-hover($bg, $text) {
-  background-color: map.get(tokens.$brand, $bg);
-  color: map.get(tokens.$brand, $text);
+@mixin invert-colors-on-hover($color) {
+  background-color: map.get(tokens.$brand, $color);
+  color: map.get(tokens.$brand-inverse, $color);
 
   &:hover {
-    background-color: map.get(tokens.$brand, $text);
-    color: map.get(tokens.$brand, $bg);
+    background-color: map.get(tokens.$brand-inverse, $color);
+    color: map.get(tokens.$brand, $color);
   }
 }
 

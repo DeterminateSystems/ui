@@ -1,3 +1,5 @@
+@use "sass:map";
+
 $brand: (
   dark-blue: #1f1953,
   red: #ec2c5b,
@@ -10,6 +12,15 @@ $brand: (
   white: #ededef,
   gray: #545454,
   black: #231f20,
+);
+
+$brand-inverse: (
+  dark-blue: map.get($brand, white),
+  red: map.get($brand, white),
+  blue-a: map.get($brand, white),
+  // TODO: others
+  white: map.get($brand, black),
+  black: map.get($brand, white),
 );
 
 $code: (
