@@ -25,8 +25,11 @@ export default defineConfig({
       exclude: ["**/*.stories.ts", "**/*.stories.d.ts"],
     }),
     sass({
-      output: "lib/index.css",
       api: "modern",
+      options: {
+        style: "compressed",
+      },
+      output: "lib/index.min.css",
     }),
     cjs(),
   ],
