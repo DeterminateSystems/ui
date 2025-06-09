@@ -17,6 +17,8 @@ jobs:
       - uses: DeterminateSystems/determinate-nix-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
       - run: nix develop -c npm ci
+      - run: nix develop -c npm run format
+        if: success() || failure()
       - run: nix develop -c codespell src
         if: success() || failure()
       - run: nix develop -c npm run build

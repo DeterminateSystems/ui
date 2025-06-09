@@ -1,0 +1,7 @@
+@use "sass:map";
+
+@use "../sass/tokens";
+
+.code-block__heading {
+  font-family: map.get(tokens.$fonts, sans);
+}

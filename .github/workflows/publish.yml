@@ -2,7 +2,7 @@ on:
   push:
     # TODO: Figure out how to limit tags to things that look like semver
     # (maybe it's not something we care about?)
-    tags: ['v*']
+    tags: ["v*"]
 
 jobs:
   Publish:
@@ -12,19 +12,19 @@ jobs:
       contents: read
       id-token: write
     steps:
-    - uses: actions/checkout@v4
-      with:
-        persist-credentials: false
-    - uses: actions/setup-node@v4
-      with:
-        registry-url: 'https://registry.npmjs.org'
-        scope: '@determinate-systems'
-        node-version: '22'
-    # We're getting tags from GitHub, so this is irrelevant
-    - run: npm version --no-git-tag-version "$TAG"
-      env:
-        TAG: ${{ github.ref_name }}
-    - run: npm ci
-    - run: npm publish --provenance --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: "https://registry.npmjs.org"
+          scope: "@determinate-systems"
+          node-version: "22"
+      # We're getting tags from GitHub, so this is irrelevant
+      - run: npm version --no-git-tag-version "$TAG"
+        env:
+          TAG: ${{ github.ref_name }}
+      - run: npm ci
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

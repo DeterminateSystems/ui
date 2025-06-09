@@ -1,0 +1,35 @@
+@use "sass:color";
+@use "sass:map";
+
+@use "../sass/tokens";
+@use "../sass/mixins";
+
+.mac-installer {
+  display: flex;
+  width: 100%;
+
+  align-items: center;
+
+  background-color: map.get(tokens.$brand, black);
+  border: 1px solid map.get(tokens.$brand, purple);
+  color: map.get(tokens.$brand, white);
+  text-decoration: none;
+
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  @include mixins.transition(background-color, shortish);
+
+  &:hover,
+  &:focus {
+    background-color: color.scale(
+      map.get(tokens.$brand, purple),
+      $blackness: 50%
+    );
+  }
+}
+
+.mac-installer__pkg {
+  flex: 3.5rem 3.5rem auto;
+  margin-right: 1rem;
+}

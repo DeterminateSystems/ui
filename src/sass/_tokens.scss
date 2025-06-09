@@ -12,6 +12,23 @@ $brand: (
   black: #231f20,
 );
 
+$code: (
+  // Default values taken from Shiki's 'classic' output type
+  bg-dark: #24292e,
+  bg-light: #fff
+);
+
+$fonts: (
+  sans: '"Work Sans", sans-serif',
+  mono:
+    'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+);
+
 $duration: (
   short: 150ms,
+  shortish: 250ms,
+);
+
+$spacing: (
+  xs: 0.25rem,
 );

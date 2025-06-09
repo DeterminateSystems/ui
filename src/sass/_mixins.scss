@@ -1,7 +1,6 @@
-@use 'sass:map';
+@use "sass:map";
 
 @use "tokens";
-
 
 @mixin light-mode {
   @media (prefers-color-scheme: light) {
@@ -12,4 +11,37 @@
 @mixin transition($property, $duration) {
   transition-property: $property;
   transition-duration: map.get(tokens.$duration, $duration);
+}
+
+@mixin svg-icon {
+  width: 24px;
+  height: 24px;
+  stroke: white;
+  stroke-width: 2px;
+  fill: none;
+}
+
+@mixin svg-button {
+  all: unset;
+
+  width: 24px;
+  height: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: map.get(tokens.$brand, gray);
+  padding: 0.25rem;
+
+  // TODO: make better
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: 1px solid red;
+  }
+
+  & > svg {
+    @include svg-icon;
+  }
 }

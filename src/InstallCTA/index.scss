@@ -1,0 +1,37 @@
+@use "sass:map";
+
+@use "../sass/tokens";
+@use "../sass/mixins";
+
+.install-cta__links {
+  display: flex;
+  flex-direction: row;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.install-cta__tab {
+  padding: map.get(tokens.$spacing, xs) map.get(tokens.$spacing, xs);
+
+  display: inline-flex;
+}
+
+.install-cta__link {
+  @include mixins.transition(border-top-color, shortish);
+  border-top: 2px solid rgba($color: blue, $alpha: 0);
+
+  &.install-cta__link--active {
+    border-top-color: blue;
+  }
+
+  &:hover,
+  &:focus {
+    border-top-color: red;
+  }
+}
+
+.install-cta__external {
+  @include mixins.svg-icon;
+}
