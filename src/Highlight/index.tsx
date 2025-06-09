@@ -3,6 +3,7 @@ import { type FC } from "react";
 import "./index.scss";
 
 import useHighlight, { type HighlightLanguage } from "../hooks/useHighlight";
+import clsx from "clsx";
 
 export interface HighlightProps {
   /**
@@ -32,7 +33,7 @@ const Highlight: FC<HighlightProps> = ({ language, code, inline = false }) => {
 
   return (
     <pre
-      className={inline ? "highlight highlight--inline" : "highlight"}
+      className={clsx("highlight", inline && "highlight--inline")}
       data-language={language}
     >
       <code dangerouslySetInnerHTML={{ __html: html }} />

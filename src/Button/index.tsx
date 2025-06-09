@@ -5,9 +5,19 @@ import clsx from "clsx";
 
 export interface ButtonProps {
   /**
+   * The button's size.
+   */
+  size?: "sm" | "lg";
+
+  /**
    * The button's color scheme.
    */
   color?: "black" | "white";
+
+  /**
+   * Whether the button is rounded.
+   */
+  rounded?: boolean;
 
   /**
    * Aria label for the button.
@@ -25,7 +35,9 @@ export interface ButtonProps {
  */
 const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
+  size = "sm",
   color = "white",
+  rounded = false,
   ariaLabel = "Button",
   onClick,
 }) => (
@@ -33,6 +45,9 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
     type="button"
     className={clsx(
       "button",
+      rounded && "button--rounded",
+      size === "sm" && "button--sm",
+      size === "lg" && "button--lg",
       color === "black" && "button--black",
       color === "white" && "button--white",
     )}

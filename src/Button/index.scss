@@ -1,20 +1,38 @@
 @use "sass:map";
 
+@use "../sass/mixins";
 @use "../sass/tokens";
 
 .button {
   display: inline-flex;
-  padding: 0.25rem 0.5rem;
+  flex-direction: row;
+
   margin: 0;
+  border: 0;
+
   font-family: map.get(tokens.$fonts, sans);
 
+  @include mixins.transition(color, medium);
+
+  &.button--sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  &.button--lg {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+  }
+
   &.button--black {
-    color: map.get(tokens.$brand, white);
-    background-color: map.get(tokens.$brand, black);
+    @include mixins.invert-colors-on-hover(black, white);
   }
 
   &.button--white {
-    color: map.get(tokens.$brand, black);
-    background-color: map.get(tokens.$brand, white);
+    @include mixins.invert-colors-on-hover(white, black);
+  }
+
+  &.button--rounded {
+    border-radius: 0.5rem;
   }
 }

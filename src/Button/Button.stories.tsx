@@ -27,3 +27,34 @@ export const White: Story = {
     onClick: () => {},
   },
 };
+
+export const Rounded: Story = {
+  args: {
+    children: "Rounded button",
+    color: "black",
+    rounded: true,
+    ariaLabel: "Example rounded button",
+    onClick: () => {},
+  },
+};
+
+export const Large: Story = {
+  args: {
+    children: "Large button",
+    size: "lg",
+    color: "black",
+    ariaLabel: "Example rounded button",
+    onClick: () => {},
+  },
+};
+
+export const LargeRounded: Story = {
+  args: {
+    children: "Large rounded button",
+    size: "lg",
+    color: "white",
+    rounded: true,
+    ariaLabel: "Example large rounded button",
+    onClick: () => {},
+  },
+};

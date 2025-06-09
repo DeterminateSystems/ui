@@ -13,6 +13,16 @@
   transition-duration: map.get(tokens.$duration, $duration);
 }
 
+@mixin invert-colors-on-hover($bg, $text) {
+  background-color: map.get(tokens.$brand, $bg);
+  color: map.get(tokens.$brand, $text);
+
+  &:hover {
+    background-color: map.get(tokens.$brand, $text);
+    color: map.get(tokens.$brand, $bg);
+  }
+}
+
 @mixin svg-icon {
   width: 24px;
   height: 24px;
