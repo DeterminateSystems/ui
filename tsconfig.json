@@ -9,7 +9,7 @@
     "noUnusedParameters": true,
 
     "jsx": "react-jsx",
-    
+
     "isolatedModules": true,
     "verbatimModuleSyntax": true
   }
