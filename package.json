@@ -21,8 +21,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepack": "npm run build",
-    "format": "prettier --check src",
-    "format:fix": "prettier --write src"
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
