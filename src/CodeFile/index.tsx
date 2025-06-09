@@ -5,6 +5,8 @@ import CopyButton from "../CopyButton";
 import DownloadButton from "../DownloadButton";
 import Highlight from "../Highlight";
 
+import "./index.scss";
+
 export interface CodeFileProps {
   language: HighlightLanguage;
   code: string;
