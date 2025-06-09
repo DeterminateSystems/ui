@@ -9,7 +9,7 @@ export enum InstallTarget {
 }
 
 /**
- * Auto-detect the appropriate install target for a given broser user agent.
+ * Auto-detect the appropriate install target for a given browser user agent.
  *
  * @param userAgent The user agent. Defaults to the browser's `navigator.userAgent`.
  */
