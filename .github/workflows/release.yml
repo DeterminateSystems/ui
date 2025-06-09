@@ -3,7 +3,6 @@ name: Publish CSS release
 on:
   push:
     branches: [main]
-  pull_request:
 
 jobs:
   Release:
