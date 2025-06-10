@@ -1,0 +1,30 @@
+@use "sass:map";
+
+@use "../sass/tokens";
+
+.navbar {
+  display: block;
+
+  height: 5rem;
+  width: 100%;
+
+  &.navbar--container {
+    margin: 0 auto;
+
+    &.navbar--brand {
+    }
+
+    &.navbar--menu {
+    }
+  }
+
+  &.navbar--black {
+    background-color: map.get(tokens.$brand, black);
+    color: map.get(tokens.$brand, white);
+  }
+
+  &.navbar--white {
+    background-color: map.get(tokens.$brand, white);
+    color: map.get(tokens.$brand, black);
+  }
+}
