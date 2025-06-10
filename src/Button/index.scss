@@ -9,6 +9,7 @@
 
   margin: 0;
   border: 0;
+  border-radius: 0.5rem;
 
   font-family: map.get(tokens.$fonts, sans);
 
@@ -28,9 +29,5 @@
     &.button--#{"" + $name} {
       @include mixins.invert-colors-on-hover($name);
     }
-  }
-
-  &.button--rounded {
-    border-radius: 0.5rem;
   }
 }

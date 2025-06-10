@@ -15,11 +15,6 @@ export interface ButtonProps {
   color?: "black" | "white" | "dark-blue" | "red" | "blue-a";
 
   /**
-   * Whether the button is rounded.
-   */
-  rounded?: boolean;
-
-  /**
    * Aria label for the button.
    */
   ariaLabel?: string;
@@ -37,7 +32,6 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
   size = "sm",
   color = "white",
-  rounded = false,
   ariaLabel = "Button",
   onClick,
 }) => (
@@ -45,7 +39,6 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
     type="button"
     className={clsx(
       "button",
-      rounded && "button--rounded",
       size === "sm" && "button--sm",
       size === "lg" && "button--lg",
       color === "black" && "button--black",
