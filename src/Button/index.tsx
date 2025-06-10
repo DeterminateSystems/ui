@@ -23,6 +23,11 @@ export interface ButtonProps {
   color?: ButtonColors;
 
   /**
+   * Whether the button changes color upon hover.
+   */
+  hover?: boolean;
+
+  /**
    * Handler to fire when the button is clicked.
    */
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -36,6 +41,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   id,
   size = "base",
   color = "primary",
+  hover = false,
   onClick,
 }) => (
   <button
@@ -47,6 +53,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       "button--lg": size === "lg",
       "button--primary": color === "primary",
       "button--secondary": color === "secondary",
+      "button--hover": hover,
     })}
     onClick={onClick}
   >

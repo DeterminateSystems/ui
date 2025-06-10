@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "sass:map";
 
 @use "../sass/mixins";
@@ -13,9 +14,6 @@
 
   font-family: map.get(tokens.$fonts, sans);
 
-  @include mixins.transition(background-color, medium);
-  @include mixins.transition(color, medium);
-
   @each $size in tokens.$sizes {
     &.button--#{$size} {
       padding: map.get(tokens.$padding, $size)
@@ -29,6 +27,14 @@
     &.button--#{$name} {
       background-color: $color;
       color: map.get(tokens.$brand, white);
+
+      &.button--hover {
+        @include mixins.transition(background-color, short);
+
+        &:hover {
+          background-color: color.scale($color, $lightness: -10%);
+        }
+      }
     }
   }
 }

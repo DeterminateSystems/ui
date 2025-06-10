@@ -32,6 +32,16 @@ export const BaseSecondary: Story = {
   },
 };
 
+export const Hoverable: Story = {
+  args: {
+    children: "Hoverable",
+    size: "base",
+    color: "primary",
+    hover: true,
+    onClick,
+  },
+};
+
 export const SmallPrimary: Story = {
   args: {
     children: "Small primary",
