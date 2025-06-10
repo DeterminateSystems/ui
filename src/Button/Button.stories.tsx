@@ -14,17 +14,37 @@ type Story = StoryObj<typeof meta>;
 // Make clicks visible in the inspector
 const onClick = action("click");
 
-export const Primary: Story = {
+export const BasePrimary: Story = {
   args: {
-    children: "Primary",
+    children: "Base primary",
+    size: "base",
     color: "primary",
     onClick,
   },
 };
 
-export const Secondary: Story = {
+export const BaseSecondary: Story = {
   args: {
-    children: "Secondary",
+    children: "Base secondary",
+    size: "base",
+    color: "secondary",
+    onClick,
+  },
+};
+
+export const SmallPrimary: Story = {
+  args: {
+    children: "Small primary",
+    size: "sm",
+    color: "primary",
+    onClick,
+  },
+};
+
+export const SmallSecondary: Story = {
+  args: {
+    children: "Small secondary",
+    size: "sm",
     color: "secondary",
     onClick,
   },

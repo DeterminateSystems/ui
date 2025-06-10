@@ -16,14 +16,13 @@
   @include mixins.transition(background-color, medium);
   @include mixins.transition(color, medium);
 
-  &.button--sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 1rem;
-  }
-
-  &.button--lg {
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
+  @each $size in tokens.$sizes {
+    &.button--#{$size} {
+      padding: map.get(tokens.$padding, $size)
+        calc(2 * map.get(tokens.$padding, $size));
+      font-size: map.get(tokens.$font-size, $size);
+      border-radius: map.get(tokens.$border-radius, $size);
+    }
   }
 
   @each $name, $color in tokens.$colors {

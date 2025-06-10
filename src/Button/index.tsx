@@ -3,19 +3,19 @@ import type { FC, PropsWithChildren } from "react";
 import "./index.scss";
 import clsx from "clsx";
 
-export type ButtonSize = "sm" | "lg";
+export type ButtonSize = "sm" | "base" | "lg";
 export type ButtonColors = "primary" | "secondary";
 
 export interface ButtonProps {
   /**
-   * The button's size.
-   */
-  size?: ButtonSize;
-
-  /**
    * An optional HTML identifier for the button.
    */
   id?: string;
+
+  /**
+   * The button's size.
+   */
+  size?: ButtonSize;
 
   /**
    * The button's color scheme.
@@ -33,21 +33,21 @@ export interface ButtonProps {
  */
 const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
-  size = "sm",
   id,
+  size = "base",
   color = "primary",
   onClick,
 }) => (
   <button
     type="button"
     id={id}
-    className={clsx(
-      "button",
-      size === "sm" && "button--sm",
-      size === "lg" && "button--lg",
-      color === "primary" && "button--primary",
-      color === "secondary" && "button--secondary",
-    )}
+    className={clsx("button", {
+      "button--sm": size === "sm",
+      "button--base": size === "base",
+      "button--lg": size === "lg",
+      "button--primary": color === "primary",
+      "button--secondary": color === "secondary",
+    })}
     onClick={onClick}
   >
     {children}
