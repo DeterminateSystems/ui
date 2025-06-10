@@ -17,11 +17,6 @@ export interface ButtonProps {
   color?: "black" | "white" | "dark-blue" | "red" | "blue-a";
 
   /**
-   * Aria label for the button.
-   */
-  ariaLabel?: string;
-
-  /**
    * Handler to fire when the button is clicked.
    */
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -34,7 +29,6 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
   size = "sm",
   color = "white",
-  ariaLabel = "Button",
   onClick,
 }) => (
   <button
@@ -49,7 +43,6 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       color === "red" && "button--red",
       color === "blue-a" && "button--blue-a",
     )}
-    aria-label={ariaLabel}
     onClick={onClick}
   >
     {children}
