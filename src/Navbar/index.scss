@@ -1,30 +1,79 @@
 @use "sass:map";
 
+@use "../sass/mixins";
 @use "../sass/tokens";
 
 .navbar {
-  display: block;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
 
   height: 5rem;
-  width: 100%;
 
-  &.navbar--container {
+  font-family: map.get(tokens.$fonts, sans);
+
+  .navbar--fixed {
+    position: fixed;
+  }
+
+  .navbar--container {
     margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
 
-    &.navbar--brand {
+    .navbar--brand a {
+      text-decoration: none;
+      @include mixins.transition(color, shortish);
+      font-weight: 600;
     }
 
-    &.navbar--menu {
+    .navbar--menu {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      a {
+        text-decoration: none;
+        @include mixins.transition(color, shortish);
+      }
     }
   }
 
-  &.navbar--black {
-    background-color: map.get(tokens.$brand, black);
-    color: map.get(tokens.$brand, white);
-  }
+  @each $color,
+    $scheme
+      in (
+        "black": (
+            "bg": black,
+            "text": white,
+            "hover": yellow,
+          ),
+        "white": (
+            "bg": white,
+            "text": black,
+            "hover": magenta,
+          ),
+        "gray": (
+            "bg": gray,
+            "text": white,
+            "hover": orange,
+          )
+      )
+  {
+    &.navbar--#{$color} {
+      background-color: map.get(tokens.$brand, map.get($scheme, bg));
 
-  &.navbar--white {
-    background-color: map.get(tokens.$brand, white);
-    color: map.get(tokens.$brand, black);
+      .navbar--brand,
+      .navbar--menu {
+        a {
+          color: map.get(tokens.$brand, map.get($scheme, text));
+          &:hover {
+            color: map.get(tokens.$brand, map.get($scheme, hover));
+          }
+        }
+      }
+    }
   }
 }
