@@ -26,7 +26,7 @@
   }
 
   @each $name, $color in tokens.$colors {
-    &.button--#{"" + $name} {
+    &.button--#{$name} {
       background-color: $color;
       color: map.get(tokens.$brand, white);
     }
