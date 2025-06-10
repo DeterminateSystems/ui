@@ -25,7 +25,7 @@
   &:hover,
   &:focus {
     background-color: color.scale(
-      map.get(tokens.$brand, purple),
+      map.get(tokens.$brand, magenta),
       $blackness: 50%
     );
   }
