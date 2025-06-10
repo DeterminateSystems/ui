@@ -23,6 +23,11 @@ export interface ButtonProps {
   color?: ButtonColors;
 
   /**
+   * Whether the button is outlined.
+   */
+  outlined?: boolean;
+
+  /**
    * Whether the button changes color upon hover.
    */
   hover?: boolean;
@@ -41,6 +46,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   id,
   size = "base",
   color = "primary",
+  outlined = false,
   hover = true,
   onClick,
 }) => (
@@ -53,6 +59,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       "button--lg": size === "lg",
       "button--primary": color === "primary",
       "button--secondary": color === "secondary",
+      "button--outlined": outlined,
       "button--hover": hover,
     })}
     onClick={onClick}

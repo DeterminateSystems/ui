@@ -25,14 +25,31 @@
 
   @each $name, $color in tokens.$colors {
     &.button--#{$name} {
-      background-color: $color;
-      color: map.get(tokens.$brand, white);
+      &:not(.button--outlined) {
+        background-color: $color;
+        color: map.get(tokens.$brand, white);
 
-      &.button--hover {
-        @include mixins.transition(background-color, short);
+        &.button--hover {
+          @include mixins.transition(background-color, short);
 
-        &:hover {
-          background-color: functions.darken($color, 15%);
+          &:hover {
+            background-color: functions.darken($color, 15%);
+          }
+        }
+      }
+
+      &.button--outlined {
+        border: 2px solid $color;
+        background-color: map.get(tokens.$brand, white);
+        color: $color;
+
+        &.button--hover {
+          @include mixins.transition(background-color, short);
+
+          &:hover {
+            background-color: $color;
+            color: map.get(tokens.$brand, white);
+          }
         }
       }
     }

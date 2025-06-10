@@ -32,6 +32,26 @@ export const BaseSecondary: Story = {
   },
 };
 
+export const PrimaryBaseOutlined: Story = {
+  args: {
+    children: "Primary outlined",
+    size: "base",
+    color: "secondary",
+    outlined: true,
+    onClick,
+  },
+};
+
+export const SecondarySmallOutlined: Story = {
+  args: {
+    children: "Secondary small outlined",
+    size: "sm",
+    color: "secondary",
+    outlined: true,
+    onClick,
+  },
+};
+
 export const NoHoverEffect: Story = {
   args: {
     children: "Hoverable",
