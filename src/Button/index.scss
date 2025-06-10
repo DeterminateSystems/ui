@@ -5,6 +5,7 @@
 @use "../sass/tokens";
 
 .button {
+  align-self: self-start; // Prevents the button from occupying all available space inside a div
   display: inline-flex;
   flex-direction: row;
 
@@ -14,10 +15,11 @@
 
   font-family: map.get(tokens.$fonts, sans);
 
+  @include mixins.transition(background-color, short);
+
   @each $size in tokens.$sizes {
     &.button--#{$size} {
-      padding: map.get(tokens.$padding, $size)
-        calc(2 * map.get(tokens.$padding, $size));
+      @include mixins.pad($size);
       font-size: map.get(tokens.$font-size, $size);
       border-radius: map.get(tokens.$border-radius, $size);
     }
@@ -29,12 +31,8 @@
         background-color: $color;
         color: map.get(tokens.$brand, white);
 
-        &.button--hover {
-          @include mixins.transition(background-color, short);
-
-          &:hover {
-            background-color: functions.darken($color, 15%);
-          }
+        &:hover {
+          background-color: functions.darken($color, 15%);
         }
       }
 
@@ -43,13 +41,9 @@
         background-color: map.get(tokens.$brand, white);
         color: $color;
 
-        &.button--hover {
-          @include mixins.transition(background-color, short);
-
-          &:hover {
-            background-color: $color;
-            color: map.get(tokens.$brand, white);
-          }
+        &:hover {
+          background-color: $color;
+          color: map.get(tokens.$brand, white);
         }
       }
     }

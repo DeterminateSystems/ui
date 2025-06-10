@@ -34,18 +34,13 @@ export interface ButtonProps {
   outlined?: boolean;
 
   /**
-   * Whether the button changes color upon hover.
-   */
-  hover?: boolean;
-
-  /**
    * Handler to fire when the button is clicked.
    */
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 /**
- * A `<Button />` represents a standard clickable button. It serves as the base components for our many button types.
+ * A `<Button />` represents a standard clickable button. It serves as the base component for our many button types.
  */
 const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
@@ -53,7 +48,6 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   size = "base",
   color = "primary",
   outlined = false,
-  hover = true,
   onClick,
 }) => (
   <button
@@ -70,7 +64,6 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       "button--warning": color === "warning",
       "button--danger": color === "danger",
       "button--outlined": outlined,
-      "button--hover": hover,
     })}
     onClick={onClick}
   >

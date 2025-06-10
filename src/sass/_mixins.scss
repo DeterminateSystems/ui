@@ -13,6 +13,12 @@
   transition-duration: map.get(tokens.$duration, $duration);
 }
 
+@mixin pad($size) {
+  $padding: map.get(tokens.$padding, $size);
+
+  padding: $padding calc(2 * $padding);
+}
+
 @mixin svg-icon {
   width: 24px;
   height: 24px;
