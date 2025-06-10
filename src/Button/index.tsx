@@ -4,7 +4,13 @@ import "./index.scss";
 import clsx from "clsx";
 
 export type ButtonSize = "sm" | "base" | "lg";
-export type ButtonColors = "primary" | "secondary";
+export type ButtonColors =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "info"
+  | "warning"
+  | "danger";
 
 export interface ButtonProps {
   /**
@@ -59,6 +65,10 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       "button--lg": size === "lg",
       "button--primary": color === "primary",
       "button--secondary": color === "secondary",
+      "button--success": color === "success",
+      "button--info": color === "info",
+      "button--warning": color === "warning",
+      "button--danger": color === "danger",
       "button--outlined": outlined,
       "button--hover": hover,
     })}

@@ -32,6 +32,42 @@ export const BaseSecondary: Story = {
   },
 };
 
+export const Success: Story = {
+  args: {
+    children: "Success",
+    size: "base",
+    color: "success",
+    onClick,
+  },
+};
+
+export const Info: Story = {
+  args: {
+    children: "Info",
+    size: "base",
+    color: "info",
+    onClick,
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    children: "Warning",
+    size: "base",
+    color: "warning",
+    onClick,
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    children: "Danger",
+    size: "base",
+    color: "danger",
+    onClick,
+  },
+};
+
 export const PrimaryBaseOutlined: Story = {
   args: {
     children: "Primary outlined",
