@@ -12,6 +12,11 @@ export interface ButtonProps {
   size?: ButtonSize;
 
   /**
+   * An optional HTML identifier for the button.
+   */
+  id?: string;
+
+  /**
    * The button's color scheme.
    */
   color?: "black" | "white" | "dark-blue" | "red" | "blue-a";
@@ -28,11 +33,13 @@ export interface ButtonProps {
 const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
   size = "sm",
+  id,
   color = "white",
   onClick,
 }) => (
   <button
     type="button"
+    id={id}
     className={clsx(
       "button",
       size === "sm" && "button--sm",
