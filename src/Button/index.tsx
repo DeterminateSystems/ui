@@ -3,11 +3,13 @@ import type { FC, PropsWithChildren } from "react";
 import "./index.scss";
 import clsx from "clsx";
 
+export type ButtonSize = "sm" | "lg";
+
 export interface ButtonProps {
   /**
    * The button's size.
    */
-  size?: "sm" | "lg";
+  size?: ButtonSize;
 
   /**
    * The button's color scheme.
