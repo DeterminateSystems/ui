@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import Button from "./";
@@ -10,12 +11,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+// Make clicks visible in the inspector
+const onClick = action("click");
+
 export const Black: Story = {
   args: {
     children: "Black",
     color: "black",
     ariaLabel: "Example black button",
-    onClick: () => {},
+    onClick,
   },
 };
 
@@ -24,7 +28,7 @@ export const White: Story = {
     children: "White",
     color: "white",
     ariaLabel: "Example white button",
-    onClick: () => {},
+    onClick,
   },
 };
 
@@ -33,7 +37,7 @@ export const DarkBlue: Story = {
     children: "Dark blue",
     color: "dark-blue",
     ariaLabel: "Example dark blue button",
-    onClick: () => {},
+    onClick,
   },
 };
 
@@ -42,7 +46,7 @@ export const BlueA: Story = {
     children: "Blue A",
     color: "blue-a",
     ariaLabel: "Example blue-a button",
-    onClick: () => {},
+    onClick,
   },
 };
 
@@ -51,7 +55,7 @@ export const Red: Story = {
     children: "Red",
     color: "red",
     ariaLabel: "Example red button",
-    onClick: () => {},
+    onClick,
   },
 };
 
@@ -61,6 +65,6 @@ export const Large: Story = {
     size: "lg",
     color: "black",
     ariaLabel: "Example large button",
-    onClick: () => {},
+    onClick,
   },
 };
