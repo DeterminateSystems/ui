@@ -13,6 +13,7 @@
 
   font-family: map.get(tokens.$fonts, sans);
 
+  @include mixins.transition(background-color, medium);
   @include mixins.transition(color, medium);
 
   &.button--sm {
