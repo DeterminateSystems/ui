@@ -24,7 +24,7 @@ export interface ButtonProps {
   /**
    * Handler to fire when the button is clicked.
    */
-  onClick(event: React.MouseEvent<HTMLButtonElement>): void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 /**
