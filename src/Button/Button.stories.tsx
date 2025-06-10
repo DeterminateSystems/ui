@@ -32,12 +32,12 @@ export const BaseSecondary: Story = {
   },
 };
 
-export const Hoverable: Story = {
+export const NoHoverEffect: Story = {
   args: {
     children: "Hoverable",
     size: "base",
     color: "primary",
-    hover: true,
+    hover: false,
     onClick,
   },
 };

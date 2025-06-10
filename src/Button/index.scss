@@ -1,6 +1,6 @@
-@use "sass:color";
 @use "sass:map";
 
+@use "../sass/functions";
 @use "../sass/mixins";
 @use "../sass/tokens";
 
@@ -32,7 +32,7 @@
         @include mixins.transition(background-color, short);
 
         &:hover {
-          background-color: color.scale($color, $lightness: -10%);
+          background-color: functions.darken($color, 15%);
         }
       }
     }

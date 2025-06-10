@@ -41,7 +41,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   id,
   size = "base",
   color = "primary",
-  hover = false,
+  hover = true,
   onClick,
 }) => (
   <button
