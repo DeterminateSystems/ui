@@ -5,22 +5,24 @@ $brand: (
   red: #ec2c5b,
   blue-a: #086bb5,
   yellow: #faa61a,
-  purple: #cd1e88,
+  magenta: #cd1e88,
   blue-b: #034d9c,
   light-blue: #1e9fd9,
   orange: #ea741f,
-  white: #ededef,
+  light: #ededef,
   gray: #545454,
   black: #231f20,
+  white: #ffffff,
 );
 
-$brand-inverse: (
-  dark-blue: map.get($brand, white),
-  red: map.get($brand, white),
-  blue-a: map.get($brand, white),
-  // TODO: others
-  white: map.get($brand, black),
-  black: map.get($brand, white),
+$colors-inverse: (
+  primary: map.get($brand, white),
+  secondary: map.get($brand, white),
+);
+
+$colors: (
+  primary: map.get($brand, orange),
+  secondary: map.get($brand, magenta),
 );
 
 $code: (

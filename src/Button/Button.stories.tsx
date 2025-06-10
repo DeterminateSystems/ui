@@ -14,51 +14,36 @@ type Story = StoryObj<typeof meta>;
 // Make clicks visible in the inspector
 const onClick = action("click");
 
-export const Black: Story = {
+export const Primary: Story = {
   args: {
-    children: "Black",
-    color: "black",
+    children: "Primary",
+    color: "primary",
     onClick,
   },
 };
 
-export const White: Story = {
+export const Secondary: Story = {
   args: {
-    children: "White",
-    color: "white",
+    children: "Secondary",
+    color: "secondary",
     onClick,
   },
 };
 
-export const DarkBlue: Story = {
+export const LargePrimary: Story = {
   args: {
-    children: "Dark blue",
-    color: "dark-blue",
-    onClick,
-  },
-};
-
-export const BlueA: Story = {
-  args: {
-    children: "Blue A",
-    color: "blue-a",
-    onClick,
-  },
-};
-
-export const Red: Story = {
-  args: {
-    children: "Red",
-    color: "red",
-    onClick,
-  },
-};
-
-export const Large: Story = {
-  args: {
-    children: "Large",
+    children: "Large primary",
     size: "lg",
-    color: "black",
+    color: "primary",
+    onClick,
+  },
+};
+
+export const LargeSecondary: Story = {
+  args: {
+    ...LargePrimary.args,
+    children: "Large secondary",
+    color: "secondary",
     onClick,
   },
 };

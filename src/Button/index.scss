@@ -26,9 +26,10 @@
     font-size: 1.5rem;
   }
 
-  @each $name, $color in tokens.$brand {
+  @each $name, $color in tokens.$colors {
     &.button--#{"" + $name} {
-      @include mixins.invert-colors-on-hover($name);
+      background-color: $color;
+      color: map.get(tokens.$brand, white);
     }
   }
 }

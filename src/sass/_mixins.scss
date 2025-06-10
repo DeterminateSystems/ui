@@ -13,20 +13,10 @@
   transition-duration: map.get(tokens.$duration, $duration);
 }
 
-@mixin invert-colors-on-hover($color) {
-  background-color: map.get(tokens.$brand, $color);
-  color: map.get(tokens.$brand-inverse, $color);
-
-  &:hover {
-    background-color: map.get(tokens.$brand-inverse, $color);
-    color: map.get(tokens.$brand, $color);
-  }
-}
-
 @mixin svg-icon {
   width: 24px;
   height: 24px;
-  stroke: white;
+  stroke: map.get(tokens.$colors, white);
   stroke-width: 2px;
   fill: none;
 }
@@ -48,7 +38,7 @@
   &:hover,
   &:focus {
     cursor: pointer;
-    outline: 1px solid red;
+    outline: 1px solid map.get(tokens.$colors, red);
   }
 
   & > svg {

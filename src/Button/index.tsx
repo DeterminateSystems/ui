@@ -4,6 +4,7 @@ import "./index.scss";
 import clsx from "clsx";
 
 export type ButtonSize = "sm" | "lg";
+export type ButtonColors = "primary" | "secondary";
 
 export interface ButtonProps {
   /**
@@ -19,7 +20,7 @@ export interface ButtonProps {
   /**
    * The button's color scheme.
    */
-  color?: "black" | "white" | "dark-blue" | "red" | "blue-a";
+  color?: ButtonColors;
 
   /**
    * Handler to fire when the button is clicked.
@@ -34,7 +35,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
   size = "sm",
   id,
-  color = "white",
+  color = "primary",
   onClick,
 }) => (
   <button
@@ -44,11 +45,8 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
       "button",
       size === "sm" && "button--sm",
       size === "lg" && "button--lg",
-      color === "black" && "button--black",
-      color === "white" && "button--white",
-      color === "dark-blue" && "button--dark-blue",
-      color === "red" && "button--red",
-      color === "blue-a" && "button--blue-a",
+      color === "primary" && "button--primary",
+      color === "secondary" && "button--secondary",
     )}
     onClick={onClick}
   >
