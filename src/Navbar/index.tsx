@@ -3,11 +3,6 @@ import type { FC, PropsWithChildren } from "react";
 import "./index.scss";
 import clsx from "clsx";
 
-export type NavbarMenuItem = {
-  text: string;
-  href: string;
-};
-
 export type NavbarColor = "black" | "white" | "gray";
 
 export interface NavbarProps {
@@ -25,7 +20,7 @@ export interface NavbarProps {
 /**
  * A standard navbar at the top of the page.
  */
-const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
+export const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
   children,
   fixed = false,
   color,
@@ -49,5 +44,3 @@ export const NavbarBrand: FC<PropsWithChildren> = ({ children }) => (
 export const NavbarMenu: FC<PropsWithChildren> = ({ children }) => (
   <menu className="navbar--menu">{children}</menu>
 );
-
-export default Navbar;

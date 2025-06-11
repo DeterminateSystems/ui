@@ -1,9 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import type { Meta } from "@storybook/react";
 
-import Navbar, { NavbarBrand, NavbarMenu, type NavbarMenuItem } from ".";
-import { Button } from "..";
-import { action } from "@storybook/addon-actions";
+import { Navbar, NavbarBrand, NavbarMenu } from ".";
 
 const meta = {
   title: "Atoms/Navbar",
@@ -14,7 +11,6 @@ const meta = {
 } satisfies Meta<typeof Navbar>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 export const All = () => (
   <div
