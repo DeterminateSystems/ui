@@ -3,7 +3,7 @@ import type { FC, PropsWithChildren } from "react";
 import "./index.scss";
 import clsx from "clsx";
 
-export const buttonSizes = ["sm", "base", "lg"];
+export const buttonSizes = ["sm", "base", "lg"] as const;
 export type ButtonSize = (typeof buttonSizes)[number];
 
 export const buttonColors = [
@@ -13,7 +13,7 @@ export const buttonColors = [
   "info",
   "warning",
   "danger",
-];
+] as const;
 export type ButtonColor = (typeof buttonColors)[number];
 
 export interface ButtonProps {
