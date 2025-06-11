@@ -13,10 +13,16 @@
   transition-duration: map.get(tokens.$duration, $duration);
 }
 
+@mixin pad($size) {
+  $padding: map.get(tokens.$padding, $size);
+
+  padding: $padding calc(2 * $padding);
+}
+
 @mixin svg-icon {
   width: 24px;
   height: 24px;
-  stroke: white;
+  stroke: map.get(tokens.$colors, white);
   stroke-width: 2px;
   fill: none;
 }
@@ -38,7 +44,7 @@
   &:hover,
   &:focus {
     cursor: pointer;
-    outline: 1px solid red;
+    outline: 1px solid map.get(tokens.$colors, red);
   }
 
   & > svg {
