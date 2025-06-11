@@ -23,18 +23,18 @@ export const All = () => (
   >
     <Navbar color="white">
       <NavbarBrand>
-        <a href="#" style={{ textDecoration: "none", color: "black" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           White
         </a>
       </NavbarBrand>
       <NavbarMenu>
-        <a href="#" style={{ textDecoration: "none", color: "black" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           One
         </a>
-        <a href="#" style={{ textDecoration: "none", color: "black" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           Two
         </a>
-        <a href="#" style={{ textDecoration: "none", color: "black" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           Three
         </a>
       </NavbarMenu>
@@ -42,18 +42,18 @@ export const All = () => (
 
     <Navbar color="black">
       <NavbarBrand>
-        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           Black
         </a>
       </NavbarBrand>
       <NavbarMenu>
-        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           One
         </a>
-        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           Two
         </a>
-        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           Three
         </a>
       </NavbarMenu>
@@ -61,18 +61,18 @@ export const All = () => (
 
     <Navbar color="gray">
       <NavbarBrand>
-        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           Gray
         </a>
       </NavbarBrand>
       <NavbarMenu>
-        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           One
         </a>
-        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           Two
         </a>
-        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+        <a href="#" style={{ textDecoration: "none" }}>
           Three
         </a>
       </NavbarMenu>

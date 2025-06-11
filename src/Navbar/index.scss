@@ -53,7 +53,9 @@
   {
     &.navbar--#{$color} {
       background-color: map.get(tokens.$brand, map.get($scheme, bg));
-      color: map.get(tokens.$brand, map.get($scheme, text));
+      * {
+        color: map.get(tokens.$brand, map.get($scheme, text));
+      }
     }
   }
 }
