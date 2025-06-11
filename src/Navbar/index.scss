@@ -40,32 +40,20 @@
         "black": (
             "bg": black,
             "text": white,
-            "hover": yellow,
           ),
         "white": (
             "bg": white,
             "text": black,
-            "hover": magenta,
           ),
         "gray": (
             "bg": gray,
             "text": white,
-            "hover": orange,
           )
       )
   {
     &.navbar--#{$color} {
       background-color: map.get(tokens.$brand, map.get($scheme, bg));
-
-      .navbar--brand,
-      .navbar--menu {
-        a {
-          color: map.get(tokens.$brand, map.get($scheme, text));
-          &:hover {
-            color: map.get(tokens.$brand, map.get($scheme, hover));
-          }
-        }
-      }
+      color: map.get(tokens.$brand, map.get($scheme, text));
     }
   }
 }
