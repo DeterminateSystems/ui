@@ -14,7 +14,7 @@ const meta = {
 } satisfies Meta<typeof Navbar>;
 
 export default meta;
-//type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof meta>;
 
 export const All = () => (
   <div
@@ -59,7 +59,7 @@ export const All = () => (
       </NavbarMenu>
     </Navbar>
 
-    <Navbar color="white" shadow>
+    <Navbar color="white">
       <NavbarBrand>
         <a href="#">White with shadow</a>
       </NavbarBrand>
