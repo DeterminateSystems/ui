@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Button, { ButtonColors, ButtonSizes } from "./";
+import Button, { buttonColors, buttonSizes } from "./";
 
 const meta = {
   title: "Atoms/Button",
@@ -9,11 +9,11 @@ const meta = {
   argTypes: {
     color: {
       description: "The button's color scheme",
-      options: [...ButtonColors],
+      options: buttonColors,
     },
     size: {
       description: "The button's size",
-      option: [...ButtonSizes],
+      option: buttonSizes,
     },
   },
 } satisfies Meta<typeof Button>;
