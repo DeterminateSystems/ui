@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 
 import "./index.scss";
 import clsx from "clsx";
@@ -12,16 +12,6 @@ export type NavbarColor = "black" | "white" | "gray";
 
 export interface NavbarProps {
   /**
-   * The main title.
-   */
-  title: string;
-
-  /**
-   * Link in brand.
-   */
-  href: string;
-
-  /**
    * Whether the navbar stays in place upon scroll.
    */
   fixed?: boolean;
@@ -30,22 +20,15 @@ export interface NavbarProps {
    * The navbar's basic color scheme.
    */
   color: NavbarColor;
-
-  /**
-   * Menu items.
-   */
-  items?: NavbarMenuItem[];
 }
 
 /**
  * A standard navbar at the top of the page.
  */
-const Navbar: FC<NavbarProps> = ({
-  title,
-  href,
+const Navbar: FC<PropsWithChildren<NavbarProps>> = ({
+  children,
   fixed = false,
   color,
-  items = [],
 }) => (
   <nav
     className={clsx("navbar", {
@@ -55,20 +38,16 @@ const Navbar: FC<NavbarProps> = ({
       "navbar--gray": color === "gray",
     })}
   >
-    <div className="navbar--container">
-      <div className="navbar--brand">
-        <a href={href}>{title}</a>
-      </div>
-
-      {items?.length > 0 && (
-        <div className="navbar--menu">
-          {items.map(({ text, href }) => (
-            <a href={href}>{text}</a>
-          ))}
-        </div>
-      )}
-    </div>
+    <div className="navbar--container">{children}</div>
   </nav>
+);
+
+export const NavbarBrand: FC<PropsWithChildren> = ({ children }) => (
+  <div className="navbar--brand">{children}</div>
+);
+
+export const NavbarMenu: FC<PropsWithChildren> = ({ children }) => (
+  <menu className="navbar--menu">{children}</menu>
 );
 
 export default Navbar;

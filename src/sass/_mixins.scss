@@ -2,6 +2,11 @@
 
 @use "tokens";
 
+// A helper to sprinkle around during development. Just don't commit it in actual components!
+@mixin dev {
+  outline: 1.5px solid red;
+}
+
 @mixin light-mode {
   @media (prefers-color-scheme: light) {
     @content;

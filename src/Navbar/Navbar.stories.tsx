@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
-import Navbar, { type NavbarMenuItem } from ".";
+import Navbar, { NavbarBrand, NavbarMenu, type NavbarMenuItem } from ".";
+import { Button } from "..";
+import { action } from "@storybook/addon-actions";
 
 const meta = {
   title: "Atoms/Navbar",
@@ -13,25 +16,6 @@ const meta = {
 export default meta;
 //type Story = StoryObj<typeof meta>;
 
-const items: NavbarMenuItem[] = [
-  {
-    text: "One",
-    href: "#",
-  },
-  {
-    text: "Two",
-    href: "#",
-  },
-  {
-    text: "Three",
-    href: "#",
-  },
-  {
-    text: "Four",
-    href: "#",
-  },
-];
-
 export const All = () => (
   <div
     style={{
@@ -42,10 +26,48 @@ export const All = () => (
       gap: "1rem",
     }}
   >
-    <Navbar color="white" title="FlakeHub" href="#" items={items} />
+    <Navbar color="white">
+      <NavbarBrand>
+        <a href="#">White</a>
+      </NavbarBrand>
+      <NavbarMenu>
+        <a href="#">One</a>
+        <a href="#">Two</a>
+        <a href="#">Three</a>
+      </NavbarMenu>
+    </Navbar>
 
-    <Navbar color="black" title="FlakeHub" href="#" items={items} />
+    <Navbar color="black">
+      <NavbarBrand>
+        <a href="#">Black</a>
+      </NavbarBrand>
+      <NavbarMenu>
+        <a href="#">One</a>
+        <a href="#">Two</a>
+        <a href="#">Three</a>
+      </NavbarMenu>
+    </Navbar>
 
-    <Navbar color="gray" title="FlakeHub" href="#" items={items} />
+    <Navbar color="gray">
+      <NavbarBrand>
+        <a href="#">Gray</a>
+      </NavbarBrand>
+      <NavbarMenu>
+        <a href="#">One</a>
+        <a href="#">Two</a>
+        <a href="#">Three</a>
+      </NavbarMenu>
+    </Navbar>
+
+    <Navbar color="white" shadow>
+      <NavbarBrand>
+        <a href="#">White with shadow</a>
+      </NavbarBrand>
+      <NavbarMenu>
+        <a href="#">One</a>
+        <a href="#">Two</a>
+        <a href="#">Three</a>
+      </NavbarMenu>
+    </Navbar>
   </div>
 );
