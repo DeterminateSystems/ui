@@ -15,7 +15,6 @@ export default meta;
 export const All = () => (
   <div
     style={{
-      minWidth: "100%",
       padding: "1rem",
       display: "flex",
       flexDirection: "column",
@@ -24,45 +23,58 @@ export const All = () => (
   >
     <Navbar color="white">
       <NavbarBrand>
-        <a href="#">White</a>
+        <a href="#" style={{ textDecoration: "none", color: "black" }}>
+          White
+        </a>
       </NavbarBrand>
       <NavbarMenu>
-        <a href="#">One</a>
-        <a href="#">Two</a>
-        <a href="#">Three</a>
+        <a href="#" style={{ textDecoration: "none", color: "black" }}>
+          One
+        </a>
+        <a href="#" style={{ textDecoration: "none", color: "black" }}>
+          Two
+        </a>
+        <a href="#" style={{ textDecoration: "none", color: "black" }}>
+          Three
+        </a>
       </NavbarMenu>
     </Navbar>
 
     <Navbar color="black">
       <NavbarBrand>
-        <a href="#">Black</a>
+        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+          Black
+        </a>
       </NavbarBrand>
       <NavbarMenu>
-        <a href="#">One</a>
-        <a href="#">Two</a>
-        <a href="#">Three</a>
+        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+          One
+        </a>
+        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+          Two
+        </a>
+        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+          Three
+        </a>
       </NavbarMenu>
     </Navbar>
 
     <Navbar color="gray">
       <NavbarBrand>
-        <a href="#">Gray</a>
+        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+          Gray
+        </a>
       </NavbarBrand>
       <NavbarMenu>
-        <a href="#">One</a>
-        <a href="#">Two</a>
-        <a href="#">Three</a>
-      </NavbarMenu>
-    </Navbar>
-
-    <Navbar color="white">
-      <NavbarBrand>
-        <a href="#">White with shadow</a>
-      </NavbarBrand>
-      <NavbarMenu>
-        <a href="#">One</a>
-        <a href="#">Two</a>
-        <a href="#">Three</a>
+        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+          One
+        </a>
+        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+          Two
+        </a>
+        <a href="#" style={{ textDecoration: "none", color: "white" }}>
+          Three
+        </a>
       </NavbarMenu>
     </Navbar>
   </div>
