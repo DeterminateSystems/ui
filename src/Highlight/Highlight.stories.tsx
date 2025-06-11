@@ -12,7 +12,7 @@ const meta = {
   argTypes: {
     language: {
       control: "select",
-      options: highlightLanguages,
+      options: [...highlightLanguages],
     },
     code: { control: "text" },
     inline: { control: "boolean" },

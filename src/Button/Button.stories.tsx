@@ -9,11 +9,13 @@ const meta = {
   argTypes: {
     color: {
       description: "The button's color scheme",
-      options: buttonColors,
+      control: "select",
+      options: [...buttonColors],
     },
     size: {
       description: "The button's size",
-      option: buttonSizes,
+      control: "select",
+      options: [...buttonSizes],
     },
   },
 } satisfies Meta<typeof Button>;
