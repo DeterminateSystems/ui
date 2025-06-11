@@ -7,6 +7,10 @@ const meta = {
   title: "Atoms/Button",
   component: Button,
   argTypes: {
+    id: {
+      description: "An optional HTML identifier for the button",
+      control: "text",
+    },
     color: {
       description: "The button's color scheme",
       control: "select",
@@ -16,6 +20,10 @@ const meta = {
       description: "The button's size",
       control: "select",
       options: [...buttonSizes],
+    },
+    outlined: {
+      description: "Whether the button is outlined",
+      control: "boolean",
     },
   },
 } satisfies Meta<typeof Button>;
