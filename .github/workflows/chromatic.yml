@@ -4,11 +4,17 @@ on:
 jobs:
   Chromatic:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
+      - uses: DeterminateSystems/determinate-nix-action@v3
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - run: nix develop -c npm ci
       - name: Run Chromatic
         uses: chromaui/action@latest
         with:
