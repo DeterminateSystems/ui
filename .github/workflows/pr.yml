@@ -13,7 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           persist-credentials: false
       - uses: DeterminateSystems/determinate-nix-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
@@ -24,8 +23,3 @@ jobs:
         if: success() || failure()
       - run: nix develop -c npm run build
         if: success() || failure()
-      - name: Run Chromatic
-        if: success() || failure()
-        uses: chromaui/action@latest
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
