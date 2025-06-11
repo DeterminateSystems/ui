@@ -16,7 +16,7 @@ $brand: (
 );
 
 $colors: (
-  primary: map.get($brand, orange),
+  primary: map.get($brand, light-blue),
   secondary: map.get($brand, magenta),
   // NOTE(lucperkins): Semantic colors are not great and borrowed from Bootstrap solely as an
   // initial basis to be changed later:
