@@ -217,7 +217,7 @@ export const PrimaryBaseOutlined: Story = {
   args: {
     children: "Primary outlined",
     size: "base",
-    color: "secondary",
+    color: "primary",
     outlined: true,
     onClick,
   },
