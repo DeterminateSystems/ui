@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import CodeBlock from "./";
+import { HighlightLanguages } from "../hooks/useHighlight";
 
 const meta = {
   title: "Molecules/CodeBlock",
@@ -11,7 +12,7 @@ const meta = {
   argTypes: {
     language: {
       control: "select",
-      options: ["shell", "yaml", "terraform", "text"],
+      options: [...HighlightLanguages],
     },
     code: { control: "text" },
     allowCopy: { control: "boolean" },
