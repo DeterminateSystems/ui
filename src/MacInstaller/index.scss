@@ -11,7 +11,7 @@
   align-items: center;
 
   background-color: map.get(tokens.$brand, black);
-  border: 1px solid map.get(tokens.$brand, purple);
+  border: 1px solid map.get(tokens.$brand, magenta);
   color: map.get(tokens.$brand, white);
   text-decoration: none;
 
@@ -25,7 +25,7 @@
   &:hover,
   &:focus {
     background-color: color.scale(
-      map.get(tokens.$brand, purple),
+      map.get(tokens.$brand, magenta),
       $blackness: 50%
     );
   }

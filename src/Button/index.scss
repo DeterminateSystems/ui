@@ -1,0 +1,51 @@
+@use "sass:map";
+
+@use "../sass/functions";
+@use "../sass/mixins";
+@use "../sass/tokens";
+
+.button {
+  align-self: self-start; // Prevents the button from occupying all available space inside a div
+  display: inline-flex;
+  flex-direction: row;
+
+  margin: 0;
+  border: 0;
+  border-radius: 0.5rem;
+
+  font-family: map.get(tokens.$fonts, sans);
+
+  @include mixins.transition(background-color, short);
+
+  @each $size in tokens.$sizes {
+    &.button--#{$size} {
+      @include mixins.pad($size);
+      font-size: map.get(tokens.$font-size, $size);
+      border-radius: map.get(tokens.$border-radius, $size);
+    }
+  }
+
+  @each $name, $color in tokens.$colors {
+    &.button--#{$name} {
+      &:not(.button--outlined) {
+        background-color: $color;
+        color: map.get(tokens.$brand, white);
+
+        &:hover {
+          background-color: functions.darken($color, 15%);
+        }
+      }
+
+      &.button--outlined {
+        border: 2px solid $color;
+        background-color: map.get(tokens.$brand, white);
+        color: $color;
+
+        &:hover {
+          background-color: $color;
+          color: map.get(tokens.$brand, white);
+        }
+      }
+    }
+  }
+}

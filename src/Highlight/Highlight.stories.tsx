@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Highlight from ".";
+import Highlight from "./";
 
 const meta = {
   title: "Atoms/Highlight",

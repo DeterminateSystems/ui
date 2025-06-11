@@ -6,6 +6,7 @@ export {
 export { default as useObjectURL } from "./hooks/useObjectURL";
 
 // Components
+export { type ButtonProps, default as Button } from "./Button";
 export { type CodeBlockProps, default as CodeBlock } from "./CodeBlock";
 export { type CodeFileProps, default as CodeFile } from "./CodeFile";
 export { type CopyButtonProps, default as CopyButton } from "./CopyButton";

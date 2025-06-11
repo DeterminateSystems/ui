@@ -1,15 +1,30 @@
+@use "sass:map";
+
 $brand: (
   dark-blue: #1f1953,
   red: #ec2c5b,
   blue-a: #086bb5,
   yellow: #faa61a,
-  purple: #cd1e88,
+  magenta: #cd1e88,
   blue-b: #034d9c,
   light-blue: #1e9fd9,
   orange: #ea741f,
-  white: #ededef,
+  light: #ededef,
   gray: #545454,
   black: #231f20,
+  white: #ffffff,
+);
+
+$colors: (
+  primary: map.get($brand, orange),
+  secondary: map.get($brand, magenta),
+  // NOTE(lucperkins): Semantic colors are not great and borrowed from Bootstrap solely as an
+  // initial basis to be changed later:
+  // https://getbootstrap.com/docs/4.0/utilities/colors
+  success: rgb(40, 167, 69),
+  info: rgb(23, 162, 184),
+  warning: rgb(255, 193, 7),
+  danger: rgb(220, 53, 69),
 );
 
 $code: (
@@ -35,9 +50,30 @@ $fonts: (
   ),
 );
 
+$sizes: ("sm", "base", "lg");
+
+$border-radius: (
+  sm: 0.25rem,
+  base: 0.5rem,
+  lg: 0.75rem,
+);
+
+$padding: (
+  sm: 0.2rem,
+  base: 0.4rem,
+  lg: 0.6rem,
+);
+
+$font-size: (
+  sm: 1rem,
+  base: 1.25rem,
+  lg: 1.5rem,
+);
+
 $duration: (
   short: 150ms,
   shortish: 250ms,
+  medium: 500ms,
 );
 
 $spacing: (
