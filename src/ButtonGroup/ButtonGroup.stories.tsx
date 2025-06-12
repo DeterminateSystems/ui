@@ -28,7 +28,7 @@ export const Small: Story = {
         </Button>
 
         <Button size="sm" color="secondary" onClick={onClick}>
-          Primary
+          Secondary
         </Button>
       </>
     ),
@@ -45,7 +45,7 @@ export const Base: Story = {
         </Button>
 
         <Button size="base" color="secondary" onClick={onClick}>
-          Primary
+          Secondary
         </Button>
       </>
     ),
@@ -62,7 +62,7 @@ export const Large: Story = {
         </Button>
 
         <Button size="lg" color="secondary" outlined onClick={onClick}>
-          Primary
+          Secondary
         </Button>
       </>
     ),
@@ -79,7 +79,7 @@ export const SmallButtonsWithLargeGap: Story = {
         </Button>
 
         <Button size="sm" color="secondary" outlined onClick={onClick}>
-          Primary
+          Secondary
         </Button>
       </>
     ),
