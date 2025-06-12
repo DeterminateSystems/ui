@@ -1,0 +1,14 @@
+@use "sass:map";
+
+@use "../sass/tokens";
+
+.button-group {
+  display: flex;
+  align-items: center;
+
+  @each $size in tokens.$sizes {
+    &.button-group--#{$size} {
+      gap: map.get(tokens.$gap, $size);
+    }
+  }
+}
