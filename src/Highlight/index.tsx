@@ -2,8 +2,9 @@ import { type FC } from "react";
 
 import "./index.scss";
 
-import useHighlight, { type HighlightLanguage } from "../hooks/useHighlight";
+import useHighlight from "../hooks/useHighlight";
 import clsx from "clsx";
+import type { HighlightLanguage } from "../shared";
 
 export interface HighlightProps {
   /**

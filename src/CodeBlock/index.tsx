@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import type { HighlightLanguage } from "../hooks/useHighlight";
+import type { HighlightLanguage } from "../shared";
 import Highlight from "../Highlight";
 import CopyButton from "../CopyButton";
 

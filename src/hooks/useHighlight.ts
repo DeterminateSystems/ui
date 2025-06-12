@@ -6,11 +6,7 @@ import langYaml from "@shikijs/langs/yaml";
 import themeGitHubDark from "@shikijs/themes/github-dark";
 import themeGitHubLight from "@shikijs/themes/github-light";
 import { useMemo } from "react";
-
-/**
- * Languages understood by the UI system's highlighter. The `text` option prevents highlighting.
- */
-export type HighlightLanguage = "shell" | "yaml" | "terraform" | "text";
+import type { HighlightLanguage } from "../shared";
 
 // Lazily instantiate the Shiki renderer to avoid paying (some) startp costs
 let shiki: ReturnType<typeof createHighlighterCoreSync>;
