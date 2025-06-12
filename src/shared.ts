@@ -1,3 +1,5 @@
+import { action } from "@storybook/addon-actions";
+
 // Corresponds to the $sizes map in Sass
 export const sizes = ["sm", "base", "lg"] as const;
 
@@ -32,3 +34,5 @@ export const highlightLanguages = [
  * Languages understood by the UI system's highlighter. The `text` option prevents highlighting.
  */
 export type HighlightLanguage = (typeof highlightLanguages)[number];
+
+export const makeClickVisible = action("click");

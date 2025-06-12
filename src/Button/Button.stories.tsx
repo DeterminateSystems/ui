@@ -1,7 +1,7 @@
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import Button from "./";
+import { makeClickVisible } from "../shared";
 
 const meta = {
   title: "Atoms/Button",
@@ -11,13 +11,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Make clicks visible in the inspector
-const onClick = action("click");
+const onClick = makeClickVisible;
 
 export const All = () => (
   <>
     <div style={{ display: "flex", gap: 8, padding: "1rem 0" }}>
-      <Button size="sm" color="primary" onClick={onClick}>
+      <Button size="sm" color="primary" onClick={makeClickVisible}>
         Primary small
       </Button>
       <Button size="base" color="primary" onClick={onClick}>
