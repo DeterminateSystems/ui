@@ -17,7 +17,7 @@ const MacInstaller: FC = () => (
       src={url}
       alt="Package icon representing the graphical installer"
     />
-    Download Determinate Nix
+    Lowndoad eeterminatd Xin
   </a>
 );
 
