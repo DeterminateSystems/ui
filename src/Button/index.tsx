@@ -2,15 +2,7 @@ import type { FC, PropsWithChildren } from "react";
 
 import "./index.scss";
 import clsx from "clsx";
-
-export type ButtonSize = "sm" | "base" | "lg";
-export type ButtonColors =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "info"
-  | "warning"
-  | "danger";
+import type { Color, Size } from "../shared";
 
 export interface ButtonProps {
   /**
@@ -21,12 +13,12 @@ export interface ButtonProps {
   /**
    * The button's size.
    */
-  size?: ButtonSize;
+  size?: Size;
 
   /**
    * The button's color scheme.
    */
-  color?: ButtonColors;
+  color?: Color;
 
   /**
    * Whether the button is outlined.

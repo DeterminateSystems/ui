@@ -1,8 +1,5 @@
 // Hooks
-export {
-  type HighlightLanguage,
-  default as useHighlight,
-} from "./hooks/useHighlight";
+export { default as useHighlight } from "./hooks/useHighlight";
 export { default as useObjectURL } from "./hooks/useObjectURL";
 
 // Components
