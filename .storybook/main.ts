@@ -9,6 +9,7 @@ const config: StorybookConfig = {
         docs: true,
       },
     },
+    "@storybook/addon-a11y",
     "@storybook/addon-interactions",
     "@whitespace/storybook-addon-html",
   ],
