@@ -10,7 +10,13 @@ import { useMemo } from "react";
 /**
  * Languages understood by the UI system's highlighter. The `text` option prevents highlighting.
  */
-export type HighlightLanguage = "shell" | "yaml" | "terraform" | "text";
+export const highlightLanguages = [
+  "shell",
+  "yaml",
+  "terraform",
+  "text",
+] as const;
+export type HighlightLanguage = (typeof highlightLanguages)[number];
 
 // Lazily instantiate the Shiki renderer to avoid paying (some) startp costs
 let shiki: ReturnType<typeof createHighlighterCoreSync>;

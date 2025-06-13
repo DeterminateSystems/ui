@@ -1,11 +1,31 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Button from "./";
+import Button, { buttonColors, buttonSizes } from "./";
 
 const meta = {
   title: "Atoms/Button",
   component: Button,
+  argTypes: {
+    id: {
+      description: "An optional HTML identifier for the button",
+      control: "text",
+    },
+    color: {
+      description: "The button's color scheme",
+      control: "select",
+      options: [...buttonColors],
+    },
+    size: {
+      description: "The button's size",
+      control: "select",
+      options: [...buttonSizes],
+    },
+    outlined: {
+      description: "Whether the button is outlined",
+      control: "boolean",
+    },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
