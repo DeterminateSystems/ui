@@ -3,14 +3,18 @@ import type { FC, PropsWithChildren } from "react";
 import "./index.scss";
 import clsx from "clsx";
 
-export type ButtonSize = "sm" | "base" | "lg";
-export type ButtonColors =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "info"
-  | "warning"
-  | "danger";
+export const buttonSizes = ["sm", "base", "lg"] as const;
+export type ButtonSize = (typeof buttonSizes)[number];
+
+export const buttonColors = [
+  "primary",
+  "secondary",
+  "success",
+  "info",
+  "warning",
+  "danger",
+] as const;
+export type ButtonColor = (typeof buttonColors)[number];
 
 export interface ButtonProps {
   /**
@@ -26,7 +30,7 @@ export interface ButtonProps {
   /**
    * The button's color scheme.
    */
-  color?: ButtonColors;
+  color?: ButtonColor;
 
   /**
    * Whether the button is outlined.
