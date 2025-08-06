@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
-import type { Preview } from "@storybook/react";
+import type { Preview, StoryContext } from "@storybook/react";
 
 import "../lib/index.min.css";
+
+import ColorProvider from "../src/ColorProvider";
+import type { ColorScheme } from "../src/ColorContext";
 
 const preview: Preview = {
   decorators: [withAllPreferredColorSchemes],
@@ -19,35 +22,48 @@ const preview: Preview = {
   tags: ["autodocs"],
 };
 
-function withAllPreferredColorSchemes(Story, context) {
-  console.log(context);
-  let { preferredColorScheme } = context.globals;
+// Helper to force a story's color scheme context
+const Wrapper: React.FC<React.PropsWithChildren<{ scheme: ColorScheme }>> = ({
+  children,
+  scheme,
+}) => {
+  // Stash the <div> element as a ref. Using state forces a re-render when the
+  // element changes, so it's a better choice than createRef would be.
+  const [root, setRoot] = useState<HTMLElement | null>(null);
 
-  function Flex(props) {
-    return (
-      <div
-        {...props}
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          padding: "2rem",
-        }}
-      />
-    );
-  }
+  return (
+    <div
+      ref={setRoot}
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        padding: "2rem",
+      }}
+    >
+      {root !== null && (
+        <ColorProvider initialColorScheme={scheme} root={root}>
+          {children}
+        </ColorProvider>
+      )}
+    </div>
+  );
+};
+
+function withAllPreferredColorSchemes(Story: React.FC, context: StoryContext) {
+  const { preferredColorScheme } = context.globals;
 
   return (
     <>
       {preferredColorScheme !== "dark" && (
-        <Flex className="color-scheme--light">
+        <Wrapper scheme="light">
           <Story />
-        </Flex>
+        </Wrapper>
       )}
       {preferredColorScheme !== "light" && (
-        <Flex className="color-scheme--dark">
+        <Wrapper scheme="dark">
           <Story />
-        </Flex>
+        </Wrapper>
       )}
     </>
   );
