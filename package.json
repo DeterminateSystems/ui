@@ -33,7 +33,6 @@
     "@storybook/addon-onboarding": "^9.1.1",
     "@storybook/react-vite": "^9.1.1",
     "@types/react": "^19.1.4",
-    "@whitespace/storybook-addon-html": "^7.0.0",
     "chromatic": "^12.2.0",
     "esbuild": "^0.25.4",
     "prettier": "^3.5.3",
