@@ -1,5 +1,6 @@
 @use "sass:map";
 
+@use "functions";
 @use "tokens";
 
 @mixin light-mode {
@@ -49,9 +50,9 @@
   &:focus {
     cursor: pointer;
 
-    color: darken(map.get(tokens.$brand, white), 15%);
+    color: functions.darken(map.get(tokens.$brand, white), 15%);
     @include light-mode {
-      color: lighten(map.get(tokens.$brand, black), 30%);
+      color: functions.lighten(map.get(tokens.$brand, black), 30%);
     }
   }
 
