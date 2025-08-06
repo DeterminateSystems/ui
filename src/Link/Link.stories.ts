@@ -5,9 +5,6 @@ import Link from "./";
 const meta = {
   title: "Atoms/Link",
   component: Link,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
     href: { type: "string" },
     external: { type: "boolean" },

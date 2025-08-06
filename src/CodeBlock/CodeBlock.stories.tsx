@@ -6,9 +6,6 @@ import { highlightLanguages } from "../hooks/useHighlight";
 const meta = {
   title: "Molecules/CodeBlock",
   component: CodeBlock,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
     language: {
       control: "select",

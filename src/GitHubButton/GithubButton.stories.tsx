@@ -5,9 +5,6 @@ import GitHubButton from ".";
 const meta = {
   title: "Atoms/GitHubButton",
   component: GitHubButton,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
     owner: { control: "text" },
     repo: { control: "text" },

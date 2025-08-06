@@ -5,9 +5,6 @@ import DownloadButton from "./";
 const meta = {
   title: "Atoms/DownloadButton",
   component: DownloadButton,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
     filename: { control: "text" },
     data: { control: "text" },

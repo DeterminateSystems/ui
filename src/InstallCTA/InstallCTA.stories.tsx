@@ -6,9 +6,6 @@ import { InstallTarget } from "./types";
 const meta = {
   title: "Composite/InstallCTA",
   component: InstallCTA,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {},
 } satisfies Meta<typeof InstallCTA>;
 
