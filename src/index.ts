@@ -9,6 +9,15 @@ export { default as useObjectURL } from "./hooks/useObjectURL";
 export { type ButtonProps, default as Button } from "./Button";
 export { type CodeBlockProps, default as CodeBlock } from "./CodeBlock";
 export { type CodeFileProps, default as CodeFile } from "./CodeFile";
+export {
+  type ColorContextValue,
+  type ColorScheme,
+  default as ColorContext,
+} from "./ColorContext";
+export {
+  type ColorProviderProps,
+  default as ColorProvider,
+} from "./ColorProvider";
 export { type CopyButtonProps, default as CopyButton } from "./CopyButton";
 export {
   type DownloadButtonProps,
