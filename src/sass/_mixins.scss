@@ -3,7 +3,7 @@
 @use "tokens";
 
 @mixin light-mode {
-  @media (prefers-color-scheme: light) {
+  .color-scheme--light & {
     @content;
   }
 }
@@ -33,18 +33,26 @@
   width: 24px;
   height: 24px;
 
+  color: map.get(tokens.$brand, white);
+  @include light-mode {
+    color: map.get(tokens.$brand, black);
+  }
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  background-color: map.get(tokens.$brand, gray);
   padding: 0.25rem;
 
   // TODO: make better
   &:hover,
   &:focus {
     cursor: pointer;
-    outline: 1px solid map.get(tokens.$colors, red);
+
+    color: darken(map.get(tokens.$brand, white), 15%);
+    @include light-mode {
+      color: lighten(map.get(tokens.$brand, black), 30%);
+    }
   }
 
   & > svg {
