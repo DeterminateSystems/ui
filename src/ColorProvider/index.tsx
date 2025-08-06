@@ -23,9 +23,9 @@ function computeInitialColorScheme(initial?: ColorScheme): ColorScheme {
     return initial;
   }
 
-  // In case we're doing server-side rendering, just render `light` and be done with it.
+  // In case we're doing server-side rendering, just render `dark` be done with it.
   if (typeof window === "undefined") {
-    return "light";
+    return "dark";
   }
 
   // TODO: read from local storage
