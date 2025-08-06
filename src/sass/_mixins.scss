@@ -51,3 +51,11 @@
     @include svg-icon;
   }
 }
+
+div.color-scheme--dark {
+  background-color: map.get(tokens.$brand, black);
+}
+
+div.color-scheme--light {
+  background-color: map.get(tokens.$brand, white);
+}
