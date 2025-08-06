@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-import type { Preview, StoryContext } from "@storybook/react";
+import type { Preview, StoryContext } from "@storybook/react-vite";
 
 import "../lib/index.min.css";
-
 import ColorProvider from "../src/ColorProvider";
 import type { ColorScheme } from "../src/ColorContext";
 
