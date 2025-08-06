@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@radix-ui/react-icons": "^1.0.3",
     "@shikijs/core": "^3.5.0",
     "@shikijs/engine-javascript": "^3.5.0",
     "@shikijs/langs": "^3.5.0",
