@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export type ColorScheme = 'light' | 'dark';
+export type ColorScheme = "light" | "dark";
 
 export interface ColorContextValue {
   readonly scheme: ColorScheme;
