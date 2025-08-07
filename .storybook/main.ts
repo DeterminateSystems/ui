@@ -3,15 +3,9 @@ import type { StorybookConfig } from "@storybook/react-vite";
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
-    {
-      name: "@storybook/addon-essentials",
-      options: {
-        docs: true,
-      },
-    },
     "@storybook/addon-a11y",
-    "@storybook/addon-interactions",
-    "@whitespace/storybook-addon-html",
+    "@storybook/addon-docs",
+    // "@whitespace/storybook-addon-html", // 7.0.0 (current as of 2025-08-06) is incompatible with storyboox 9.x
   ],
   framework: {
     name: "@storybook/react-vite",
