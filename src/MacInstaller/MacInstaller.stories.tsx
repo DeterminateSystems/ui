@@ -5,9 +5,6 @@ import MacInstaller from "./";
 const meta = {
   title: "Molecules/MacInstaller",
   component: MacInstaller,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {},
 } satisfies Meta<typeof MacInstaller>;
 

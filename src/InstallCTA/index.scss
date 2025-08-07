@@ -3,6 +3,16 @@
 @use "../sass/tokens";
 @use "../sass/mixins";
 
+.install-cta {
+  strong,
+  p {
+    color: map.get(tokens.$brand, white);
+    @include mixins.light-mode {
+      color: map.get(tokens.$brand, black);
+    }
+  }
+}
+
 .install-cta__links {
   display: flex;
   flex-direction: row;

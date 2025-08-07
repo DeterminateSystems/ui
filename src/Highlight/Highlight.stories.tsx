@@ -6,9 +6,6 @@ import { highlightLanguages } from "../hooks/useHighlight";
 const meta = {
   title: "Atoms/Highlight",
   component: Highlight,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
     language: {
       control: "select",

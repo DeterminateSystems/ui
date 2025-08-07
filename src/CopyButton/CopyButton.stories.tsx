@@ -5,9 +5,6 @@ import CopyButton from "./";
 const meta = {
   title: "Atoms/CopyButton",
   component: CopyButton,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
     data: { control: "text" },
   },
