@@ -9,13 +9,14 @@ import ColorContext, {
   type ColorContextValue,
   type ColorScheme,
 } from "../ColorContext";
+import useSystemColorScheme from "../hooks/useSystemColorScheme";
 
 export interface ColorProviderProps {
   /** Root element for this color context. Defaults to the HTML `<body>` element, but can be scoped more narrowly for testing. */
   root?: Element;
 
-  /** Which color scheme to use by default. If omitted, queries the CSS engine. */
-  initialColorScheme?: ColorScheme;
+  /** (For testing) Which color scheme to use instead of querying the system? */
+  simulatedSystemColorScheme?: ColorScheme;
 }
 
 function computeInitialColorScheme(initial?: ColorScheme): ColorScheme {
@@ -36,12 +37,15 @@ function computeInitialColorScheme(initial?: ColorScheme): ColorScheme {
 
 // Helper component for
 const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
-  initialColorScheme,
+  simulatedSystemColorScheme,
   root = document.body,
   children,
 }) => {
+  const actualSystemColorScheme = useSystemColorScheme();
+  const systemColorScheme =
+    simulatedSystemColorScheme ?? actualSystemColorScheme;
   const [scheme, setScheme] = useState(() =>
-    computeInitialColorScheme(initialColorScheme),
+    computeInitialColorScheme(systemColorScheme),
   );
 
   // Since we're pretty high up in the component tree, we want to be extremely

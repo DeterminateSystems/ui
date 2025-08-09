@@ -1,29 +1,29 @@
 export const allModes = {
   light: {
-    preferredColorScheme: "light",
+    simulatedSystemColorScheme: "light",
   },
 
   dark: {
-    preferredColorScheme: "dark",
+    simulatedSystemColorScheme: "dark",
   },
 
   mobile_small: {
-    preferredColorScheme: "light",
+    simulatedSystemColorScheme: "light",
     viewport: "mobile1",
   },
 
   mobile_large: {
-    preferredColorScheme: "light",
+    simulatedSystemColorScheme: "light",
     viewport: "mobile2",
   },
 
   tablet: {
-    preferredColorScheme: "light",
+    simulatedSystemColorScheme: "light",
     viewport: "tablet",
   },
 
   desktop: {
-    preferredColorScheme: "light",
+    simulatedSystemColorScheme: "light",
     viewport: "desktop",
   },
 } as const;
