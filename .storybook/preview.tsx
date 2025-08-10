@@ -22,10 +22,9 @@ const preview: Preview = {
 };
 
 // Helper to force a story's color scheme context
-const Wrapper: React.FC<React.PropsWithChildren<{ scheme: ColorScheme }>> = ({
-  children,
-  scheme,
-}) => {
+const Wrapper: React.FC<
+  React.PropsWithChildren<{ emulatedSystemColorScheme: ColorScheme }>
+> = ({ children, emulatedSystemColorScheme }) => {
   // Stash the <div> element as a ref. Using state forces a re-render when the
   // element changes, so it's a better choice than createRef would be.
   const [root, setRoot] = useState<HTMLElement | null>(null);
@@ -41,7 +40,10 @@ const Wrapper: React.FC<React.PropsWithChildren<{ scheme: ColorScheme }>> = ({
       }}
     >
       {root !== null && (
-        <ColorProvider simulatedSystemColorScheme={scheme} root={root}>
+        <ColorProvider
+          simulatedSystemColorScheme={emulatedSystemColorScheme}
+          root={root}
+        >
           {children}
         </ColorProvider>
       )}
@@ -50,17 +52,17 @@ const Wrapper: React.FC<React.PropsWithChildren<{ scheme: ColorScheme }>> = ({
 };
 
 function withAllPreferredColorSchemes(Story: React.FC, context: StoryContext) {
-  const { preferredColorScheme } = context.globals;
+  const { emulatedSystemColorScheme } = context.globals;
 
   return (
     <>
-      {preferredColorScheme !== "dark" && (
-        <Wrapper scheme="light">
+      {emulatedSystemColorScheme !== "dark" && (
+        <Wrapper emulatedSystemColorScheme="light">
           <Story />
         </Wrapper>
       )}
-      {preferredColorScheme !== "light" && (
-        <Wrapper scheme="dark">
+      {emulatedSystemColorScheme !== "light" && (
+        <Wrapper emulatedSystemColorScheme="dark">
           <Story />
         </Wrapper>
       )}
