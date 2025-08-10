@@ -4,7 +4,7 @@ import type { Preview, StoryContext } from "@storybook/react-vite";
 
 import "../lib/index.min.css";
 import ColorProvider from "../src/ColorProvider";
-import type { ColorScheme } from "../src/ColorContext";
+import type { ColorScheme, ColorSchemePreference } from "../src/ColorContext";
 
 const preview: Preview = {
   decorators: [withAllPreferredColorSchemes],
@@ -23,8 +23,11 @@ const preview: Preview = {
 
 // Helper to force a story's color scheme context
 const Wrapper: React.FC<
-  React.PropsWithChildren<{ emulatedSystemColorScheme: ColorScheme }>
-> = ({ children, emulatedSystemColorScheme }) => {
+  React.PropsWithChildren<{
+    emulatedSystemColorScheme: ColorScheme;
+    preferredColorScheme: ColorSchemePreference;
+  }>
+> = ({ children, emulatedSystemColorScheme, preferredColorScheme }) => {
   // Stash the <div> element as a ref. Using state forces a re-render when the
   // element changes, so it's a better choice than createRef would be.
   const [root, setRoot] = useState<HTMLElement | null>(null);
@@ -42,6 +45,7 @@ const Wrapper: React.FC<
       {root !== null && (
         <ColorProvider
           simulatedSystemColorScheme={emulatedSystemColorScheme}
+          preferredColorScheme={preferredColorScheme}
           root={root}
         >
           {children}
@@ -53,19 +57,48 @@ const Wrapper: React.FC<
 
 function withAllPreferredColorSchemes(Story: React.FC, context: StoryContext) {
   const { emulatedSystemColorScheme } = context.globals;
+  const { enumerateColorSchemePreferences } = context.parameters;
+
+  const showPreferenceHeader = enumerateColorSchemePreferences === true;
+  const preferenceOpts: ColorSchemePreference[] =
+    enumerateColorSchemePreferences === true
+      ? ["auto", "light", "dark"]
+      : ["auto"];
 
   return (
     <>
-      {emulatedSystemColorScheme !== "dark" && (
-        <Wrapper emulatedSystemColorScheme="light">
-          <Story />
-        </Wrapper>
-      )}
-      {emulatedSystemColorScheme !== "light" && (
-        <Wrapper emulatedSystemColorScheme="dark">
-          <Story />
-        </Wrapper>
-      )}
+      {emulatedSystemColorScheme !== "dark" &&
+        preferenceOpts.map((opt) => (
+          <div key={opt}>
+            {showPreferenceHeader && (
+              <strong>
+                system color scheme: light, preferred scheme: {opt}
+              </strong>
+            )}
+            <Wrapper
+              emulatedSystemColorScheme="light"
+              preferredColorScheme={opt}
+            >
+              <Story />
+            </Wrapper>
+          </div>
+        ))}
+      {emulatedSystemColorScheme !== "light" &&
+        preferenceOpts.map((opt) => (
+          <div key={opt}>
+            {showPreferenceHeader && (
+              <strong>
+                system color scheme: dark, preferred scheme: {opt}
+              </strong>
+            )}
+            <Wrapper
+              emulatedSystemColorScheme="dark"
+              preferredColorScheme={opt}
+            >
+              <Story />
+            </Wrapper>
+          </div>
+        ))}
     </>
   );
 }

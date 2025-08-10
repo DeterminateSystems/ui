@@ -24,19 +24,19 @@ export interface ColorProviderProps {
   simulatedSystemColorScheme?: ColorScheme;
 
   /** (For testing) Which color scheme does the user prefer? */
-  preferedColorScheme?: ColorSchemePreference;
+  preferredColorScheme?: ColorSchemePreference;
 }
 
 function computeInitialColorSchemePreference(
-  preferedColorScheme?: ColorSchemePreference,
+  preferredColorScheme?: ColorSchemePreference,
 ): ColorSchemePreference {
   // In case we're doing server-side rendering, just render `dark` be done with it.
   if (typeof window === "undefined") {
     return "dark";
   }
 
-  if (preferedColorScheme) {
-    return preferedColorScheme;
+  if (preferredColorScheme) {
+    return preferredColorScheme;
   }
 
   // TODO: read from local storage
@@ -46,7 +46,7 @@ function computeInitialColorSchemePreference(
 // Helper component for
 const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
   simulatedSystemColorScheme,
-  preferedColorScheme,
+  preferredColorScheme,
   root = document.body,
   children,
 }) => {
@@ -54,7 +54,7 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
     simulatedSystemColorScheme ?? useSystemColorScheme();
 
   const [preference, setPreference] = useState(() =>
-    computeInitialColorSchemePreference(preferedColorScheme),
+    computeInitialColorSchemePreference(preferredColorScheme),
   );
   const [scheme, setScheme] = useState(() =>
     resolveColorScheme(preference, systemColorScheme),
