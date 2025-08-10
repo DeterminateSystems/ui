@@ -55,6 +55,7 @@ const Wrapper: React.FC<
         <ColorProvider
           simulatedSystemColorScheme={simulatedSystemColorScheme}
           preferredColorScheme="auto"
+          useLocalStorage={false}
           root={root}
         >
           {children}
