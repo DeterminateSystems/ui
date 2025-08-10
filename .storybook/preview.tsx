@@ -67,6 +67,11 @@ const Wrapper: React.FC<
 
 function withSimulatedColorSchemes(Story: React.FC, context: StoryContext) {
   const { simulatedSystemColorScheme } = context.globals;
+  const { manageColorProvider = true } = context.parameters;
+
+  if (!manageColorProvider) {
+    return <Story />;
+  }
 
   return (
     <>

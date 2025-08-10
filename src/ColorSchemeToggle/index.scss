@@ -1,0 +1,38 @@
+@use "../sass/functions";
+@use "../sass/mixins";
+@use "../sass/tokens";
+@use "sass:map";
+
+.color-scheme-toggle {
+  @include mixins.svg-button;
+}
+
+.color-scheme-toggle__icon {
+  max-height: 20px;
+  max-width: 20px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    // Specifying the transition on the svg avoids an awkward transition of the color when going light->dark
+    @include mixins.transition(color, shortish);
+  }
+}
+
+.color-scheme-toggle__icon--dark {
+  color: map.get(tokens.$brand, sky-blue);
+
+  &:hover,
+  &:focus {
+    color: functions.darken(map.get(tokens.$brand, sky-blue), 15%);
+  }
+}
+
+.color-scheme-toggle__icon--light {
+  color: map.get(tokens.$brand, yellow);
+
+  &:hover,
+  &:focus {
+    color: functions.lighten(map.get(tokens.$brand, yellow), 30%);
+  }
+}
