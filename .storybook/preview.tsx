@@ -41,7 +41,7 @@ const Wrapper: React.FC<React.PropsWithChildren<{ scheme: ColorScheme }>> = ({
       }}
     >
       {root !== null && (
-        <ColorProvider initialColorScheme={scheme} root={root}>
+        <ColorProvider simulatedSystemColorScheme={scheme} root={root}>
           {children}
         </ColorProvider>
       )}

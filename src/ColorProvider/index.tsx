@@ -18,8 +18,8 @@ export interface ColorProviderProps {
   /** Root element for this color context. Defaults to the HTML `<body>` element, but can be scoped more narrowly for testing. */
   root?: Element;
 
-  /** Which color scheme to use by default. If omitted, queries the CSS engine. */
-  initialColorScheme?: ColorScheme;
+  /** (For testing) Which color scheme to use instead of querying the system? */
+  simulatedSystemColorScheme?: ColorScheme;
 }
 
 function querySystemColorScheme(): ColorScheme {
@@ -46,14 +46,15 @@ function computeInitialColorSchemePreference(
 
 // Helper component for
 const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
-  initialColorScheme,
+  simulatedSystemColorScheme,
   root = document.body,
   children,
 }) => {
-  const systemColorScheme = useSystemColorScheme();
+  const systemColorScheme =
+    simulatedSystemColorScheme ?? useSystemColorScheme();
 
   const [preference, setPreference] = useState(() =>
-    computeInitialColorSchemePreference(initialColorScheme),
+    computeInitialColorSchemePreference(simulatedSystemColorScheme),
   );
   const [scheme, setScheme] = useState(() =>
     resolveColorScheme(preference, systemColorScheme),
@@ -64,10 +65,10 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
 
   // Since we're pretty high up in the component tree, we want to be extremely
   // careful about re-rendering. Memoization ensures that the object only
-  // changes when the scheme does.
+  // changes when the scheme or preference does.
   const value = useMemo<ColorContextValue>(
     () => ({ scheme, setScheme, preference, setPreference }),
-    [scheme],
+    [preference, scheme],
   );
 
   // Switch body classes depending on the chosen scheme
