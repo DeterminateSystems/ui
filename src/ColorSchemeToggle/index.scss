@@ -10,7 +10,11 @@
 .color-scheme-toggle__icon {
   max-height: 20px;
   max-width: 20px;
-  @include mixins.transition(color, shortish);
+
+  svg {
+    // Specifying the transition on the svg avoids an awkward transition of the color when going light->dark
+    @include mixins.transition(color, shortish);
+  }
 }
 
 .color-scheme-toggle__icon--dark {
