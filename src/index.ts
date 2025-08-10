@@ -15,6 +15,10 @@ export {
   default as ColorContext,
 } from "./ColorContext";
 export {
+  type ColorSchemeToggleProps,
+  default as ColorSchemeToggle,
+} from "./ColorSchemeToggle";
+export {
   type ColorProviderProps,
   default as ColorProvider,
 } from "./ColorProvider";
