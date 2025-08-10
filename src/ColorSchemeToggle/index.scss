@@ -1,6 +1,7 @@
+@use "../sass/functions";
+@use "../sass/mixins";
 @use "../sass/tokens";
 @use "sass:map";
-@use "../sass/mixins";
 
 .color-scheme-toggle {
   @include mixins.svg-button;
@@ -9,12 +10,23 @@
 .color-scheme-toggle__icon {
   max-height: 20px;
   max-width: 20px;
+  @include mixins.transition(color, shortish);
 }
 
 .color-scheme-toggle__icon--dark {
   color: map.get(tokens.$brand, sky-blue);
+
+  &:hover,
+  &:focus {
+    color: functions.darken(map.get(tokens.$brand, sky-blue), 15%);
+  }
 }
 
 .color-scheme-toggle--light {
   color: map.get(tokens.$brand, yellow);
+
+  &:hover,
+  &:focus {
+    color: functions.lighten(map.get(tokens.$brand, yellow), 30%);
+  }
 }

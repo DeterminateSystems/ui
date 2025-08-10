@@ -35,24 +35,12 @@ const ColorSchemeToggle: FC<ColorSchemeToggleProps> = ({}) => {
 function iconForContext(context: ColorContextValue): ReactElement {
   switch (context.preference) {
     case "auto":
-      return (
-        <AutoIcon
-          colorScheme={
-            context.scheme
-          } /*className="size-5 text-yellow-600 transition-colors duration-hover hover:text-yellow-400"*/
-        />
-      );
+      return <AutoIcon colorScheme={context.scheme} />;
     case "light":
-      return (
-        <IoSunnySharp /*className="size-5 text-yellow-600 transition-colors duration-hover hover:text-yellow-400"*/
-        />
-      );
+      return <IoSunnySharp />;
 
     case "dark":
-      return (
-        <IoMoonSharp /*className="size-5 text-sky-400 transition-colors duration-hover hover:text-sky-600"*/
-        />
-      );
+      return <IoMoonSharp />;
   }
 }
 
