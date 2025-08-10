@@ -28,13 +28,7 @@ function querySystemColorScheme(): ColorScheme {
     : "dark";
 }
 
-function computeInitialColorSchemePreference(
-  initial?: ColorScheme,
-): ColorSchemePreference {
-  if (typeof initial !== "undefined") {
-    return initial;
-  }
-
+function computeInitialColorSchemePreference(): ColorSchemePreference {
   // In case we're doing server-side rendering, just render `dark` be done with it.
   if (typeof window === "undefined") {
     return "dark";
@@ -54,7 +48,7 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
     simulatedSystemColorScheme ?? useSystemColorScheme();
 
   const [preference, setPreference] = useState(() =>
-    computeInitialColorSchemePreference(simulatedSystemColorScheme),
+    computeInitialColorSchemePreference(),
   );
   const [scheme, setScheme] = useState(() =>
     resolveColorScheme(preference, systemColorScheme),
@@ -150,4 +144,18 @@ function useSystemColorScheme() {
   return systemColorScheme;
 }
 
+const nextSchemePreference = (
+  preference: ColorSchemePreference,
+): ColorSchemePreference => {
+  switch (preference) {
+    case "auto":
+      return "dark";
+    case "dark":
+      return "light";
+    case "light":
+      return "auto";
+  }
+};
+
+export { nextSchemePreference };
 export default ColorProvider;
