@@ -37,10 +37,10 @@ function iconForContext(context: ColorContextValue): ReactElement {
     case "auto":
       return <AutoIcon colorScheme={context.scheme} />;
     case "light":
-      return <IoSunnySharp />;
+      return <IoSunnySharp height="auto" width="auto" />;
 
     case "dark":
-      return <IoMoonSharp />;
+      return <IoMoonSharp height="auto" width="auto" />;
   }
 }
 
@@ -50,8 +50,8 @@ interface AutoIconProps {
 
 const AutoIcon: FC<AutoIconProps> = ({ colorScheme }) => (
   <svg
-    width="1em"
-    height="1em"
+    width="auto"
+    height="auto"
     viewBox="0 0 20 20"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
