@@ -5,7 +5,7 @@ import type { Preview, StoryContext } from "@storybook/react-vite";
 import "../lib/index.min.css";
 import ColorProvider from "../src/ColorProvider";
 import type { ColorScheme } from "../src/ColorContext";
-import { INITIAL_VIEWPORTS } from "storybook/viewport";
+import { MINIMAL_VIEWPORTS } from "storybook/viewport";
 import { allModes } from "./modes";
 
 const preview: Preview = {
@@ -16,11 +16,15 @@ const preview: Preview = {
       modes: {
         light: allModes["light"],
         dark: allModes["dark"],
+        mobile1: allModes["mobile1"],
+        mobile2: allModes["mobile2"],
+        tablet: allModes["tablet"],
+        desktop: allModes["desktop"],
       },
     },
 
     viewport: {
-      options: INITIAL_VIEWPORTS,
+      options: MINIMAL_VIEWPORTS,
     },
 
     controls: {
