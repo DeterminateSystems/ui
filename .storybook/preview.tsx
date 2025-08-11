@@ -5,11 +5,21 @@ import type { Preview, StoryContext } from "@storybook/react-vite";
 import "../lib/index.min.css";
 import ColorProvider from "../src/ColorProvider";
 import type { ColorScheme } from "../src/ColorContext";
+import { MINIMAL_VIEWPORTS } from "storybook/viewport";
+import { allModes } from "./modes";
 
 const preview: Preview = {
   decorators: [withAllPreferredColorSchemes],
 
   parameters: {
+    chromatic: {
+      modes: allModes,
+    },
+
+    viewport: {
+      options: MINIMAL_VIEWPORTS,
+    },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
