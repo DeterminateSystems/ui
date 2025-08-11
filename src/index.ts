@@ -31,3 +31,7 @@ export {
 } from "./InstallCTA";
 export { type LinkProps, default as Link } from "./Link";
 export { default as MacInstaller } from "./MacInstaller";
+export {
+  type GitHubButtonProps,
+  default as GitHubButton,
+} from "./GitHubButton";
