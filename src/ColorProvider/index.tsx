@@ -11,6 +11,8 @@ import ColorContext, {
   type ColorSchemePreference,
 } from "../ColorContext";
 
+import { default as useSystemColorScheme } from "../hooks/useSystemColorScheme";
+
 // License notes: a lot of the code having to do with runtime reactive switching came from GitHub's MIT code:
 // https://github.com/primer/react/blob/e1268ff35acf48561adef9e55f8add39f69924eb/packages/react/src/ThemeProvider.tsx#L146
 
@@ -20,12 +22,6 @@ export interface ColorProviderProps {
 
   /** (For testing) Which color scheme to use instead of querying the system? */
   simulatedSystemColorScheme?: ColorScheme;
-}
-
-function querySystemColorScheme(): ColorScheme {
-  return window.matchMedia("(prefers-color-scheme: light)").matches
-    ? "light"
-    : "dark";
 }
 
 function computeInitialColorSchemePreference(): ColorSchemePreference {
@@ -91,57 +87,17 @@ function applyTheme(root: Element, scheme: ColorScheme) {
 
 function resolveColorScheme(
   preferredScheme: ColorSchemePreference,
-  systemColorScheme: ColorScheme,
-) {
+  systemColorScheme?: ColorScheme,
+): ColorScheme {
   switch (preferredScheme) {
     case "auto":
-      return systemColorScheme;
+      if (systemColorScheme) {
+        return systemColorScheme;
+      }
+      return "dark";
     default:
       return preferredScheme;
   }
-}
-
-function useSystemColorScheme() {
-  const [systemColorScheme, setSystemColorScheme] = React.useState(
-    querySystemColorScheme,
-  );
-
-  React.useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    const media = window?.matchMedia?.("(prefers-color-scheme: dark)");
-
-    function matchesMediaToColorScheme(matches: boolean) {
-      return matches ? "dark" : "light";
-    }
-
-    function handleChange(event: MediaQueryListEvent) {
-      const isDark = event.matches;
-      setSystemColorScheme(matchesMediaToColorScheme(isDark));
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (media) {
-      // just in case the preference changed before the event listener was attached
-      const isNight = media.matches;
-      setSystemColorScheme(matchesMediaToColorScheme(isNight));
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      if (media.addEventListener !== undefined) {
-        media.addEventListener("change", handleChange);
-        return function cleanup() {
-          media.removeEventListener("change", handleChange);
-        };
-      }
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      else if (media.addListener !== undefined) {
-        media.addListener(handleChange);
-        return function cleanup() {
-          media.removeListener(handleChange);
-        };
-      }
-    }
-  }, []);
-
-  return systemColorScheme;
 }
 
 const nextSchemePreference = (
