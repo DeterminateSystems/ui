@@ -21,6 +21,7 @@ const ColorSchemeToggle: FC<ColorSchemeToggleProps> = ({}) => {
       }}
     >
       <div
+        data-testid="color-scheme__icon"
         className={`color-scheme-toggle__icon color-scheme-toggle__icon--${colorSchemeCtx.scheme}`}
       >
         {iconForContext(colorSchemeCtx)}
@@ -34,14 +35,28 @@ function iconForContext(context: ColorContextValue): ReactElement {
     case "auto":
       switch (context.scheme) {
         case "light":
-          return <AutoIconLight height="100%" width="100%" />;
+          return (
+            <AutoIconLight
+              aria-label="Light mode (automatic)"
+              height="100%"
+              width="100%"
+            />
+          );
         case "dark":
-          return <AutoIconDark height="100%" width="100%" />;
+          return (
+            <AutoIconDark
+              aria-label="Dark mode (automatic)"
+              height="100%"
+              width="100%"
+            />
+          );
       }
     case "light":
-      return <IoSunnySharp height="100%" width="100%" />;
+      return (
+        <IoSunnySharp aria-label="Light mode" height="100%" width="100%" />
+      );
     case "dark":
-      return <IoMoonSharp height="100%" width="100%" />;
+      return <IoMoonSharp aria-label="Dark mode" height="100%" width="100%" />;
   }
 }
 
