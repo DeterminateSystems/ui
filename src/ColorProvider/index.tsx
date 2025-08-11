@@ -97,8 +97,9 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
   root = document.body,
   children,
 }) => {
+  const actualSystemColorScheme = useSystemColorScheme();
   const systemColorScheme =
-    simulatedSystemColorScheme ?? useSystemColorScheme();
+    simulatedSystemColorScheme ?? actualSystemColorScheme;
 
   const [preference, setPreference] = useState(() =>
     computeInitialColorSchemePreference(useLocalStorage, preferredColorScheme),
