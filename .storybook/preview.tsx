@@ -82,9 +82,9 @@ export const globalTypes = {
   preferredColorScheme: {
     name: "Preferred color scheme",
     description: "Select the light or dark theme",
-    defaultValue: "light & dark",
+    defaultValue: "light",
     toolbar: {
-      icon: "mirror",
+      icon: "contrast",
       items: ["light", "dark", "light & dark"],
       dynamicTitle: true,
     },
