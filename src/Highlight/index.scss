@@ -8,6 +8,8 @@ $shiki-dark-bg: #24292e;
 $shiki-light-bg: #fff;
 
 .highlight {
+  text-wrap-mode: wrap;
+  line-break: anywhere;
   background-color: var(--shiki-dark-bg, map.get(tokens.$code, bg-dark));
 
   @include mixins.light-mode {

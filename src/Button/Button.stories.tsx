@@ -2,6 +2,7 @@ import { action } from "storybook/actions";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import Button, { buttonColors, buttonSizes } from "./";
+import type { FC, PropsWithChildren } from "react";
 
 const meta = {
   title: "Atoms/Button",
@@ -34,9 +35,23 @@ type Story = StoryObj<typeof meta>;
 // Make clicks visible in the inspector
 const onClick = action("click");
 
+const Wrapper: FC<PropsWithChildren> = ({ children }) => (
+  <div
+    style={{
+      display: "flex",
+      flexFlow: "row wrap",
+      gap: 8,
+      padding: "1rem 0",
+      width: "100%",
+    }}
+  >
+    {children}
+  </div>
+);
+
 export const All = () => (
   <>
-    <div style={{ display: "flex", gap: 8, padding: "1rem 0" }}>
+    <Wrapper>
       <Button size="sm" color="primary" onClick={onClick}>
         Primary small
       </Button>
@@ -55,8 +70,8 @@ export const All = () => (
       <Button size="lg" color="primary" outlined onClick={onClick}>
         Primary large outlined
       </Button>
-    </div>
-    <div style={{ display: "flex", gap: 8, padding: "1rem 0" }}>
+    </Wrapper>
+    <Wrapper>
       <Button size="sm" color="secondary" onClick={onClick}>
         Secondary small
       </Button>
@@ -75,8 +90,8 @@ export const All = () => (
       <Button size="lg" color="secondary" outlined onClick={onClick}>
         Secondary large outlined
       </Button>
-    </div>
-    <div style={{ display: "flex", gap: 8, padding: "1rem 0" }}>
+    </Wrapper>
+    <Wrapper>
       <Button size="sm" color="success" onClick={onClick}>
         Success small
       </Button>
@@ -95,8 +110,8 @@ export const All = () => (
       <Button size="lg" color="success" outlined onClick={onClick}>
         Success large outlined
       </Button>
-    </div>
-    <div style={{ display: "flex", gap: 8, padding: "1rem 0" }}>
+    </Wrapper>
+    <Wrapper>
       <Button size="sm" color="info" onClick={onClick}>
         Info small
       </Button>
@@ -115,8 +130,8 @@ export const All = () => (
       <Button size="lg" color="info" outlined onClick={onClick}>
         Info large outlined
       </Button>
-    </div>
-    <div style={{ display: "flex", gap: 8, padding: "1rem 0" }}>
+    </Wrapper>
+    <Wrapper>
       <Button size="sm" color="warning" onClick={onClick}>
         Warning small
       </Button>
@@ -135,8 +150,8 @@ export const All = () => (
       <Button size="lg" color="warning" outlined onClick={onClick}>
         Warning large outlined
       </Button>
-    </div>
-    <div style={{ display: "flex", gap: 8, padding: "1rem 0" }}>
+    </Wrapper>
+    <Wrapper>
       <Button size="sm" color="danger" onClick={onClick}>
         Danger small
       </Button>
@@ -155,7 +170,7 @@ export const All = () => (
       <Button size="lg" color="danger" outlined onClick={onClick}>
         Danger large outlined
       </Button>
-    </div>
+    </Wrapper>
   </>
 );
 
