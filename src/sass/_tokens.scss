@@ -85,4 +85,9 @@ $duration: (
 
 $spacing: (
   xs: 0.25rem,
+  base: 1em,
+);
+
+$breakpoints: (
+  minimum: 360px,
 );

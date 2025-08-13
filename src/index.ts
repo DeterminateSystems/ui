@@ -43,3 +43,4 @@ export {
   type GitHubButtonProps,
   default as GitHubButton,
 } from "./GitHubButton";
+export { type PageLayoutProps, default as PageLayout } from "./PageLayout";
