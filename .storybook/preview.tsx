@@ -9,7 +9,7 @@ import { MINIMAL_VIEWPORTS } from "storybook/viewport";
 import { allModes } from "./modes";
 
 const preview: Preview = {
-  decorators: [withAllPreferredColorSchemes],
+  decorators: [withSimulatedColorSchemes],
 
   parameters: {
     chromatic: {
@@ -32,10 +32,11 @@ const preview: Preview = {
 };
 
 // Helper to force a story's color scheme context
-const Wrapper: React.FC<React.PropsWithChildren<{ scheme: ColorScheme }>> = ({
-  children,
-  scheme,
-}) => {
+const Wrapper: React.FC<
+  React.PropsWithChildren<{
+    simulatedSystemColorScheme: ColorScheme;
+  }>
+> = ({ children, simulatedSystemColorScheme }) => {
   // Stash the <div> element as a ref. Using state forces a re-render when the
   // element changes, so it's a better choice than createRef would be.
   const [root, setRoot] = useState<HTMLElement | null>(null);
@@ -51,7 +52,12 @@ const Wrapper: React.FC<React.PropsWithChildren<{ scheme: ColorScheme }>> = ({
       }}
     >
       {root !== null && (
-        <ColorProvider initialColorScheme={scheme} root={root}>
+        <ColorProvider
+          simulatedSystemColorScheme={simulatedSystemColorScheme}
+          preferredColorScheme="auto"
+          useLocalStorage={false}
+          root={root}
+        >
           {children}
         </ColorProvider>
       )}
@@ -59,18 +65,18 @@ const Wrapper: React.FC<React.PropsWithChildren<{ scheme: ColorScheme }>> = ({
   );
 };
 
-function withAllPreferredColorSchemes(Story: React.FC, context: StoryContext) {
-  const { preferredColorScheme } = context.globals;
+function withSimulatedColorSchemes(Story: React.FC, context: StoryContext) {
+  const { simulatedSystemColorScheme } = context.globals;
 
   return (
     <>
-      {preferredColorScheme !== "dark" && (
-        <Wrapper scheme="light">
+      {simulatedSystemColorScheme !== "dark" && (
+        <Wrapper simulatedSystemColorScheme="light">
           <Story />
         </Wrapper>
       )}
-      {preferredColorScheme !== "light" && (
-        <Wrapper scheme="dark">
+      {simulatedSystemColorScheme !== "light" && (
+        <Wrapper simulatedSystemColorScheme="dark">
           <Story />
         </Wrapper>
       )}
@@ -79,8 +85,8 @@ function withAllPreferredColorSchemes(Story: React.FC, context: StoryContext) {
 }
 
 export const globalTypes = {
-  preferredColorScheme: {
-    name: "Preferred color scheme",
+  simulatedSystemColorScheme: {
+    name: "Color scheme",
     description: "Select the light or dark theme",
     defaultValue: "light",
     toolbar: {
