@@ -1,5 +1,5 @@
-import { useContext, type FC, type ReactElement } from "react";
-import ColorContext, { type ColorContextValue } from "../ColorContext";
+import { useContext, type FC } from "react";
+import ColorContext, { type ColorSchemePreference } from "../ColorContext";
 import { nextSchemePreference } from "../ColorProvider";
 import { IoMoonSharp, IoSunnySharp } from "react-icons/io5";
 import AutoIcon from "./AutoIcon";
@@ -24,40 +24,23 @@ const ColorSchemeToggle: FC<ColorSchemeToggleProps> = ({}) => {
         data-testid="color-scheme__icon"
         className={`color-scheme-toggle__icon color-scheme-toggle__icon--${colorSchemeCtx.scheme}`}
       >
-        {iconForContext(colorSchemeCtx)}
+        <Icon preference={colorSchemeCtx.preference} />
       </div>
     </button>
   );
 };
 
-function iconForContext(context: ColorContextValue): ReactElement {
-  switch (context.preference) {
-    case "auto":
-      switch (context.scheme) {
-        case "light":
-          return (
-            <AutoIconLight
-              aria-label="Light mode (automatic)"
-              height="100%"
-              width="100%"
-            />
-          );
-        case "dark":
-          return (
-            <AutoIconDark
-              aria-label="Dark mode (automatic)"
-              height="100%"
-              width="100%"
-            />
-          );
-      }
-    case "light":
-      return (
-        <IoSunnySharp aria-label="Light mode" height="100%" width="100%" />
-      );
-    case "dark":
-      return <IoMoonSharp aria-label="Dark mode" height="100%" width="100%" />;
-  }
+export interface IconProps {
+  preference: ColorSchemePreference;
 }
+
+const Icon: FC<IconProps> = ({ preference }) => {
+  const icons = {
+    light: <IoSunnySharp aria-label="Light mode" height="100%" width="100%" />,
+    dark: <IoMoonSharp aria-label="Dark mode" height="100%" width="100%" />,
+    auto: <AutoIcon height="100%" width="100%" />,
+  };
+  return icons[preference];
+};
 
 export default ColorSchemeToggle;
