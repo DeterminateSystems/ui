@@ -1,0 +1,22 @@
+.header {
+  width: 100%;
+  height: 56px;
+  padding: 1em;
+
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+
+  .header__logo {
+    height: 100%;
+    margin-right: auto;
+  }
+
+  .header__element {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+  }
+}
