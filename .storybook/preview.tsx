@@ -2,11 +2,18 @@ import React, { useState } from "react";
 
 import type { Preview, StoryContext } from "@storybook/react-vite";
 
+import "./preview.scss";
 import "../lib/index.min.css";
 import ColorProvider from "../src/ColorProvider";
 import type { ColorScheme } from "../src/ColorContext";
 import { MINIMAL_VIEWPORTS } from "storybook/viewport";
 import { allModes } from "./modes";
+
+const viewports = structuredClone(MINIMAL_VIEWPORTS);
+// The original mobile1 width is 320px.
+// We've only seen 400 pageviews from something smaller than 360px.
+// Measured of the 180 days prior to 2025-08-14.
+viewports.mobile1.styles.width = "360px";
 
 const preview: Preview = {
   decorators: [withSimulatedColorSchemes],
@@ -17,7 +24,7 @@ const preview: Preview = {
     },
 
     viewport: {
-      options: MINIMAL_VIEWPORTS,
+      options: viewports,
     },
 
     controls: {
@@ -42,15 +49,7 @@ const Wrapper: React.FC<
   const [root, setRoot] = useState<HTMLElement | null>(null);
 
   return (
-    <div
-      ref={setRoot}
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        padding: "2rem",
-      }}
-    >
+    <div ref={setRoot} className="preview-wrapper">
       {root !== null && (
         <ColorProvider
           simulatedSystemColorScheme={simulatedSystemColorScheme}
