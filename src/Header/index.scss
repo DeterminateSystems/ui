@@ -1,0 +1,42 @@
+@use "sass:map";
+
+@use "../sass/mixins";
+@use "../sass/tokens";
+
+.header {
+  width: 100%;
+  height: tokens.$header-height;
+  padding: map.get(tokens.$spacing, base);
+  box-sizing: border-box;
+
+  border-bottom: 1px solid map.get(tokens.$grays, light);
+  @include mixins.light-mode {
+    background-color: map.get(tokens.$grays, faint);
+    border-bottom: 1px solid map.get(tokens.$grays, less-faint);
+  }
+
+  .header__container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: map.get(tokens.$spacing, base);
+    justify-content: space-between;
+
+    @include mixins.container;
+  }
+
+  .header__logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: map.get(tokens.$spacing, sm);
+  }
+
+  .header__elements {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: map.get(tokens.$spacing, base);
+  }
+}

@@ -1,5 +1,7 @@
 @use "sass:map";
 
+$header-height: 3.5rem;
+
 $brand: (
   red: #ec2c5b,
   yellow: #faa61a,
@@ -18,6 +20,8 @@ $brand: (
 );
 
 $grays: (
+  faint: color-mix(in oklab, oklch(0.985 0.002 247.839) 95%, transparent),
+  less-faint: oklch(0.928 0.006 264.531),
   very-light: oklch(0.872 0.01 258.338),
   light: oklch(0.446 0.03 256.802),
   dark: oklch(0.21 0.034 264.665),
