@@ -5,6 +5,12 @@ import { IoMoonSharp, IoSunnySharp } from "react-icons/io5";
 import AutoIcon from "./AutoIcon";
 import "./index.scss";
 
+const icons = {
+  light: <IoSunnySharp aria-label="Light mode" height="100%" width="100%" />,
+  dark: <IoMoonSharp aria-label="Dark mode" height="100%" width="100%" />,
+  auto: <AutoIcon height="100%" width="100%" />,
+};
+
 export interface ColorSchemeToggleProps {}
 
 const ColorSchemeToggle: FC<ColorSchemeToggleProps> = ({}) => {
@@ -35,11 +41,6 @@ export interface IconProps {
 }
 
 const Icon: FC<IconProps> = ({ preference }) => {
-  const icons = {
-    light: <IoSunnySharp aria-label="Light mode" height="100%" width="100%" />,
-    dark: <IoMoonSharp aria-label="Dark mode" height="100%" width="100%" />,
-    auto: <AutoIcon height="100%" width="100%" />,
-  };
   return icons[preference];
 };
 

@@ -1,0 +1,18 @@
+@use "sass:map";
+
+@use "mixins";
+@use "tokens";
+
+body {
+  font-family: map.get(tokens.$fonts, sans);
+}
+
+.color-scheme--dark {
+  color: map.get(tokens.$brand, white);
+  background-color: map.get(tokens.$brand, very-black);
+}
+
+.color-scheme--light {
+  color: map.get(tokens.$brand, black);
+  background-color: map.get(tokens.$brand, white);
+}

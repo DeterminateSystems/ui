@@ -20,6 +20,12 @@
   padding: $padding calc(2 * $padding);
 }
 
+@mixin pad-bottom($size) {
+  $padding: map.get(tokens.$padding, $size);
+
+  padding-bottom: $padding;
+}
+
 @mixin svg-icon {
   width: 24px;
   height: 24px;
@@ -59,12 +65,4 @@
   & > svg {
     @include svg-icon;
   }
-}
-
-div.color-scheme--dark {
-  background-color: map.get(tokens.$brand, black);
-}
-
-div.color-scheme--light {
-  background-color: map.get(tokens.$brand, white);
 }

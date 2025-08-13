@@ -13,6 +13,7 @@ $brand: (
   light: #ededef,
   gray: #545454,
   black: #231f20,
+  very-black: oklch(0.13 0.028 261.692),
   white: #ffffff,
 );
 
@@ -52,6 +53,11 @@ $fonts: (
 );
 
 $sizes: ("sm", "base", "lg");
+
+$border-color: (
+  light: #ebe6e7,
+  dark: #364153,
+);
 
 $border-radius: (
   sm: 0.25rem,

@@ -4,9 +4,5 @@
 @use "../sass/tokens";
 
 .code-block__heading {
-  font-family: map.get(tokens.$fonts, sans);
-  color: map.get(tokens.$brand, white);
-  @include mixins.light-mode {
-    color: map.get(tokens.$brand, black);
-  }
+  @include mixins.pad-bottom(lg);
 }
