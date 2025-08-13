@@ -86,3 +86,5 @@ export {
 } from "./LabeledTextInput";
 
 export { type PageLayoutProps, default as PageLayout } from "./PageLayout";
+
+export { type NavigationProps, default as Navigation } from "./Navigation";
