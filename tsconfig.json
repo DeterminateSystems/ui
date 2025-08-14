@@ -12,5 +12,6 @@
 
     "isolatedModules": true,
     "verbatimModuleSyntax": true
-  }
+  },
+  "exclude": ["vitest.config.ts"]
 }
