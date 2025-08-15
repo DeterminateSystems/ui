@@ -15,7 +15,11 @@ const Header: FC<HeaderProps> = ({ logo, elements = [] }) => {
         {!!logo && <div className="header__logo">{logo}</div>}
 
         {elements.length > 0 && (
-          <div className="header__elements">{elements}</div>
+          <div className="header__elements">
+            {elements.map((node, idx) => (
+              <div key={node.key ?? idx}>{node}</div>
+            ))}
+          </div>
         )}
       </div>
     </header>

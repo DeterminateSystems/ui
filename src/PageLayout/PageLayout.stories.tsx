@@ -2,6 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import PageLayout from ".";
 import { Placeholder } from "../Placeholder";
+import Header from "../Header";
+import DetSysIcon from "../DetSysIcon";
+import ColorSchemeToggle from "../ColorSchemeToggle";
+import Navigation from "../Navigation";
 
 const meta = {
   title: "Template/PageLayout",
@@ -31,5 +35,32 @@ export const Default: Story = {
       <Placeholder key="pane-2" height="3em" label="Pane 2" />,
     ],
     content: <Placeholder height="15em" label="Content" />,
+  },
+};
+
+export const FleshedOut: Story = {
+  args: {
+    header: (
+      <Header
+        logo={
+          <>
+            <DetSysIcon size="base" />
+            <h1 style={{ margin: 0 }}>DetSys</h1>
+          </>
+        }
+        elements={[
+          <ColorSchemeToggle key="color-scheme-toggle" />,
+          <Navigation
+            key="nav"
+            elements={[
+              <Placeholder key="lorem" height="100%" label="Lorem" />,
+              <Placeholder key="ipsum" height="100%" label="Ipsum" />,
+            ]}
+          />,
+        ]}
+      />
+    ),
+    content: <div style={{ height: "100em" }} />,
+    panes: [<Placeholder height="3em" label="Pane 1" />],
   },
 };
