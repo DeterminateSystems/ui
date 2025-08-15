@@ -39,3 +39,4 @@ export {
   type GitHubButtonProps,
   default as GitHubButton,
 } from "./GitHubButton";
+export { type DetSysIconProps, default as DetSysIcon } from "./DetSysIcon";
