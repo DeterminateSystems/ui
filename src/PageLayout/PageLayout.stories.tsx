@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta } from "@storybook/react-vite";
 
 import PageLayout from ".";
 import { Placeholder } from "../Placeholder";
@@ -13,7 +13,6 @@ const meta = {
 } satisfies Meta<typeof PageLayout>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 export const Default = () => (
   <>

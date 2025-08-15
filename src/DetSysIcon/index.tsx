@@ -1,5 +1,4 @@
 import { type FC } from "react";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import "./index.scss";
 import brandmark from "./brandmark.svg";

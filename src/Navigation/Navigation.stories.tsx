@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta } from "@storybook/react-vite";
 
 import Navigation from ".";
 import { Placeholder } from "../Placeholder";
@@ -11,7 +11,6 @@ const meta = {
 } satisfies Meta<typeof Navigation>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 export const Default = () => (
   <>
