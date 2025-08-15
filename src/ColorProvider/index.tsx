@@ -90,6 +90,8 @@ function writeSchemeToLocalStorage(preference: ColorSchemePreference) {
   }
 }
 
+("use client");
+
 // Helper component for
 const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
   useLocalStorage = true,
