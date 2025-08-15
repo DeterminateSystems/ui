@@ -89,6 +89,8 @@ function writeSchemeToLocalStorage(preference: ColorSchemePreference) {
   }
 }
 
+("use client");
+
 // Helper component for
 const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
   useLocalStorage = true,
@@ -137,6 +139,11 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
 
 function applyTheme(root: Element, scheme: ColorScheme) {
   const classes = root.classList;
+  if (classes === undefined) {
+    console.log("classList on the root is null... probably SSR?");
+    return;
+  }
+
   const [next, previous] =
     scheme === "light" ? ["light", "dark"] : ["dark", "light"];
 
