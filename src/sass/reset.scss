@@ -5,7 +5,9 @@
 
 body {
   font-family: map.get(tokens.$fonts, sans);
+}
 
+* {
   color: map.get(tokens.$brand, white);
   @include mixins.light-mode {
     color: map.get(tokens.$brand, black);
