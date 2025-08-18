@@ -19,16 +19,16 @@
   }
 }
 
-.color-scheme-toggle__icon--dark svg {
-    color: map.get(tokens.$brand, sky-blue);
+.color-scheme-toggle__icon--dark {
+  color: map.get(tokens.$brand, sky-blue);
 
-    &:hover,
-    &:focus {
-      color: functions.darken(map.get(tokens.$brand, sky-blue), 15%);
-    }
+  &:hover,
+  &:focus {
+    color: functions.darken(map.get(tokens.$brand, sky-blue), 15%);
+  }
 }
 
-.color-scheme-toggle__icon--light svg {
+.color-scheme-toggle__icon--light {
   color: map.get(tokens.$brand, yellow);
 
   &:hover,
