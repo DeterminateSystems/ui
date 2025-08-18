@@ -20,6 +20,12 @@
   padding: $padding calc(2 * $padding);
 }
 
+@mixin pad-bottom($size) {
+  $padding: map.get(tokens.$padding, $size);
+
+  padding-bottom: $padding;
+}
+
 @mixin svg-icon {
   width: 24px;
   height: 24px;
