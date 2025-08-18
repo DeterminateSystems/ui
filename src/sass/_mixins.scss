@@ -60,12 +60,3 @@
     @include svg-icon;
   }
 }
-
-body {
-  font-family: map.get(tokens.$fonts, sans);
-
-  color: map.get(tokens.$brand, white);
-  light-mode {
-    color: map.get(tokens.$brand, black);
-  }
-}
