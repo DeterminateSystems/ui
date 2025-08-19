@@ -9,7 +9,7 @@ body {
 
 .color-scheme--dark {
   color: map.get(tokens.$brand, white);
-  background-color: map.get(tokens.$brand, black);
+  background-color: map.get(tokens.$brand, very-black);
 }
 
 .color-scheme--light {
