@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 import type { Preview, StoryContext } from "@storybook/react-vite";
 
-import "./preview.scss";
+import "../lib/reset.min.css";
 import "../lib/index.min.css";
+import "./preview.scss";
 import ColorProvider from "../src/ColorProvider";
 import type { ColorScheme } from "../src/ColorContext";
 import { MINIMAL_VIEWPORTS } from "storybook/viewport";

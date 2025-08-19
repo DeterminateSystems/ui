@@ -5,6 +5,7 @@
 The only special note here is that there is a bundled CSS file that needs to be imported alongside the usual React components. Most bundlers are able to ingest CSS, so this import statement should suffice:
 
 ```javascript
+import "@determinate-systems/ui/reset.min.css";
 import "@determinate-systems/ui/index.min.css";
 ```
 
