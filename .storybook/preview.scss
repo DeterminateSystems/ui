@@ -1,0 +1,10 @@
+.preview-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem;
+
+  @media screen and (width < 768px) {
+    padding: 0;
+  }
+}

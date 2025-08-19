@@ -1,3 +1,7 @@
+// CSS
+import "./sass/preflight.scss";
+import "./sass/reset.scss";
+
 // Hooks
 export {
   type HighlightLanguage,

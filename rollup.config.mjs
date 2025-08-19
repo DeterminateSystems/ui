@@ -29,7 +29,16 @@ export default defineConfig({
       options: {
         style: "compressed",
       },
+      exclude: ["./src/sass/preflight.scss"],
       output: "lib/index.min.css",
+    }),
+    sass({
+      api: "modern",
+      options: {
+        style: "compressed",
+      },
+      include: ["./src/sass/preflight.scss"],
+      output: "lib/reset.min.css",
     }),
     cjs(),
   ],
