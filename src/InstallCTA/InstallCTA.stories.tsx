@@ -23,12 +23,6 @@ export const MacOS: Story = {
   },
 };
 
-export const WSL: Story = {
-  args: {
-    initialTab: InstallTarget.WSL,
-  },
-};
-
 export const Linux: Story = {
   args: {
     initialTab: InstallTarget.Linux,

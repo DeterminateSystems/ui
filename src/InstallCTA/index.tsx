@@ -1,4 +1,6 @@
 import { useState, type FC } from "react";
+import { FaApple, FaLinux, FaAws, FaGithub } from "react-icons/fa6";
+import { SiNixos } from "react-icons/si";
 
 import TabSelector from "./TabSelector";
 import { InstallTarget, detectInstallTarget } from "./types";
@@ -19,6 +21,22 @@ export interface InstallCTAProps {
   initialTab?: InstallTarget;
 }
 
+const ctaTabs: [InstallTarget, React.FC][] = [
+  [InstallTarget.MacOS, FaApple],
+  [InstallTarget.Linux, FaLinux],
+  [InstallTarget.AWS, FaAws],
+  [InstallTarget.GitHub, FaGithub],
+  [InstallTarget.NixOS, SiNixos],
+];
+
+const ctaComponents: Record<InstallTarget, React.FC> = {
+  [InstallTarget.MacOS]: MacInstaller,
+  [InstallTarget.Linux]: InstallFromCurl,
+  [InstallTarget.AWS]: InstallFromCurl,
+  [InstallTarget.GitHub]: InstallFromCurl,
+  [InstallTarget.NixOS]: InstallFromCurl,
+};
+
 /**
  * A call-to-action component for downloading Determinate Nix.
  *
@@ -33,43 +51,27 @@ const InstallCTA: FC<InstallCTAProps> = ({ initialTab }) => {
     return detectInstallTarget();
   });
 
-  const wantsCurlInstall =
-    activeTab === InstallTarget.WSL || activeTab === InstallTarget.Linux;
+  const TabBody = ctaComponents[activeTab];
 
   return (
     <div className="install-cta">
       <p>
-        <strong>Get Determinate for {activeTab}</strong>
+        <header className="install-cta__header">
+          Get Determinate for {activeTab}
+        </header>
       </p>
       <div>
-        {activeTab === InstallTarget.MacOS && <MacInstaller />}
-        {wantsCurlInstall && <InstallFromCurl />}
+        <TabBody />
       </div>
       <ul className="install-cta__links">
-        <TabSelector
-          name={InstallTarget.MacOS}
-          icon={() => null}
-          active={activeTab === InstallTarget.MacOS}
-          onClick={() => setActiveTab(InstallTarget.MacOS)}
-        />
-        <TabSelector
-          name={InstallTarget.WSL}
-          icon={() => null}
-          active={activeTab === InstallTarget.WSL}
-          onClick={() => setActiveTab(InstallTarget.WSL)}
-        />
-        <TabSelector
-          name={InstallTarget.Linux}
-          icon={() => null}
-          active={activeTab === InstallTarget.Linux}
-          onClick={() => setActiveTab(InstallTarget.Linux)}
-        />
-        <NavTab
-          name={InstallTarget.NixOS}
-          icon={() => null}
-          href="https://docs.determinate.systems/guides/advanced-installation/#nixos"
-          external={true}
-        />
+        {ctaTabs.map(([target, icon]) => (
+          <TabSelector
+            name={target}
+            icon={icon}
+            active={activeTab == target}
+            onClick={() => setActiveTab(target)}
+          />
+        ))}
       </ul>
     </div>
   );
