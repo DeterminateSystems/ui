@@ -135,7 +135,6 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
 
   // Switch body classes depending on the chosen scheme
   useEffect(() => {
-    console.log("beep boop", root);
     if (root) {
       applyTheme(root, scheme);
     }
