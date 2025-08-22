@@ -3,9 +3,10 @@
  */
 export enum InstallTarget {
   MacOS = "macOS",
-  WSL = "Windows Subsystem for Linux (WSL)",
   Linux = "Linux",
   NixOS = "NixOS",
+  AWS = "AWS",
+  GitHub = "GitHub",
 }
 
 /**
@@ -17,7 +18,7 @@ export function detectInstallTarget(
   userAgent = navigator.userAgent,
 ): InstallTarget {
   if (userAgent.includes("Windows")) {
-    return InstallTarget.WSL;
+    return InstallTarget.Linux;
   }
 
   if (userAgent.includes("Linux")) {

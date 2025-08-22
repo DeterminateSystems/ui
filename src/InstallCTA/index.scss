@@ -4,6 +4,14 @@
 @use "../sass/mixins";
 
 .install-cta {
+  .install-cta__header {
+    font-size: map.get(tokens.$font-size, lg);
+    color: map.get(tokens.$brand, light);
+    @include mixins.light-mode {
+      color: map.get(tokens.$brand, gray);
+    }
+  }
+
   strong,
   p {
     color: map.get(tokens.$brand, white);
