@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import CodeBlock from "../CodeBlock";
-import GitHubButton from "../GitHubButton";
+import Link from "../Link";
 
 const code = `aws ec2 describe-images \\
   --owners 535002876703 \\
@@ -22,8 +22,11 @@ const FindAwsAMIs: FC = () => {
         title={"Search for AMIs"}
       />
       <p>
-        See DeterminateSystems/nixos-amis on GitHub{" "}
-        <GitHubButton owner={"DeterminateSystems"} repo={"nixos-amis"} />
+        See{" "}
+        <Link href="https://github.com/DeterminateSystems/nixos-amis">
+          DeterminateSystems/nixos-amis on GitHub
+        </Link>
+        .
       </p>
     </>
   );

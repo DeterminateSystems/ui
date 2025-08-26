@@ -27,8 +27,8 @@ export interface InstallCTAProps {
 const ctaTabs: [InstallTarget, React.FC][] = [
   [InstallTarget.MacOS, FaApple],
   [InstallTarget.Linux, FaLinux],
-  [InstallTarget.NixOS, SiNixos],
-  [InstallTarget.AWS, () => <FaAws className="install-cta__icon--apple" />],
+  [InstallTarget.NixOS, () => <SiNixos title="NixOS" />],
+  [InstallTarget.AWS, () => <FaAws className="install-cta__icon--aws" />],
   [InstallTarget.GitHub, FaGithub],
 ];
 
@@ -58,12 +58,6 @@ const InstallCTA: FC<InstallCTAProps> = ({ initialTab }) => {
 
   return (
     <div className="install-cta">
-      <header className="install-cta__header">
-        Get Determinate for {activeTab}
-      </header>
-      <div className="install-cta__body">
-        <TabBody />
-      </div>
       <ul className="install-cta__links">
         {ctaTabs.map(([target, icon]) => (
           <TabSelector
@@ -74,6 +68,12 @@ const InstallCTA: FC<InstallCTAProps> = ({ initialTab }) => {
           />
         ))}
       </ul>
+      <header className="install-cta__header">
+        Get Determinate for {activeTab}
+      </header>
+      <div className="install-cta__body">
+        <TabBody />
+      </div>
     </div>
   );
 };
