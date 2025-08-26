@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import CodeFile from "../CodeFile";
 import CodeBlock from "../CodeBlock";
 import Link from "../Link";
 
@@ -16,16 +15,21 @@ nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
 const InstallForNixOS: FC = () => {
   return (
     <>
-      <p></p>
+      <p>Add Determinate as an input to your flake:</p>
       <CodeBlock
         language={"nix"}
-        title={"Add Determinate as an input to your flake:"}
+        title={"flake.nix"}
         code={`inputs.determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";`}
+        kind={"file"}
+        allowDownload={false}
       />
+      <p>Then, include the Determinate NixOS module:</p>
       <CodeBlock
         language={"nix"}
-        title={"Then include the Determinate NixOS module:"}
+        title={"flake.nix"}
         code={code}
+        kind={"file"}
+        allowDownload={false}
       />
 
       <p>

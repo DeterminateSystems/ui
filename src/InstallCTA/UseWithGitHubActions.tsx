@@ -1,8 +1,6 @@
 import type { FC } from "react";
 import CodeBlock from "../CodeBlock";
 import Link from "../Link";
-import GitHubButton from "../GitHubButton";
-import CodeFile from "../CodeFile";
 
 const code = `
 on:
@@ -21,13 +19,7 @@ const UseWithGitHubActions: FC = () => {
   return (
     <>
       <p>Use Determinate Nix in GitHub Actions.</p>
-      <CodeFile
-        language={"yaml"}
-        code={code}
-        filename={"ci.yaml"}
-        allowCopy={true}
-        allowDownload={true}
-      />
+      <CodeBlock language={"yaml"} code={code} title={"ci.yaml"} kind="file" />
       <p>
         See our other{" "}
         <Link href={"https://docs.determinate.systems/guides/github-actions"}>

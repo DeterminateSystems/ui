@@ -15,6 +15,7 @@ const InstallFromCurl: FC = () => (
       language="shell"
       code={installScript}
       title="Install Determinate"
+      kind={"snippet"}
     />
   </>
 );
