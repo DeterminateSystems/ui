@@ -9,7 +9,7 @@ const InstallFromCurl: FC = () => (
   <>
     <p>
       Use the Determinate Nix Installer CLI for Linux, including Windows
-      Subsystem for Linx (WSL).
+      Subsystem for Linux (WSL).
     </p>
     <CodeBlock
       language="shell"
