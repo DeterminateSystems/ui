@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import CodeFile from "../CodeFile";
 import CodeBlock from "../CodeBlock";
 import Link from "../Link";
 
