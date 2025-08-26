@@ -5,6 +5,8 @@
 
 .link {
   color: map.get(tokens.$brand, orange);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
   @include mixins.transition(color, short);
 
   &:hover {

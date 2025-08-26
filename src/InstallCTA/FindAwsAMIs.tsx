@@ -16,10 +16,18 @@ const FindAwsAMIs: FC = () => {
         Use NixOS with Determinate on AWS with our pre-published AMIs in every
         region.
       </p>
-      <CodeBlock language={"shell"} code={code} title={"Search for AMIs"} />
+      <CodeBlock
+        language={"shell"}
+        code={code}
+        title={"Search for AMIs"}
+        kind={"snippet"}
+      />
       <p>
-        See DeterminateSystems/nixos-amis on GitHub{" "}
-        <GitHubButton owner={"DeterminateSystems"} repo={"nixos-amis"} />
+        See{" "}
+        <Link href="https://github.com/DeterminateSystems/nixos-amis">
+          DeterminateSystems/nixos-amis on GitHub
+        </Link>
+        .
       </p>
     </>
   );
