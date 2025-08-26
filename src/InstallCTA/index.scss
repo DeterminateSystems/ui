@@ -83,11 +83,6 @@
     width: auto;
   }
 
-  svg.install-cta__icon--aws {
-    height: 30px;
-    margin-top: 5px;
-  }
-
   &:hover {
     color: map.get(tokens.$brand, white);
     border-bottom-color: map.get(tokens.$colors, secondary);
