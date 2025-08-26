@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import CodeBlock from "../CodeBlock";
 import Link from "../Link";
+import type { TabProps } from ".";
 
 const code = `
 nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
@@ -12,14 +13,14 @@ nixosConfigurations.workstation = nixpkgs.lib.nixosSystem {
 };
 `;
 
-const InstallForNixOS: FC = () => {
+const InstallForNixOS: FC = ({ version }: TabProps) => {
   return (
     <>
       <p>Add Determinate as an input to your flake:</p>
       <CodeBlock
         language={"nix"}
         title={"flake.nix"}
-        code={`inputs.determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";`}
+        code={`inputs.determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/${version || "*"}";`}
         kind={"file"}
         allowDownload={false}
       />

@@ -1,8 +1,10 @@
 import type { FC } from "react";
 import Link from "../Link";
 import CodeBlock from "../CodeBlock";
+import type { TabProps } from ".";
 
-const code = `
+const UseWithGitHubActions: FC = ({ version }: TabProps) => {
+  const code = `
 on:
   push:
 jobs:
@@ -10,12 +12,10 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
-      - uses: DeterminateSystems/determinate-nix-action@v3
+      - uses: DeterminateSystems/determinate-nix-action@v${version || "3"}
       - run: nix build .#
 
 `;
-
-const UseWithGitHubActions: FC = () => {
   return (
     <>
       <p>Use Determinate Nix in GitHub Actions.</p>
