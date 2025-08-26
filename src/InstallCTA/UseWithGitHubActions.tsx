@@ -19,14 +19,7 @@ const UseWithGitHubActions: FC = () => {
   return (
     <>
       <p>Use Determinate Nix in GitHub Actions.</p>
-      <CodeBlock
-        kind="file"
-        language={"yaml"}
-        code={code}
-        title={"ci.yaml"}
-        allowCopy={true}
-        allowDownload={true}
-      />
+      <CodeBlock language={"yaml"} code={code} title={"ci.yaml"} kind="file" />
       <p>
         See our other{" "}
         <Link href={"https://docs.determinate.systems/guides/github-actions"}>

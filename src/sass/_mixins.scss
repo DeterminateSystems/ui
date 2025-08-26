@@ -103,6 +103,12 @@
   transition-duration: map.get(tokens.$duration, $duration);
 }
 
+@mixin margin-y($size) {
+  $spacing: map.get(tokens.$spacing, $size);
+
+  margin: $spacing 0;
+}
+
 @mixin pad($size) {
   $padding: map.get(tokens.$padding, $size);
 
