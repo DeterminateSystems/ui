@@ -53,11 +53,6 @@
   gap: map.get(tokens.$spacing, base);
 
   list-style-type: none;
-  padding-bottom: map.get(tokens.$spacing, base);
-  border-bottom: 1px solid map.get(tokens.$border-color, dark);
-  @include mixins.light-mode {
-    border-bottom: 1px solid map.get(tokens.$border-color, light);
-  }
 }
 
 .install-cta__link {

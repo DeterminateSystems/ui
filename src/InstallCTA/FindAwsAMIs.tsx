@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import CodeBlock from "../CodeBlock";
 import Link from "../Link";
+import type { TabProps } from ".";
 
 const code = `aws ec2 describe-images \\
   --owners 535002876703 \\
@@ -8,7 +9,7 @@ const code = `aws ec2 describe-images \\
             "Name=architecture,Values=x86_64,arm64" \\
   --query "Images | sort_by(@, &CreationDate) | [-1]"`;
 
-const FindAwsAMIs: FC = () => {
+const FindAwsAMIs: FC = (_: TabProps) => {
   return (
     <>
       <p>
