@@ -28,3 +28,23 @@ export const Linux: Story = {
     initialTab: InstallTarget.Linux,
   },
 };
+
+export const AWS: Story = {
+  args: {
+    initialTab: InstallTarget.AWS,
+  },
+};
+
+export const GitHub: Story = {
+  name: "GitHub",
+  args: {
+    initialTab: InstallTarget.GitHub,
+  },
+};
+
+export const NixOS: Story = {
+  name: "NixOS",
+  args: {
+    initialTab: InstallTarget.NixOS,
+  },
+};

@@ -7,7 +7,10 @@ const installScript =
 
 const InstallFromCurl: FC = () => (
   <>
-    <p>Use the Determinate Nix Installer CLI</p>
+    <p>
+      Use the Determinate Nix Installer CLI for Linux, including Windows
+      Subsystem for Linx (WSL).
+    </p>
     <CodeBlock
       language="shell"
       code={installScript}

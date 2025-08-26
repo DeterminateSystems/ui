@@ -6,10 +6,13 @@ import TabSelector from "./TabSelector";
 import { InstallTarget, detectInstallTarget } from "./types";
 import InstallFromCurl from "./InstallFromCurl";
 
+import FindAwsAMIs from "./FindAwsAMIs";
+import UseWithGitHubActions from "./UseWithGitHubActions";
+import InstallForNixOS from "./InstallForNixOS";
+
 import MacInstaller from "../MacInstaller";
 
 import "./index.scss";
-import NavTab from "./NavTab";
 
 export { InstallTarget as CTAType } from "./types";
 
@@ -24,17 +27,17 @@ export interface InstallCTAProps {
 const ctaTabs: [InstallTarget, React.FC][] = [
   [InstallTarget.MacOS, FaApple],
   [InstallTarget.Linux, FaLinux],
+  [InstallTarget.NixOS, SiNixos],
   [InstallTarget.AWS, FaAws],
   [InstallTarget.GitHub, FaGithub],
-  [InstallTarget.NixOS, SiNixos],
 ];
 
 const ctaComponents: Record<InstallTarget, React.FC> = {
   [InstallTarget.MacOS]: MacInstaller,
   [InstallTarget.Linux]: InstallFromCurl,
-  [InstallTarget.AWS]: InstallFromCurl,
-  [InstallTarget.GitHub]: InstallFromCurl,
-  [InstallTarget.NixOS]: InstallFromCurl,
+  [InstallTarget.AWS]: FindAwsAMIs,
+  [InstallTarget.GitHub]: UseWithGitHubActions,
+  [InstallTarget.NixOS]: InstallForNixOS,
 };
 
 /**
