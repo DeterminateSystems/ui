@@ -6,6 +6,7 @@
 
 .code-block {
   @include mixins.border(base);
+  @include mixins.margin-y(xl);
 
   .highlight {
     @include mixins.border-bottom(base);

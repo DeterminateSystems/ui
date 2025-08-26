@@ -2,11 +2,14 @@
 
 @use "../sass/tokens";
 @use "../sass/mixins";
+@use "../sass/functions";
 
 .install-cta {
   @include mixins.border(base);
   @include mixins.pad(lg);
   @include mixins.shadow;
+
+  width: 100%;
 
   .install-cta__header {
     font-weight: 600;
@@ -30,21 +33,22 @@
   }
 }
 
+.install-cta__body {
+  margin: map.get(tokens.$spacing, xl) 0;
+
+  p {
+    font-size: map.get(tokens.$font-size, base);
+  }
+}
+
 .install-cta__links {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: map.get(tokens.$spacing, base);
 
   list-style-type: none;
-  margin-top: map.get(tokens.$padding, lg);
-  padding: 0;
-}
-
-.install-cta__body {
-  margin: map.get(tokens.$spacing, lg) 0;
-}
-
-.install-cta__tab {
+  padding-top: map.get(tokens.$spacing, base);
 }
 
 .install-cta__link {
@@ -56,6 +60,12 @@
   border-top: 2px solid
     rgba($color: map.get(tokens.$colors, secondary), $alpha: 0);
   padding: map.get(tokens.$spacing, lg) map.get(tokens.$spacing, base);
+  @include mixins.transition(color, short);
+
+  color: functions.lighten(map.get(tokens.$brand, black), 30%);
+  border-top: 2px solid
+    rgba($color: map.get(tokens.$colors, secondary), $alpha: 0);
+  padding: map.get(tokens.$spacing, lg) map.get(tokens.$spacing, xs);
 
   svg {
     padding-right: map.get(tokens.$padding, base);
@@ -63,13 +73,15 @@
     width: auto;
   }
 
-  &.install-cta__link--active {
-    border-top-color: map.get(tokens.$colors, primary);
+  &:hover {
+    color: map.get(tokens.$brand, very-black);
+    border-top-color: map.get(tokens.$colors, secondary);
   }
 
-  &:hover,
+  &.install-cta__link--active,
   &:focus {
-    border-top-color: map.get(tokens.$colors, secondary);
+    color: map.get(tokens.$brand, ocean-blue);
+    border-top-color: map.get(tokens.$brand, ocean-blue);
   }
 }
 

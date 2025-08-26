@@ -58,11 +58,9 @@ const InstallCTA: FC<InstallCTAProps> = ({ initialTab }) => {
 
   return (
     <div className="install-cta">
-      <p>
-        <header className="install-cta__header">
-          Get Determinate for {activeTab}
-        </header>
-      </p>
+      <header className="install-cta__header">
+        Get Determinate for {activeTab}
+      </header>
       <div className="install-cta__body">
         <TabBody />
       </div>
