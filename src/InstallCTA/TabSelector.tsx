@@ -1,10 +1,11 @@
 import { useCallback, type FC, type MouseEvent } from "react";
 
 import type { InstallTarget } from "./types";
+import type { IconBaseProps } from "react-icons";
 
 export interface TabSelectorProps {
   name: InstallTarget;
-  icon: FC;
+  icon: FC<IconBaseProps>;
   active: boolean;
   onClick: () => void;
 }
@@ -34,7 +35,7 @@ const TabSelector: FC<TabSelectorProps> = ({
         }
         onClick={handleClick}
       >
-        <Icon /> {name}
+        <Icon title={name} /> {name}
       </a>
     </li>
   );
