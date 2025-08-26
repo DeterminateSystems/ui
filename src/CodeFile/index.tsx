@@ -43,14 +43,19 @@ const CodeFile: FC<CodeFileProps> = ({
   download = filename,
   allowCopy,
   allowDownload,
-}) => (
-  <figure className="code-file" aria-label={filename}>
-    <figcaption className="code-file__heading">
-      <code>{filename}</code> {allowCopy && <CopyButton data={code} />}{" "}
-      {allowDownload && <DownloadButton data={code} filename={download} />}
-    </figcaption>
-    <Highlight language={language} code={code} />
-  </figure>
-);
+}) => {
+  const trimmedCode = code.trim() + "\n";
+  return (
+    <figure className="code-file" aria-label={filename}>
+      <figcaption className="code-file__heading">
+        <code>{filename}</code> {allowCopy && <CopyButton data={trimmedCode} />}{" "}
+        {allowDownload && (
+          <DownloadButton data={trimmedCode} filename={download} />
+        )}
+      </figcaption>
+      <Highlight language={language} code={trimmedCode} />
+    </figure>
+  );
+};
 
 export default CodeFile;
