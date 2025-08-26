@@ -21,13 +21,17 @@ const CodeBlock: FC<CodeBlockProps> = ({
   code,
   title,
   allowCopy = true,
-}) => (
-  <figure className="code-block" aria-label={title}>
-    <figcaption className="code-block__heading">
-      {title} {allowCopy && <CopyButton data={code} />}
-    </figcaption>
-    <Highlight language={language} code={code} />
-  </figure>
-);
+}) => {
+  const trimmedCode = code.trim();
+
+  return (
+    <figure className="code-block" aria-label={title}>
+      <figcaption className="code-block__heading">
+        {title} {allowCopy && <CopyButton data={trimmedCode} />}
+      </figcaption>
+      <Highlight language={language} code={trimmedCode} />
+    </figure>
+  );
+};
 
 export default CodeBlock;
