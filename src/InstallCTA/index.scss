@@ -6,12 +6,13 @@
 
 .install-cta {
   @include mixins.border(base);
-  @include mixins.pad(lg);
   @include mixins.shadow;
 
   width: 100%;
 
   .install-cta__header {
+    @include mixins.pad(lg);
+
     font-weight: 600;
     font-size: map.get(tokens.$font-size, lg);
     color: map.get(tokens.$brand, light);
@@ -34,6 +35,7 @@
 }
 
 .install-cta__body {
+  @include mixins.pad(lg);
   margin: map.get(tokens.$spacing, xl) 0;
 
   p {
@@ -42,6 +44,7 @@
 }
 
 .install-cta__links {
+  @include mixins.pad(lg);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -50,7 +53,11 @@
   gap: map.get(tokens.$spacing, base);
 
   list-style-type: none;
-  padding-top: map.get(tokens.$spacing, base);
+  padding-bottom: map.get(tokens.$spacing, base);
+  border-bottom: 1px solid map.get(tokens.$border-color, dark);
+  @include mixins.light-mode {
+    border-bottom: 1px solid map.get(tokens.$border-color, light);
+  }
 }
 
 .install-cta__link {
@@ -59,14 +66,14 @@
   align-items: center;
   text-wrap-mode: nowrap;
 
-  @include mixins.transition(border-top-color, shortish);
-  border-top: 2px solid
-    rgba($color: map.get(tokens.$colors, secondary), $alpha: 0);
-  padding: map.get(tokens.$spacing, lg) map.get(tokens.$spacing, base);
-  @include mixins.transition(color, short);
+  @include mixins.transition(border-bottom-color, shortish);
+  @include mixins.transition(color, shortish);
 
-  color: functions.lighten(map.get(tokens.$brand, black), 30%);
-  border-top: 2px solid
+  color: functions.darken(map.get(tokens.$brand, white), 15%);
+  @include mixins.light-mode {
+    color: functions.lighten(map.get(tokens.$brand, black), 30%);
+  }
+  border-bottom: 2px solid
     rgba($color: map.get(tokens.$colors, secondary), $alpha: 0);
   padding: map.get(tokens.$spacing, lg) map.get(tokens.$spacing, xs);
 
@@ -76,19 +83,28 @@
     width: auto;
   }
 
-  svg.install-cta__icon--apple {
+  svg.install-cta__icon--aws {
     height: 30px;
+    margin-top: 5px;
   }
 
   &:hover {
-    color: map.get(tokens.$brand, very-black);
-    border-top-color: map.get(tokens.$colors, secondary);
+    color: map.get(tokens.$brand, white);
+    border-bottom-color: map.get(tokens.$colors, secondary);
+    @include mixins.light-mode {
+      color: map.get(tokens.$brand, very-black);
+    }
   }
 
   &.install-cta__link--active,
   &:focus {
-    color: map.get(tokens.$brand, ocean-blue);
-    border-top-color: map.get(tokens.$brand, ocean-blue);
+    color: map.get(tokens.$brand, sky-blue);
+    border-bottom-color: map.get(tokens.$brand, sky-blue);
+
+    @include mixins.light-mode {
+      color: map.get(tokens.$brand, ocean-blue);
+      border-bottom-color: map.get(tokens.$brand, ocean-blue);
+    }
   }
 }
 
