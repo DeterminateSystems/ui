@@ -22,6 +22,18 @@ export interface InstallCTAProps {
    * This is only applicable for the initial render.
    */
   initialTab?: InstallTarget;
+
+  /**
+   * Version of Determinate to pin to, when possible
+   */
+  version?: string;
+}
+
+export interface TabProps {
+  /**
+   * Version of Determinate to pin to, when possible
+   */
+  version?: string;
 }
 
 const ctaTabs: [InstallTarget, React.FC<IconBaseProps>][] = [
@@ -32,7 +44,7 @@ const ctaTabs: [InstallTarget, React.FC<IconBaseProps>][] = [
   [InstallTarget.GitHub, SiGithub],
 ];
 
-const ctaComponents: Record<InstallTarget, React.FC> = {
+const ctaComponents: Record<InstallTarget, React.FC<TabProps>> = {
   [InstallTarget.MacOS]: MacInstaller,
   [InstallTarget.Linux]: InstallFromCurl,
   [InstallTarget.AWS]: FindAwsAMIs,
@@ -45,7 +57,7 @@ const ctaComponents: Record<InstallTarget, React.FC> = {
  *
  * Due to the numerous options available,
  */
-const InstallCTA: FC<InstallCTAProps> = ({ initialTab }) => {
+const InstallCTA: FC<InstallCTAProps> = ({ initialTab, version }) => {
   const [activeTab, setActiveTab] = useState<InstallTarget>(() => {
     if (initialTab) {
       return initialTab;
@@ -58,6 +70,9 @@ const InstallCTA: FC<InstallCTAProps> = ({ initialTab }) => {
 
   return (
     <div className="install-cta">
+      <header className="install-cta__header">
+        Get Determinate{version && ` v${version}`}
+      </header>
       <ul className="install-cta__links">
         {ctaTabs.map(([target, icon]) => (
           <TabSelector
@@ -68,11 +83,8 @@ const InstallCTA: FC<InstallCTAProps> = ({ initialTab }) => {
           />
         ))}
       </ul>
-      <header className="install-cta__header">
-        Get Determinate for {activeTab}
-      </header>
       <div className="install-cta__body">
-        <TabBody />
+        <TabBody version={version} />
       </div>
     </div>
   );
