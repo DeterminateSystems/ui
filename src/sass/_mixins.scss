@@ -43,6 +43,46 @@
   }
 }
 
+@mixin border-top($size) {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-left-radius: calc(map.get(tokens.$border-radius, $size) - 1px);
+  border-top-right-radius: calc(map.get(tokens.$border-radius, $size) - 1px);
+
+  border-top-color: map.get(tokens.$border-color, dark);
+  border-left-color: map.get(tokens.$border-color, dark);
+  border-right-color: map.get(tokens.$border-color, dark);
+  @include light-mode {
+    border-top-color: map.get(tokens.$border-color, light);
+    border-left-color: map.get(tokens.$border-color, light);
+    border-right-color: map.get(tokens.$border-color, light);
+  }
+}
+
+@mixin border-bottom($size) {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-left-radius: calc(map.get(tokens.$border-radius, $size) - 1px);
+  border-bottom-right-radius: calc(map.get(tokens.$border-radius, $size) - 1px);
+
+  border-bottom-color: map.get(tokens.$border-color, dark);
+  border-left-color: map.get(tokens.$border-color, dark);
+  border-right-color: map.get(tokens.$border-color, dark);
+  @include light-mode {
+    border-bottom-color: map.get(tokens.$border-color, light);
+    border-left-color: map.get(tokens.$border-color, light);
+    border-right-color: map.get(tokens.$border-color, light);
+  }
+}
+
 @mixin shadow {
   box-shadow:
     0 0 #0000,

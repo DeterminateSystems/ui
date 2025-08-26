@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import Link from "../Link";
-import CodeFile from "../CodeFile";
+import CodeBlock from "../CodeBlock";
 
 const code = `
 on:
@@ -19,10 +19,11 @@ const UseWithGitHubActions: FC = () => {
   return (
     <>
       <p>Use Determinate Nix in GitHub Actions.</p>
-      <CodeFile
+      <CodeBlock
+        kind="file"
         language={"yaml"}
         code={code}
-        filename={"ci.yaml"}
+        title={"ci.yaml"}
         allowCopy={true}
         allowDownload={true}
       />
