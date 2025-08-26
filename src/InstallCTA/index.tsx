@@ -1,6 +1,5 @@
 import { useState, type FC } from "react";
-import { FaApple, FaLinux, FaAws, FaGithub } from "react-icons/fa6";
-import { SiNixos } from "react-icons/si";
+import { SiGithub, SiLinux, SiApple, SiNixos, SiAmazon } from "react-icons/si";
 
 import TabSelector from "./TabSelector";
 import { InstallTarget, detectInstallTarget } from "./types";
@@ -13,6 +12,7 @@ import InstallForNixOS from "./InstallForNixOS";
 import MacInstaller from "../MacInstaller";
 
 import "./index.scss";
+import type { IconBaseProps } from "react-icons";
 
 export { InstallTarget as CTAType } from "./types";
 
@@ -24,12 +24,12 @@ export interface InstallCTAProps {
   initialTab?: InstallTarget;
 }
 
-const ctaTabs: [InstallTarget, React.FC][] = [
-  [InstallTarget.MacOS, FaApple],
-  [InstallTarget.Linux, FaLinux],
-  [InstallTarget.NixOS, () => <SiNixos title="NixOS" />],
-  [InstallTarget.AWS, () => <FaAws className="install-cta__icon--aws" />],
-  [InstallTarget.GitHub, FaGithub],
+const ctaTabs: [InstallTarget, React.FC<IconBaseProps>][] = [
+  [InstallTarget.MacOS, SiApple],
+  [InstallTarget.Linux, SiLinux],
+  [InstallTarget.NixOS, SiNixos],
+  [InstallTarget.AWS, SiAmazon],
+  [InstallTarget.GitHub, SiGithub],
 ];
 
 const ctaComponents: Record<InstallTarget, React.FC> = {
