@@ -2,7 +2,37 @@
 
 @use "../sass/mixins";
 @use "../sass/tokens";
+@use "../sass/functions";
+
+.code-block {
+  @include mixins.border(base);
+
+  .highlight {
+    @include mixins.border-bottom(base);
+    @include mixins.pad(base);
+  }
+}
 
 .code-block__heading {
-  @include mixins.pad-bottom(lg);
+  @include mixins.border-top(base);
+
+  padding: map.get(tokens.$spacing, base) map.get(tokens.$spacing, lg);
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+
+  @include mixins.light-mode {
+    color: map.get(tokens.$brand, black);
+  }
+
+  background: functions.lighten(map.get(tokens.$brand, black), 5%);
+  @include mixins.light-mode {
+    background: functions.darken(map.get(tokens.$brand, white), 5%);
+  }
+  background-repeat: no-repeat;
+
+  .code-block__title--file {
+    font-family: map.get(tokens.$fonts, mono);
+  }
 }

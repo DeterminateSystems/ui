@@ -17,11 +17,13 @@ const InstallForNixOS: FC = () => {
     <>
       <p></p>
       <CodeBlock
+        kind="snippet"
         language={"nix"}
         title={"Add Determinate as an input to your flake:"}
         code={`inputs.determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";`}
       />
       <CodeBlock
+        kind="snippet"
         language={"nix"}
         title={"Then include the Determinate NixOS module:"}
         code={code}

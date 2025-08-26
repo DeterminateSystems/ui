@@ -12,6 +12,7 @@ const InstallFromCurl: FC = () => (
       Subsystem for Linux (WSL).
     </p>
     <CodeBlock
+      kind="snippet"
       language="shell"
       code={installScript}
       title="Install Determinate"
