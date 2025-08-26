@@ -25,12 +25,7 @@ let shiki: ReturnType<typeof createHighlighterCoreSync>;
 function getShiki() {
   return (shiki ??= createHighlighterCoreSync({
     themes: [themeGitHubLight, themeGitHubDark],
-    langs: [
-      langNix,
-      langShell,
-      langTerraform,
-      langYaml,
-    ],
+    langs: [langNix, langShell, langTerraform, langYaml],
     engine: createJavaScriptRegexEngine(),
   }));
 }

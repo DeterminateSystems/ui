@@ -1,6 +1,5 @@
 import type { FC } from "react";
 import CodeBlock from "../CodeBlock";
-import Link from "../Link";
 import GitHubButton from "../GitHubButton";
 
 const code = `aws ec2 describe-images \\

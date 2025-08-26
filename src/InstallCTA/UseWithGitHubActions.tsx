@@ -1,7 +1,5 @@
 import type { FC } from "react";
-import CodeBlock from "../CodeBlock";
 import Link from "../Link";
-import GitHubButton from "../GitHubButton";
 import CodeFile from "../CodeFile";
 
 const code = `

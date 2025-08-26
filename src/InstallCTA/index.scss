@@ -4,12 +4,21 @@
 @use "../sass/mixins";
 
 .install-cta {
+  @include mixins.border(base);
+  @include mixins.pad(lg);
+  @include mixins.shadow;
+
   .install-cta__header {
+    font-weight: 600;
     font-size: map.get(tokens.$font-size, lg);
     color: map.get(tokens.$brand, light);
     @include mixins.light-mode {
       color: map.get(tokens.$brand, gray);
     }
+  }
+
+  p {
+    font-weight: 300;
   }
 
   strong,
@@ -24,29 +33,43 @@
 .install-cta__links {
   display: flex;
   flex-direction: row;
+  gap: map.get(tokens.$spacing, base);
 
   list-style-type: none;
-  margin: 0;
+  margin-top: map.get(tokens.$padding, lg);
   padding: 0;
 }
 
-.install-cta__tab {
-  padding: map.get(tokens.$spacing, xs) map.get(tokens.$spacing, xs);
+.install-cta__body {
+  margin: map.get(tokens.$spacing, lg) 0;
+}
 
-  display: inline-flex;
+.install-cta__tab {
 }
 
 .install-cta__link {
+  display: flex;
+  align-items: center;
+  text-wrap-mode: nowrap;
+
   @include mixins.transition(border-top-color, shortish);
-  border-top: 2px solid rgba($color: blue, $alpha: 0);
+  border-top: 2px solid
+    rgba($color: map.get(tokens.$colors, secondary), $alpha: 0);
+  padding: map.get(tokens.$spacing, lg) map.get(tokens.$spacing, base);
+
+  svg {
+    padding-right: map.get(tokens.$padding, base);
+    height: 20px;
+    width: auto;
+  }
 
   &.install-cta__link--active {
-    border-top-color: blue;
+    border-top-color: map.get(tokens.$colors, primary);
   }
 
   &:hover,
   &:focus {
-    border-top-color: red;
+    border-top-color: map.get(tokens.$colors, secondary);
   }
 }
 
