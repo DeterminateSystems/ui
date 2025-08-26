@@ -28,7 +28,7 @@ const ctaTabs: [InstallTarget, React.FC][] = [
   [InstallTarget.MacOS, FaApple],
   [InstallTarget.Linux, FaLinux],
   [InstallTarget.NixOS, SiNixos],
-  [InstallTarget.AWS, FaAws],
+  [InstallTarget.AWS, () => <FaAws className="install-cta__icon--apple" />],
   [InstallTarget.GitHub, FaGithub],
 ];
 
