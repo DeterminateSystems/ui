@@ -37,16 +37,15 @@
 
   &:hover,
   &:focus {
-
     background-color: color.scale(
       map.get(tokens.$brand, magenta),
       $blackness: 50%
     );
     @include mixins.light-mode {
-    background-color: color.scale(
-      map.get(tokens.$brand, magenta),
-      $lightness: 80%
-    );
+      background-color: color.scale(
+        map.get(tokens.$brand, magenta),
+        $lightness: 80%
+      );
     }
   }
 }

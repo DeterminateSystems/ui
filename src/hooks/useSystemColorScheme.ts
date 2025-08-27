@@ -12,7 +12,6 @@ function darkModeMatcher(): MediaQueryList | undefined {
   }
 
   return media;
-
 }
 
 function getScheme(matcher: MediaQueryList | MediaQueryListEvent): ColorScheme {

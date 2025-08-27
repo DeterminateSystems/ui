@@ -68,7 +68,8 @@
   @include mixins.light-mode {
     color: functions.lighten(map.get(tokens.$brand, black), 30%);
   }
-  border-bottom: 2px solid rgba($color: map.get(tokens.$colors, secondary), $alpha: 0);
+  border-bottom: 2px solid
+    rgba($color: map.get(tokens.$colors, secondary), $alpha: 0);
   padding: map.get(tokens.$spacing, lg) map.get(tokens.$spacing, xs);
 
   svg {
@@ -77,7 +78,7 @@
     width: auto;
   }
 
-  &:hover{
+  &:hover {
     color: map.get(tokens.$brand, white);
     border-bottom-color: map.get(tokens.$colors, secondary);
     @include mixins.light-mode {
@@ -86,7 +87,7 @@
   }
 
   &.install-cta__link--active,
-  &:focus  {
+  &:focus {
     color: map.get(tokens.$brand, sky-blue);
     border-bottom-color: map.get(tokens.$brand, sky-blue);
     @include mixins.light-mode {
