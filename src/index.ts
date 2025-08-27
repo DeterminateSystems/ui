@@ -12,7 +12,6 @@ export { default as useObjectURL } from "./hooks/useObjectURL";
 // Components
 export { type ButtonProps, default as Button } from "./Button";
 export { type CodeBlockProps, default as CodeBlock } from "./CodeBlock";
-export { type CodeFileProps, default as CodeFile } from "./CodeFile";
 export {
   type ColorContextValue,
   type ColorScheme,
@@ -27,6 +26,7 @@ export {
   default as ColorProvider,
 } from "./ColorProvider";
 export { type CopyButtonProps, default as CopyButton } from "./CopyButton";
+export { type DetSysIconProps, default as DetSysIcon } from "./DetSysIcon";
 export {
   type DownloadButtonProps,
   default as DownloadButton,
@@ -43,3 +43,17 @@ export {
   type GitHubButtonProps,
   default as GitHubButton,
 } from "./GitHubButton";
+export { type HeaderProps, default as Header } from "./Header";
+export {
+  type NavigationProps,
+  type NavigationElementProps,
+  default as Navigation,
+} from "./Navigation";
+export {
+  type PageLayoutProps,
+  type PageLayoutHeaderProps,
+  type PageLayoutContentProps,
+  type PageLayoutFooterProps,
+  type PageLayoutPaneProps,
+  default as PageLayout,
+} from "./PageLayout";
