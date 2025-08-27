@@ -45,6 +45,11 @@ export {
 } from "./GitHubButton";
 export { type HeaderProps, default as Header } from "./Header";
 export {
+  type NavigationProps,
+  type NavigationElementProps,
+  default as Navigation,
+} from "./Navigation";
+export {
   type PageLayoutProps,
   type PageLayoutHeaderProps,
   type PageLayoutContentProps,

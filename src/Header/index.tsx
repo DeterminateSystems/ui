@@ -2,7 +2,6 @@ import { type FC } from "react";
 
 import "./index.scss";
 import React from "react";
-import clsx from "clsx";
 
 export interface HeaderProps {}
 
