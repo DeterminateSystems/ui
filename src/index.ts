@@ -27,6 +27,7 @@ export {
   default as ColorProvider,
 } from "./ColorProvider";
 export { type CopyButtonProps, default as CopyButton } from "./CopyButton";
+export { type DetSysIconProps, default as DetSysIcon } from "./DetSysIcon";
 export {
   type DownloadButtonProps,
   default as DownloadButton,
