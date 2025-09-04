@@ -15,16 +15,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          registry-url: "https://registry.npmjs.org"
-          scope: "@determinate-systems"
-          node-version: "22"
+      - uses: DeterminateSystems/determinate-nix-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
       # We're getting tags from GitHub, so this is irrelevant
-      - run: npm version --no-git-tag-version "$TAG"
+      - run: nix develop .#deploy -c npm version --no-git-tag-version "$TAG"
         env:
           TAG: ${{ github.ref_name }}
-      - run: npm ci
-      - run: npm publish --verbose --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: nix develop .#deploy -c npm ci
+      - run: nix develop .#deploy -c npm publish --verbose --access public

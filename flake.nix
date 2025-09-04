@@ -29,7 +29,7 @@
 
           buildInputs = [
             pkgs.codespell
-            pkgs.nodejs
+            pkgs.nodejs_latest
           ];
         };
 
@@ -37,7 +37,7 @@
           name = "publish";
 
           buildInputs = [
-            pkgs.nodejs
+            pkgs.nodejs_latest
           ];
         };
       });
