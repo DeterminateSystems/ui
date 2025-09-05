@@ -18,8 +18,8 @@ jobs:
       - uses: DeterminateSystems/determinate-nix-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
       # We're getting tags from GitHub, so this is irrelevant
-      - run: nix develop .#deploy -c npm version --no-git-tag-version "$TAG"
+      - run: nix develop .#publish -c npm version --no-git-tag-version "$TAG"
         env:
           TAG: ${{ github.ref_name }}
-      - run: nix develop .#deploy -c npm ci
-      - run: nix develop .#deploy -c npm publish --verbose --access public
+      - run: nix develop .#publish -c npm ci
+      - run: nix develop .#publish -c npm publish --verbose --access public
