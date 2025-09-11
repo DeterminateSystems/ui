@@ -1,12 +1,13 @@
 @use "sass:map";
 
 @use "../sass/tokens";
+@use "../sass/mixins";
 
 .page-layout {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: map.get(tokens.$spacing, base);
+  min-height: 100vh;
   min-width: map.get(tokens.$breakpoints, minimum);
 
   & > main {
@@ -15,13 +16,18 @@
     flex-wrap: wrap;
     gap: map.get(tokens.$spacing, base);
 
+    @include mixins.container;
+
     .page-layout__content {
       display: flex;
       flex-direction: column;
       flex: 2;
 
       gap: map.get(tokens.$spacing, base);
-      min-width: map.get(tokens.$breakpoints, minimum);
+      min-width: calc(
+        map.get(tokens.$breakpoints, minimum) - map.get(tokens.$spacing, base) *
+          2
+      );
     }
 
     .page-layout__panes {
@@ -31,7 +37,10 @@
       gap: map.get(tokens.$spacing, base);
 
       // Setting the min-width to the same min-width as the overall .page-layout makes the flex work nicely at all widths.
-      min-width: map.get(tokens.$breakpoints, minimum);
+      min-width: calc(
+        map.get(tokens.$breakpoints, minimum) - map.get(tokens.$spacing, base) *
+          2
+      );
     }
   }
 
