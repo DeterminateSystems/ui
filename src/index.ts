@@ -62,6 +62,11 @@ export {
 } from "./LabeledInput";
 
 export {
+  type LabeledRadioInputProps,
+  default as LabeledRadioInput,
+} from "./LabeledRadioInput";
+
+export {
   type LabeledTextInputProps,
   default as LabeledTextInput,
 } from "./LabeledTextInput";

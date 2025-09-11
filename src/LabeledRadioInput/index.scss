@@ -1,0 +1,27 @@
+@use "sass:color";
+@use "sass:map";
+
+@use "../sass/tokens";
+@use "../sass/mixins";
+
+.labeled-radio-input {
+  display: flex;
+  flex-direction: column;
+  gap: map.get(tokens.$spacing, sm);
+}
+
+.labeled-radio-input__row {
+  display: flex;
+  align-items: flex-start;
+  gap: map.get(tokens.$spacing, base);
+
+  .labeled-radio-input__label {
+    font-size: map.get(tokens.$font-size, sm);
+    font-weight: map.get(tokens.$font-weight, md);
+    line-height: calc(map.get(tokens.$spacing, xs) * 5);
+  }
+
+  input {
+    margin-top: map.get(tokens.$spacing, xs);
+  }
+}
