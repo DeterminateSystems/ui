@@ -1,0 +1,36 @@
+@use "sass:color";
+@use "sass:map";
+
+@use "../sass/tokens";
+@use "../sass/mixins";
+
+.labeled-input {
+  display: grid;
+  gap: map.get(tokens.$padding, lg);
+
+  label {
+    display: block;
+    font-size: map.get(tokens.$font-size, base);
+    font-weight: map.get(tokens.$font-weight, md);
+    line-height: calc(map.get(tokens.$spacing, xs) * 6);
+
+    color: map.get(tokens.$brand, white);
+    @include mixins.light-mode {
+      color: map.get(tokens.$grays, dark);
+    }
+  }
+
+  .labeled-input__error {
+    font-size: map.get(tokens.$font-size, base);
+    color: map.get(tokens.$colors, danger);
+  }
+
+  .labeled-input__help {
+    font-size: map.get(tokens.$font-size, sm);
+
+    color: map.get(tokens.$brand, white);
+    @include mixins.light-mode {
+      color: map.get(tokens.$grays, light);
+    }
+  }
+}
