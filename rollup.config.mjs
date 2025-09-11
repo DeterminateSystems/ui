@@ -22,7 +22,8 @@ export default defineConfig({
     ts({
       declaration: true,
       declarationDir: "lib",
-      exclude: ["**/*.stories.ts", "**/*.stories.d.ts"],
+      exclude: ["lib/**/*", "**/*.stories.ts", "**/*.stories.d.ts"],
+      noEmitOnError: true,
     }),
     sass({
       api: "modern",
