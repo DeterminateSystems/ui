@@ -56,6 +56,17 @@ export {
 } from "./GitHubButton";
 
 export {
+  type LabeledInputProps,
+  type LabeledInputRenderProps,
+  default as LabeledInput,
+} from "./LabeledInput";
+
+export {
+  type LabeledRadioInputProps,
+  default as LabeledRadioInput,
+} from "./LabeledRadioInput";
+
+export {
   type LabeledTextInputProps,
   default as LabeledTextInput,
 } from "./LabeledTextInput";
