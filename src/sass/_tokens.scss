@@ -17,6 +17,12 @@ $brand: (
   white: #ffffff,
 );
 
+$grays: (
+  very-light: oklch(0.872 0.01 258.338),
+  light: oklch(0.446 0.03 256.802),
+  dark: oklch(0.21 0.034 264.665),
+);
+
 $colors: (
   primary: map.get($brand, orange),
   secondary: map.get($brand, magenta),
@@ -75,6 +81,10 @@ $font-size: (
   sm: 0.75rem,
   base: 1rem,
   lg: 1.25rem,
+);
+
+$font-weight: (
+  md: 500,
 );
 
 $duration: (
