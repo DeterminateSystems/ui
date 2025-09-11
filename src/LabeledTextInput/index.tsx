@@ -1,7 +1,8 @@
-import React, { useId, type FC } from "react";
+import React, { type FC } from "react";
 
 import "./index.scss";
 import clsx from "clsx";
+import LabeledInput from "../LabeledInput";
 
 export type LabeledTextInputProps = Omit<
   React.ComponentPropsWithRef<"input">,
@@ -21,39 +22,24 @@ const LabeledTextInput: FC<LabeledTextInputProps> = ({
   defaultValue,
   ...props
 }) => {
-  const generatedId = useId();
-  const fieldId = id ?? generatedId;
-  const errorId = error ? `${fieldId}__error` : undefined;
-  const helpId = help ? `${fieldId}__help` : undefined;
-
-  const describedById =
-    [errorId, helpId].filter(Boolean).join(" ") || undefined;
-
   return (
-    <div className="labeled-text-input">
-      <label htmlFor={fieldId}>{label}</label>
-      <input
-        {...props}
-        id={fieldId}
-        type="text"
-        aria-invalid={!!error}
-        aria-errormessage={errorId}
-        aria-describedby={describedById}
-        defaultValue={defaultValue}
-        className={clsx(error && "labeled-text-input__input--error")}
-      />
-      {error && (
-        <p id={errorId} role="alert" className="labeled-text-input__error">
-          {error}
-        </p>
+    <LabeledInput label={label} error={error} help={help} id={id}>
+      {({ fieldId, errorId, describedById }) => (
+        <input
+          {...props}
+          id={fieldId}
+          type="text"
+          aria-invalid={!!error}
+          aria-errormessage={errorId}
+          aria-describedby={describedById}
+          defaultValue={defaultValue}
+          className={clsx(
+            "labeled-text-input",
+            error && "labeled-text-input--error",
+          )}
+        />
       )}
-
-      {help && (
-        <p id={helpId} className="labeled-text-input__help">
-          {help}
-        </p>
-      )}
-    </div>
+    </LabeledInput>
   );
 };
 
