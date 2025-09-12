@@ -2,8 +2,29 @@
 
 @use "../sass/tokens";
 @use "../sass/mixins";
+@use "../sass/functions";
 
 .install-cta {
+  @include mixins.border(base);
+  @include mixins.shadow;
+
+  width: 100%;
+
+  .install-cta__header {
+    @include mixins.pad(lg);
+
+    font-weight: 600;
+    font-size: map.get(tokens.$font-size, lg);
+    color: map.get(tokens.$brand, light);
+    @include mixins.light-mode {
+      color: map.get(tokens.$brand, gray);
+    }
+  }
+
+  p {
+    font-weight: 300;
+  }
+
   strong,
   p {
     color: map.get(tokens.$brand, white);
@@ -13,32 +34,67 @@
   }
 }
 
-.install-cta__links {
-  display: flex;
-  flex-direction: row;
+.install-cta__body {
+  @include mixins.pad(lg);
+  margin: map.get(tokens.$spacing, xl) 0;
 
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  p {
+    font-size: map.get(tokens.$font-size, base);
+  }
 }
 
-.install-cta__tab {
-  padding: map.get(tokens.$spacing, xs) map.get(tokens.$spacing, xs);
+.install-cta__links {
+  @include mixins.pad(lg);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  gap: map.get(tokens.$spacing, base);
 
-  display: inline-flex;
+  list-style-type: none;
 }
 
 .install-cta__link {
-  @include mixins.transition(border-top-color, shortish);
-  border-top: 2px solid rgba($color: blue, $alpha: 0);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  text-wrap-mode: nowrap;
 
-  &.install-cta__link--active {
-    border-top-color: blue;
+  @include mixins.transition(border-bottom-color, shortish);
+  @include mixins.transition(color, shortish);
+
+  color: functions.darken(map.get(tokens.$brand, white), 15%);
+  @include mixins.light-mode {
+    color: functions.lighten(map.get(tokens.$brand, black), 30%);
+  }
+  border-bottom: 2px solid
+    rgba($color: map.get(tokens.$colors, secondary), $alpha: 0);
+  padding: map.get(tokens.$spacing, lg) map.get(tokens.$spacing, xs);
+
+  svg {
+    padding-right: map.get(tokens.$padding, base);
+    height: 20px;
+    width: auto;
   }
 
-  &:hover,
+  &:hover {
+    color: map.get(tokens.$brand, white);
+    border-bottom-color: map.get(tokens.$colors, secondary);
+    @include mixins.light-mode {
+      color: map.get(tokens.$brand, very-black);
+    }
+  }
+
+  &.install-cta__link--active,
   &:focus {
-    border-top-color: red;
+    color: map.get(tokens.$brand, sky-blue);
+    border-bottom-color: map.get(tokens.$brand, sky-blue);
+
+    @include mixins.light-mode {
+      color: map.get(tokens.$brand, ocean-blue);
+      border-bottom-color: map.get(tokens.$brand, ocean-blue);
+    }
   }
 }
 
