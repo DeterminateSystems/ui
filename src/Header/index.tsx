@@ -5,7 +5,7 @@ import React from "react";
 
 export interface HeaderProps {
   logo?: React.ReactNode;
-  elements?: React.ReactNode[];
+  elements?: React.ReactElement[];
 }
 
 const Header: FC<HeaderProps> = ({ logo, elements = [] }) => {
