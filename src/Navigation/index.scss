@@ -1,0 +1,67 @@
+@use "sass:map";
+
+@use "../sass/mixins";
+@use "../sass/tokens";
+@use "../sass/functions";
+
+@media screen and (width >= 1024px) {
+  .navigation {
+    height: 24px; // Matches the svg-icon height used by the expander in closed mode
+    padding: 4px; // Matches the svg-icon height used by the expander in closed mode
+    .navigation__expand {
+      display: none;
+    }
+
+    .navigation__elements {
+      height: 24px;
+      display: flex;
+      flex-direction: row;
+      gap: 1em;
+    }
+  }
+}
+
+@media screen and (width < 1024px) {
+  .navigation {
+    position: relative;
+
+    .navigation__expand {
+      @include mixins.svg-button;
+    }
+
+    .navigation__elements {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+
+      max-width: 100vw;
+
+      position: absolute;
+      transform-origin: 100% 0;
+      z-index: 10;
+      right: 0;
+
+      margin-top: 0.5em;
+
+      @include mixins.pad(base);
+      @include mixins.border(base);
+
+      background-color: map.get(tokens.$brand, gray);
+      @include mixins.light-mode {
+        background-color: map.get(tokens.$brand, light);
+      }
+    }
+
+    .navigation__element {
+      width: 320px;
+
+      @media screen and (width < 650px) {
+        width: 268px;
+      }
+    }
+  }
+
+  .navigation--closed .navigation__elements {
+    display: none;
+  }
+}
