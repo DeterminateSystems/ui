@@ -5,7 +5,7 @@ import React from "react";
 
 export interface HeaderProps {
   logo?: React.ReactNode;
-  elements?: React.ReactNode[];
+  elements?: React.ReactElement[];
 }
 
 const Header: FC<HeaderProps> = ({ logo, elements = [] }) => {
@@ -17,7 +17,7 @@ const Header: FC<HeaderProps> = ({ logo, elements = [] }) => {
         {elements.length > 0 && (
           <div className="header__elements">
             {elements.map((node, idx) => (
-              <div key={idx}>{node}</div>
+              <div key={node.key ?? idx}>{node}</div>
             ))}
           </div>
         )}
