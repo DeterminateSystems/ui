@@ -2,9 +2,10 @@
 
 import cjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import sass from "rollup-plugin-sass";
+import svg from "rollup-plugin-svg-import";
 import ts from "@rollup/plugin-typescript";
 import { defineConfig } from "rollup";
-import sass from "rollup-plugin-sass";
 
 export default defineConfig({
   input: "src/index.ts",
@@ -18,6 +19,9 @@ export default defineConfig({
   },
   external: [/node_modules\/react\//],
   plugins: [
+    svg({
+      stringify: true,
+    }),
     resolve(),
     ts({
       declaration: true,

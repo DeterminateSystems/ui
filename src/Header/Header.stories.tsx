@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import Header from ".";
 import { Placeholder } from "../Placeholder";
 import ColorSchemeToggle from "../ColorSchemeToggle";
+import DetSysIcon from "../DetSysIcon";
 
 const meta = {
   title: "Organism/Header",
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    logo: <Placeholder height="100%" width="100px" label="Logo" />,
+    logo: <DetSysIcon size="base" />,
     elements: [
       <ColorSchemeToggle key="color-scheme-toggle" />,
       <Placeholder key="element-1" height="100%" label="Element" />,
