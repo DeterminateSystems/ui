@@ -53,6 +53,15 @@ export const FleshedOut: Story = {
           <Navigation
             key="nav"
             elements={[
+              <a key="docs" href="#">
+                Docs
+              </a>,
+              <a key="flakes" href="#">
+                Flakes
+              </a>,
+              <a key="orgs" href="#">
+                Orgs
+              </a>,
               <Placeholder key="lorem" height="100%" label="Lorem" />,
               <Placeholder key="ipsum" height="100%" label="Ipsum" />,
             ]}

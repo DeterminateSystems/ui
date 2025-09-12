@@ -10,7 +10,7 @@ export interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ logo, elements = [] }) => {
   return (
-    <header className="header" role="banner">
+    <div className="header">
       <div className="header__container">
         {!!logo && <div className="header__logo">{logo}</div>}
 
@@ -22,7 +22,7 @@ const Header: FC<HeaderProps> = ({ logo, elements = [] }) => {
           </div>
         )}
       </div>
-    </header>
+    </div>
   );
 };
 
