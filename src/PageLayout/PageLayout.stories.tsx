@@ -49,11 +49,12 @@ export const FleshedOut: Story = {
           </>
         }
         elements={[
-          <ColorSchemeToggle />,
+          <ColorSchemeToggle key="color-scheme-toggle" />,
           <Navigation
+            key="nav"
             children={[
-              <Placeholder height="100%" label="Lorem" />,
-              <Placeholder height="100%" label="Ipsum" />,
+              <Placeholder key="lorem" height="100%" label="Lorem" />,
+              <Placeholder key="ipsum" height="100%" label="Ipsum" />,
             ]}
           />,
         ]}

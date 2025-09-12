@@ -26,7 +26,7 @@ const PageLayout: FC<PageLayoutProps> = ({
         {panes.length > 0 && (
           <div className="page-layout__panes">
             {panes.map((pane, idx) => (
-              <div key={idx}>{pane}</div>
+              <div key={pane.key ?? idx}>{pane}</div>
             ))}
           </div>
         )}
