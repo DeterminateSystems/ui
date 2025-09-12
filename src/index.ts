@@ -55,6 +55,8 @@ export {
   default as GitHubButton,
 } from "./GitHubButton";
 
+export { type HeaderProps, default as Header } from "./Header";
+
 export {
   type LabeledInputProps,
   type LabeledInputRenderProps,

@@ -12,6 +12,7 @@
 @mixin container {
   padding-inline: map.get(tokens.$spacing, base);
   margin-inline: auto;
+  box-sizing: border-box;
   width: 100%;
 
   @media (width >= map.get(tokens.$breakpoints, small)) {
