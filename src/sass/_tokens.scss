@@ -95,6 +95,7 @@ $duration: (
   short: 150ms,
   shortish: 250ms,
   medium: 500ms,
+  reduced-motion: 1ms,
 );
 
 $spacing: (
@@ -108,4 +109,10 @@ $breakpoints: (
   small: 40rem,
   medium: 48rem,
   large: 64rem,
+);
+
+$icon-width: (
+  sm: 1rem,
+  base: 2rem,
+  lg: 3rem,
 );

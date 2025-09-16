@@ -10,6 +10,12 @@ export {
 export { default as useObjectURL } from "./hooks/useObjectURL";
 
 // Components
+export {
+  type BusyIconProps,
+  type BusyIconSize,
+  default as BusyIcon,
+} from "./BusyIcon";
+
 export { type ButtonProps, default as Button } from "./Button";
 
 export { type CodeBlockProps, default as CodeBlock } from "./CodeBlock";

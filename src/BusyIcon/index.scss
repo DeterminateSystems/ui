@@ -1,0 +1,176 @@
+@use "sass:map";
+
+@use "../sass/mixins";
+@use "../sass/tokens";
+
+.busy-icon {
+  display: inline-block;
+  aspect-ratio: 1;
+  height: auto;
+
+  @include mixins.transition(background-color, short);
+
+  @each $size in tokens.$sizes {
+    &.busy-icon--#{$size} {
+      width: map.get(tokens.$icon-width, $size);
+    }
+  }
+
+  --active-color: #{map.get(tokens.$brand, white)};
+  --inactive-color: #{map.get(tokens.$brand, gray)};
+  @include mixins.light-mode {
+    --active-color: #{map.get(tokens.$brand, black)};
+    --inactive-color: #{map.get(tokens.$brand, light)};
+  }
+
+  --duration: #{map.get(tokens.$duration, medium)};
+  --initial-delay: #{map.get(tokens.$duration, medium)};
+  --start-color: transparent;
+  --step-0-color: transparent;
+  --step-1-color: transparent;
+  --step-2-color: transparent;
+  --step-3-color: transparent;
+  --end-color: transparent;
+
+  .busy-icon__svg {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke-linejoin: round;
+    stroke-miterlimit: 2;
+  }
+
+  .busy-icon__loader {
+    .busy-icon__path {
+      transition: fill calc(var(--duration) / 2) linear;
+    }
+
+    .busy-icon__start {
+      fill: var(--start-color);
+    }
+    .busy-icon__step-0 {
+      fill: var(--step-0-color);
+    }
+    .busy-icon__step-1 {
+      fill: var(--step-1-color);
+    }
+    .busy-icon__step-2 {
+      fill: var(--step-2-color);
+    }
+    .busy-icon__step-3 {
+      fill: var(--step-3-color);
+    }
+    .busy-icon__end {
+      fill: var(--end-color);
+    }
+  }
+
+  &.busy-icon--pending {
+    animation: var(--duration) infinite pulse;
+    animation-fill-mode: forwards;
+    animation-delay: var(--initial-delay);
+    @media (prefers-reduced-motion: reduce) {
+      // Slow down the pending animation, but NOT the "complete" swipe
+      --duration: #{map.get(tokens.$duration, reduced-motion)};
+      animation-iteration-count: 1;
+    }
+  }
+
+  &.busy-icon--complete {
+    animation: var(--duration) 1 finish;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes pulse {
+    0% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--active-color);
+      --step-1-color: var(--inactive-color);
+      --step-2-color: var(--inactive-color);
+      --step-3-color: var(--inactive-color);
+      --end-color: var(--inactive-color);
+    }
+    25% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--inactive-color);
+      --step-1-color: var(--active-color);
+      --step-2-color: var(--inactive-color);
+      --step-3-color: var(--inactive-color);
+      --end-color: var(--inactive-color);
+    }
+    50% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--inactive-color);
+      --step-1-color: var(--inactive-color);
+      --step-2-color: var(--active-color);
+      --step-3-color: var(--inactive-color);
+      --end-color: var(--inactive-color);
+    }
+    75% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--inactive-color);
+      --step-1-color: var(--inactive-color);
+      --step-2-color: var(--inactive-color);
+      --step-3-color: var(--active-color);
+      --end-color: var(--inactive-color);
+    }
+    100% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--active-color);
+      --step-1-color: var(--inactive-color);
+      --step-2-color: var(--inactive-color);
+      --step-3-color: var(--inactive-color);
+      --end-color: var(--inactive-color);
+    }
+  }
+
+  @keyframes finish {
+    0% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--inactive-color);
+      --step-1-color: var(--inactive-color);
+      --step-2-color: var(--inactive-color);
+      --step-3-color: var(--inactive-color);
+      --end-color: var(--inactive-color);
+    }
+    20% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--inactive-color);
+      --step-1-color: var(--inactive-color);
+      --step-2-color: var(--inactive-color);
+      --step-3-color: var(--inactive-color);
+      --end-color: var(--inactive-color);
+    }
+    40% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--inactive-color);
+      --step-1-color: var(--active-color);
+      --step-2-color: var(--inactive-color);
+      --step-3-color: var(--inactive-color);
+      --end-color: var(--inactive-color);
+    }
+    60% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--active-color);
+      --step-1-color: var(--active-color);
+      --step-2-color: var(--active-color);
+      --step-3-color: var(--inactive-color);
+      --end-color: var(--inactive-color);
+    }
+    80% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--active-color);
+      --step-1-color: var(--active-color);
+      --step-2-color: var(--active-color);
+      --step-3-color: var(--active-color);
+      --end-color: var(--inactive-color);
+    }
+    100% {
+      --start-color: var(--active-color);
+      --step-0-color: var(--active-color);
+      --step-1-color: var(--active-color);
+      --step-2-color: var(--active-color);
+      --step-3-color: var(--active-color);
+      --end-color: var(--active-color);
+    }
+  }
+}
