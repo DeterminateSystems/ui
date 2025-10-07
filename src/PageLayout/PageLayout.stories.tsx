@@ -33,3 +33,23 @@ export const Default: Story = {
     content: <Placeholder height="15em" label="Content" />,
   },
 };
+
+export const WideEnoughForFlakeHubPR1338: Story = {
+  args: {
+    header: <Placeholder height="2em" label="Header" />,
+    footer: <Placeholder height="2em" label="Footer" />,
+    content: (
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, minmax(0px, 1fr))",
+          gap: "12px",
+        }}
+      >
+        <Placeholder height="10em" width="318px" label="Card" />
+        <Placeholder height="10em" width="318px" label="Card" />
+        <Placeholder height="10em" width="318px" label="Card" />
+      </div>
+    ),
+  },
+};

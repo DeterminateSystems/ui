@@ -7,14 +7,59 @@ import "../lib/index.min.css";
 import "./preview.scss";
 import ColorProvider from "../src/ColorProvider";
 import type { ColorScheme } from "../src/ColorContext";
-import { MINIMAL_VIEWPORTS } from "storybook/viewport";
 import { allModes } from "./modes";
 
-const viewports = structuredClone(MINIMAL_VIEWPORTS);
-// The original mobile1 width is 320px.
-// We've only seen 400 pageviews from something smaller than 360px.
-// Measured of the 180 days prior to 2025-08-14.
-viewports.mobile1.styles.width = "360px";
+const VIEWPORTS = {
+  minimum: {
+    name: "Minimum",
+    styles: {
+      height: "568px",
+      width: "360px",
+    },
+    type: "mobile",
+  },
+  small: {
+    name: "Small",
+    styles: {
+      height: "667px",
+      width: "40rem",
+    },
+    type: "tablet",
+  },
+
+  medium: {
+    name: "Medium",
+    styles: {
+      height: "1024px",
+      width: "48rem",
+    },
+    type: "tablet",
+  },
+  large: {
+    name: "Large",
+    styles: {
+      height: "1112px",
+      width: "64rem",
+    },
+    type: "desktop",
+  },
+  xlarge: {
+    name: "X-Large",
+    styles: {
+      height: "1194px",
+      width: "80rem",
+    },
+    type: "desktop",
+  },
+  xxlarge: {
+    name: "XX-Large",
+    styles: {
+      height: "960px",
+      width: "96rem",
+    },
+    type: "desktop",
+  },
+};
 
 const preview: Preview = {
   decorators: [withSimulatedColorSchemes],
@@ -25,7 +70,7 @@ const preview: Preview = {
     },
 
     viewport: {
-      options: viewports,
+      options: VIEWPORTS,
     },
 
     controls: {

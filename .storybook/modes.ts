@@ -7,23 +7,33 @@ export const allModes = {
     simulatedSystemColorScheme: "dark",
   },
 
+  mobile_minimum: {
+    simulatedSystemColorScheme: "light",
+    viewport: "minimum",
+  },
+
   mobile_small: {
     simulatedSystemColorScheme: "light",
-    viewport: "mobile1",
+    viewport: "small",
   },
 
-  mobile_large: {
+  tablet_medium: {
     simulatedSystemColorScheme: "light",
-    viewport: "mobile2",
+    viewport: "medium",
   },
 
-  tablet: {
+  desktop_large: {
     simulatedSystemColorScheme: "light",
-    viewport: "tablet",
+    viewport: "large",
   },
 
-  desktop: {
+  desktop_xlarge: {
     simulatedSystemColorScheme: "light",
-    viewport: "desktop",
+    viewport: "xlarge",
+  },
+
+  desktop_xxlarge: {
+    simulatedSystemColorScheme: "light",
+    viewport: "xxlarge",
   },
 } as const;

@@ -26,6 +26,14 @@
   @media (width >= map.get(tokens.$breakpoints, large)) {
     max-width: map.get(tokens.$breakpoints, large);
   }
+
+  @media (width >= map.get(tokens.$breakpoints, xlarge)) {
+    max-width: map.get(tokens.$breakpoints, xlarge);
+  }
+
+  @media (width >= map.get(tokens.$breakpoints, 2xlarge)) {
+    max-width: map.get(tokens.$breakpoints, 2xlarge);
+  }
 }
 
 @mixin transition($property, $duration) {
