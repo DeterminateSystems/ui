@@ -50,7 +50,7 @@
     "@vitest/coverage-v8": "^3.2.4"
   },
   "peerDependencies": {
-    "react": "^19.1.0"
+    "react": "^19"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

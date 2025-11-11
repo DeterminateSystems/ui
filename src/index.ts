@@ -20,8 +20,6 @@ export { type ButtonProps, default as Button } from "./Button";
 
 export { type CodeBlockProps, default as CodeBlock } from "./CodeBlock";
 
-export { type CodeFileProps, default as CodeFile } from "./CodeFile";
-
 export {
   type ColorContextValue,
   type ColorScheme,
@@ -82,3 +80,5 @@ export {
 } from "./LabeledTextInput";
 
 export { type PageLayoutProps, default as PageLayout } from "./PageLayout";
+
+export { type NavigationProps, default as Navigation } from "./Navigation";

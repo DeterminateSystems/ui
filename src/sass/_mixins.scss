@@ -32,9 +32,81 @@
   }
 }
 
+@mixin border($size) {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: map.get(tokens.$border-radius, $size);
+
+  border-color: map.get(tokens.$border-color, dark);
+  @include light-mode {
+    border-color: map.get(tokens.$border-color, light);
+  }
+}
+
+@mixin border-top($size) {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-top-left-radius: calc(map.get(tokens.$border-radius, $size) - 1px);
+  border-top-right-radius: calc(map.get(tokens.$border-radius, $size) - 1px);
+
+  border-top-color: map.get(tokens.$border-color, dark);
+  border-left-color: map.get(tokens.$border-color, dark);
+  border-right-color: map.get(tokens.$border-color, dark);
+  @include light-mode {
+    border-top-color: map.get(tokens.$border-color, light);
+    border-left-color: map.get(tokens.$border-color, light);
+    border-right-color: map.get(tokens.$border-color, light);
+  }
+}
+
+@mixin border-bottom($size) {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom-left-radius: calc(map.get(tokens.$border-radius, $size) - 1px);
+  border-bottom-right-radius: calc(map.get(tokens.$border-radius, $size) - 1px);
+
+  border-bottom-color: map.get(tokens.$border-color, dark);
+  border-left-color: map.get(tokens.$border-color, dark);
+  border-right-color: map.get(tokens.$border-color, dark);
+  @include light-mode {
+    border-bottom-color: map.get(tokens.$border-color, light);
+    border-left-color: map.get(tokens.$border-color, light);
+    border-right-color: map.get(tokens.$border-color, light);
+  }
+}
+
+@mixin shadow {
+  box-shadow:
+    0 0 #0000,
+    0 0 #0000,
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  @include light-mode {
+    box-shadow:
+      0 0 #0000,
+      0 0 #0000,
+      0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  }
+}
+
 @mixin transition($property, $duration) {
   transition-property: $property;
   transition-duration: map.get(tokens.$duration, $duration);
+}
+
+@mixin margin-y($size) {
+  $spacing: map.get(tokens.$spacing, $size);
+
+  margin: $spacing 0;
 }
 
 @mixin pad($size) {
