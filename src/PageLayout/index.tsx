@@ -23,7 +23,13 @@ const PageLayout: FC<PageLayoutProps> = ({
       {!!header && <header>{header}</header>}
       <main>
         <div className="page-layout__content">{content}</div>
-        {panes.length > 0 && <div className="page-layout__panes">{panes}</div>}
+        {panes.length > 0 && (
+          <div className="page-layout__panes">
+            {panes.map((pane, idx) => (
+              <div key={pane.key ?? idx}>{pane}</div>
+            ))}
+          </div>
+        )}
       </main>
       {!!footer && <footer>{footer}</footer>}
     </div>
