@@ -1,0 +1,41 @@
+@use "sass:map";
+
+@use "../sass/tokens";
+@use "../sass/mixins";
+
+.code-inline {
+  appearance: none;
+  padding: map.get(tokens.$spacing, xs) map.get(tokens.$spacing, sm);
+  border-radius: map.get(tokens.$border-radius, base);
+  font-size: 80%;
+  display: inline;
+
+  background-color: map.get(tokens.$grays, light);
+  @include mixins.light-mode {
+    background-color: map.get(tokens.$grays, very-light);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.code-inline__code {
+  display: inline;
+  word-break: break-all;
+
+  font-family: map.get(tokens.$fonts, mono);
+  color: map.get(tokens.$brand, white);
+  @include mixins.light-mode {
+    color: map.get(tokens.$brand, black);
+  }
+}
+
+.code-inline__copy {
+  display: inline;
+  vertical-align: middle;
+  height: 1.75em;
+  width: 1.75em;
+  margin-top: -2px;
+  padding-left: map.get(tokens.$spacing, xs);
+}
