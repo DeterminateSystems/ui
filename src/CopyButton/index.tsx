@@ -1,11 +1,8 @@
 import { type FC } from "react";
-import {
-  ClipboardDocumentIcon,
-  ClipboardDocumentCheckIcon,
-} from "@heroicons/react/24/outline";
 
 import "./index.scss";
 import useCopy from "../hooks/useCopy";
+import ClipboardIcon from "../ClipboardIcon";
 
 export interface CopyButtonProps {
   /**
@@ -22,8 +19,6 @@ export interface CopyButtonProps {
 const CopyButton: FC<CopyButtonProps> = ({ data }) => {
   const [handleCopy, copied] = useCopy(data);
 
-  const Icon = copied ? ClipboardDocumentCheckIcon : ClipboardDocumentIcon;
-
   return (
     <button
       className="copy-button"
@@ -33,7 +28,7 @@ const CopyButton: FC<CopyButtonProps> = ({ data }) => {
       }}
       aria-label="Copy text"
     >
-      <Icon />
+      <ClipboardIcon copied={copied} />
     </button>
   );
 };
