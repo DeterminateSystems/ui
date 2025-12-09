@@ -22,6 +22,8 @@ export { type CodeBlockProps, default as CodeBlock } from "./CodeBlock";
 
 export { type CodeFileProps, default as CodeFile } from "./CodeFile";
 
+export { type CodeInlineProps, default as CodeInline } from "./CodeInline";
+
 export {
   type ColorContextValue,
   type ColorScheme,
