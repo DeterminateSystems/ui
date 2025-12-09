@@ -20,14 +20,7 @@ const CopyButton: FC<CopyButtonProps> = ({ data }) => {
   const [handleCopy, copied] = useCopy(data);
 
   return (
-    <button
-      className="copy-button"
-      onClick={(event) => {
-        event.preventDefault();
-        handleCopy();
-      }}
-      aria-label="Copy text"
-    >
+    <button className="copy-button" onClick={handleCopy} aria-label="Copy text">
       <ClipboardIcon copied={copied} />
     </button>
   );
