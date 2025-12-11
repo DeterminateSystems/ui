@@ -12,6 +12,7 @@ import ColorContext, {
 } from "../ColorContext";
 
 import useSystemColorScheme from "../hooks/useSystemColorScheme";
+import { applyTheme } from "../theme";
 
 // License notes: a lot of the code having to do with runtime reactive switching came from GitHub's MIT code:
 // https://github.com/primer/react/blob/e1268ff35acf48561adef9e55f8add39f69924eb/packages/react/src/ThemeProvider.tsx#L146
@@ -134,15 +135,6 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
     <ColorContext.Provider value={value}>{children}</ColorContext.Provider>
   );
 };
-
-function applyTheme(root: Element, scheme: ColorScheme) {
-  const classes = root.classList;
-  const [next, previous] =
-    scheme === "light" ? ["light", "dark"] : ["dark", "light"];
-
-  classes.add(`color-scheme--${next}`);
-  classes.remove(`color-scheme--${previous}`);
-}
 
 function resolveColorScheme(
   preferredScheme: ColorSchemePreference,

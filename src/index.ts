@@ -2,6 +2,8 @@
 import "./sass/preflight.scss";
 import "./sass/reset.scss";
 
+export { applyTheme, themeForScheme } from "./theme";
+
 // Hooks
 export {
   type HighlightLanguage,
