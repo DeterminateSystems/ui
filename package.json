@@ -42,7 +42,7 @@
     "rollup-plugin-sass": "^1.15.2",
     "rollup-plugin-svg-import": "^3.0.0",
     "sass": "^1.89.0",
-    "storybook": "^10.0.7",
+    "storybook": "^10.1.10",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4",
     "@vitest/browser": "^3.2.4",
