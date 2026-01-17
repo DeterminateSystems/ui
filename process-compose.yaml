@@ -1,0 +1,14 @@
+version: "0.5"
+
+processes:
+  watch:
+    command: npm run watch
+    availability:
+      restart: always
+      backoff_seconds: 2
+
+  storybook:
+    command: npm run storybook
+    availability:
+      restart: always
+      backoff_seconds: 2
