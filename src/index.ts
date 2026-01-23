@@ -22,7 +22,6 @@ export {
 	default as ColorProvider,
 } from "./ColorProvider";
 export {
-	type ColorSchemeToggleProps,
 	default as ColorSchemeToggle,
 } from "./ColorSchemeToggle";
 export { type CopyButtonProps, default as CopyButton } from "./CopyButton";
