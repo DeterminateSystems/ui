@@ -30,6 +30,7 @@
           buildInputs = [
             pkgs.codespell
             pkgs.nodejs_latest
+            pkgs.process-compose
           ];
         };
 

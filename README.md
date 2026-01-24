@@ -22,10 +22,7 @@ And, add this to your `<head>` so fonts work:
 
 ## Development
 
-Run these two commands in two separate terminals. (Storybook needs to see the CSS, so it's better to have Rollup complete its CSS work.)
-
-1. `npm run watch`
-2. `npm run storybook`
+Run `process-compose` to start the various processes.
 
 Remember to use `npm run format:fix` to match Prettier's expected formatting style.
 
