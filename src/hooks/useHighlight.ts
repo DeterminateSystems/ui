@@ -3,6 +3,7 @@ import { createJavaScriptRegexEngine } from "@shikijs/engine-javascript";
 import langShell from "@shikijs/langs/shellscript";
 import langTerraform from "@shikijs/langs/terraform";
 import langYaml from "@shikijs/langs/yaml";
+import langNix from "@shikijs/langs/nix";
 import themeGitHubDark from "@shikijs/themes/github-dark";
 import themeGitHubLight from "@shikijs/themes/github-light";
 import { useMemo } from "react";
@@ -11,10 +12,11 @@ import { useMemo } from "react";
  * Languages understood by the UI system's highlighter. The `text` option prevents highlighting.
  */
 export const highlightLanguages = [
+  "nix",
   "shell",
-  "yaml",
   "terraform",
   "text",
+  "yaml",
 ] as const;
 export type HighlightLanguage = (typeof highlightLanguages)[number];
 
@@ -23,7 +25,7 @@ let shiki: ReturnType<typeof createHighlighterCoreSync>;
 function getShiki() {
   return (shiki ??= createHighlighterCoreSync({
     themes: [themeGitHubLight, themeGitHubDark],
-    langs: [langShell, langTerraform, langYaml],
+    langs: [langNix, langShell, langTerraform, langYaml],
     engine: createJavaScriptRegexEngine(),
   }));
 }

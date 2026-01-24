@@ -1,8 +1,12 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import type { ColorScheme } from "../ColorContext";
 
 function darkModeMatcher(): MediaQueryList | undefined {
-  const media = window?.matchMedia?.("(prefers-color-scheme: dark)");
+  if (typeof window === "undefined") {
+    return undefined;
+  }
+
+  const media = window.matchMedia?.("(prefers-color-scheme: dark)");
   if (!media) {
     return undefined;
   }
@@ -24,11 +28,11 @@ function querySystemColorScheme(): ColorScheme | undefined {
 }
 
 function useSystemColorScheme() {
-  const [systemColorScheme, setSystemColorScheme] = React.useState(
+  const [systemColorScheme, setSystemColorScheme] = useState(
     querySystemColorScheme,
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     const media = darkModeMatcher();
 
     if (!media) {

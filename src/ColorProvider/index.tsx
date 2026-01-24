@@ -95,9 +95,15 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
   useLocalStorage = true,
   simulatedSystemColorScheme,
   preferredColorScheme,
-  root = document.body,
+  root,
   children,
 }) => {
+  if (!root) {
+    if (typeof document !== "undefined") {
+      root = document.body;
+    }
+  }
+
   const actualSystemColorScheme = useSystemColorScheme();
   const systemColorScheme =
     simulatedSystemColorScheme ?? actualSystemColorScheme;
@@ -110,7 +116,9 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
   );
 
   // Apply the theme super early so we don't get a FOUC
-  applyTheme(root, scheme);
+  if (root) {
+    applyTheme(root, scheme);
+  }
 
   // Since we're pretty high up in the component tree, we want to be extremely
   // careful about re-rendering. Memoization ensures that the object only
@@ -128,7 +136,9 @@ const ColorProvider: React.FC<PropsWithChildren<ColorProviderProps>> = ({
 
   // Switch body classes depending on the chosen scheme
   useEffect(() => {
-    applyTheme(root, scheme);
+    if (root) {
+      applyTheme(root, scheme);
+    }
   }, [scheme]);
 
   return (

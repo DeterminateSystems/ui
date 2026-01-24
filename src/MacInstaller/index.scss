@@ -10,13 +10,25 @@
   min-width: 15em;
 
   align-items: center;
+  justify-content: center;
 
   background-color: map.get(tokens.$brand, black);
-  border: 1px solid map.get(tokens.$brand, magenta);
+  @include mixins.light-mode {
+    background-color: map.get(tokens.$brand, light);
+  }
+
   color: map.get(tokens.$brand, white);
+  @include mixins.light-mode {
+    color: map.get(tokens.$brand, black);
+  }
+
+  border: 1px solid map.get(tokens.$brand, magenta);
+
   text-decoration: none;
 
   font-family: map.get(tokens.$fonts, sans);
+  font-size: map.get(tokens.$font-size, base);
+  font-weight: 500;
 
   padding: 1rem;
   border-radius: 0.5rem;
@@ -29,10 +41,17 @@
       map.get(tokens.$brand, magenta),
       $blackness: 50%
     );
+    @include mixins.light-mode {
+      background-color: color.scale(
+        map.get(tokens.$brand, magenta),
+        $lightness: 80%
+      );
+    }
   }
 }
 
 .mac-installer__pkg {
   flex: 3.5rem 3.5rem auto;
   margin-right: 1rem;
+  width: 45px;
 }
