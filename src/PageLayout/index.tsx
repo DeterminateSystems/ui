@@ -20,7 +20,7 @@ const PageLayout: FC<PageLayoutProps> = ({
 }) => {
   return (
     <div className={`page-layout page-layout--${width}`}>
-      {!!header && <header>{header}</header>}
+      {header}
       <main>
         <div className="page-layout__content">{content}</div>
         {panes.length > 0 && (
