@@ -1,47 +1,44 @@
-import { useContext, type FC } from "react";
+import { type FC, useContext, useMemo } from "react";
+import { IoMoonSharp, IoSunnySharp } from "react-icons/io5";
 import ColorContext, { type ColorSchemePreference } from "../ColorContext";
 import { nextSchemePreference } from "../ColorProvider";
-import { IoMoonSharp, IoSunnySharp } from "react-icons/io5";
 import AutoIcon from "./AutoIcon";
 import "./index.scss";
 
 const icons = {
-  light: <IoSunnySharp aria-label="Light mode" height="100%" width="100%" />,
-  dark: <IoMoonSharp aria-label="Dark mode" height="100%" width="100%" />,
-  auto: <AutoIcon height="100%" width="100%" />,
+	light: <IoSunnySharp aria-label="Light mode" height="100%" width="100%" />,
+	dark: <IoMoonSharp aria-label="Dark mode" height="100%" width="100%" />,
+	auto: <AutoIcon height="100%" width="100%" />,
 };
 
-export interface ColorSchemeToggleProps {}
+const ColorSchemeToggle: FC = () => {
+	const ctx = useContext(ColorContext);
 
-const ColorSchemeToggle: FC<ColorSchemeToggleProps> = ({}) => {
-  const colorSchemeCtx = useContext(ColorContext);
+  const icon = useMemo(() => icons[ctx.preference], [ctx.preference]);
 
-  return (
-    <button
-      className="color-scheme-toggle"
-      aria-label="Toggle light/dark/auto mode"
-      onClick={() => {
-        colorSchemeCtx.setPreference(
-          nextSchemePreference(colorSchemeCtx.preference),
-        );
-      }}
-    >
-      <div
-        data-testid="color-scheme__icon"
-        className={`color-scheme-toggle__icon color-scheme-toggle__icon--${colorSchemeCtx.scheme}`}
-      >
-        <Icon preference={colorSchemeCtx.preference} />
-      </div>
-    </button>
-  );
+	return (
+		<button
+      type="button"
+			className="color-scheme-toggle"
+			aria-label="Toggle light/dark/auto mode"
+			onClick={() => {
+				ctx.setPreference(
+					nextSchemePreference(ctx.preference),
+				);
+			}}
+		>
+			<div
+				data-testid="color-scheme__icon"
+				className={`color-scheme-toggle__icon color-scheme-toggle__icon--${ctx.scheme}`}
+			>
+				{icon}
+			</div>
+		</button>
+	);
 };
 
 export interface IconProps {
-  preference: ColorSchemePreference;
+	preference: ColorSchemePreference;
 }
-
-const Icon: FC<IconProps> = ({ preference }) => {
-  return icons[preference];
-};
 
 export default ColorSchemeToggle;
