@@ -1,0 +1,263 @@
+@use "sass:map";
+@use "tokens";
+@use "mixins";
+
+// =============================================================================
+// Table Component
+// =============================================================================
+// A data table component with support for bleed, dense, grid, and striped variants.
+// Uses BEM methodology for clear, maintainable class structure.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Block: .table
+// -----------------------------------------------------------------------------
+
+.table {
+  $block: &;
+
+  // Flow root container
+  &__wrapper {
+    display: flow-root;
+  }
+
+  // Scrollable container
+  &__container {
+    margin-inline: calc(-1 * var(--gutter, #{map.get(tokens.$spacing, base)}));
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  // Inner alignment wrapper
+  &__inner {
+    display: inline-block;
+    min-width: 100%;
+    vertical-align: middle;
+
+    #{$block}--bleed & {
+      // No padding when bleed is enabled
+    }
+
+    @media (min-width: map.get(tokens.$breakpoints, small)) {
+      #{$block}:not(#{$block}--bleed) & {
+        padding-inline: var(--gutter, #{map.get(tokens.$spacing, base)});
+      }
+    }
+  }
+
+  // The actual table element
+  &__element {
+    min-width: 100%;
+    text-align: left;
+    font-size: map.get(tokens.$font-size, sm);
+    line-height: 1.5;
+    color: map.get(tokens.$brand, black);
+
+    @include mixins.light-mode {
+      color: map.get(tokens.$brand, black);
+    }
+
+    .color-scheme--dark & {
+      color: map.get(tokens.$brand, white);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Element: .table__head
+// -----------------------------------------------------------------------------
+
+.table__head {
+  color: map.get(tokens.$grays, light);
+
+  .color-scheme--dark & {
+    color: map.get(tokens.$grays, very-light);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Element: .table__body
+// -----------------------------------------------------------------------------
+
+.table__body {
+  // Default styling - can be extended as needed
+}
+
+// -----------------------------------------------------------------------------
+// Element: .table__row
+// -----------------------------------------------------------------------------
+
+.table__row {
+  $row: &;
+
+  // Striped variant (applied via parent modifier)
+  .table--striped & {
+    &:nth-child(even) {
+      background-color: color-mix(in oklab, #{map.get(tokens.$brand, black)} 2.5%, transparent);
+
+      .color-scheme--dark & {
+        background-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} 2.5%, transparent);
+      }
+    }
+  }
+
+  // Clickable row states
+  &--clickable {
+    // Focus state when row link is focused
+    &:has([data-row-link][data-focus]) {
+      outline: 2px solid map.get(tokens.$brand, ocean-blue);
+      outline-offset: -2px;
+    }
+
+    .color-scheme--dark &:focus-within {
+      background-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} 2.5%, transparent);
+    }
+
+    // Hover states
+    &:hover {
+      .table--striped & {
+        background-color: color-mix(in oklab, #{map.get(tokens.$brand, black)} 5%, transparent);
+
+        .color-scheme--dark & {
+          background-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} 5%, transparent);
+        }
+      }
+
+      .table:not(.table--striped) & {
+        background-color: color-mix(in oklab, #{map.get(tokens.$brand, black)} 2.5%, transparent);
+
+        .color-scheme--dark & {
+          background-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} 2.5%, transparent);
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Element: .table__header (th)
+// -----------------------------------------------------------------------------
+
+.table__header {
+  $header: &;
+
+  padding: map.get(tokens.$spacing, sm) 1rem;
+  font-weight: map.get(tokens.$font-weight, md);
+  border-bottom: 1px solid color-mix(in oklab, #{map.get(tokens.$brand, black)} 10%, transparent);
+
+  .color-scheme--dark & {
+    border-bottom-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} 10%, transparent);
+  }
+
+  // First and last cell gutter handling
+  &:first-child {
+    padding-left: var(--gutter, #{map.get(tokens.$spacing, sm)});
+  }
+
+  &:last-child {
+    padding-right: var(--gutter, #{map.get(tokens.$spacing, sm)});
+  }
+
+  // Grid variant - vertical borders
+  .table--grid & {
+    border-left: 1px solid color-mix(in oklab, #{map.get(tokens.$brand, black)} 5%, transparent);
+
+    .color-scheme--dark & {
+      border-left-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} 5%, transparent);
+    }
+
+    &:first-child {
+      border-left: 0;
+    }
+  }
+
+  // Non-bleed padding adjustments
+  @media (min-width: map.get(tokens.$breakpoints, small)) {
+    .table:not(.table--bleed) & {
+      &:first-child {
+        padding-left: map.get(tokens.$spacing, xs);
+      }
+
+      &:last-child {
+        padding-right: map.get(tokens.$spacing, xs);
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Element: .table__cell (td)
+// -----------------------------------------------------------------------------
+
+.table__cell {
+  $cell: &;
+
+  position: relative;
+  padding: 1rem;
+
+  // First and last cell gutter handling
+  &:first-child {
+    padding-left: var(--gutter, #{map.get(tokens.$spacing, sm)});
+  }
+
+  &:last-child {
+    padding-right: var(--gutter, #{map.get(tokens.$spacing, sm)});
+  }
+
+  // Bottom border (when not striped)
+  .table:not(.table--striped) & {
+    border-bottom: 1px solid color-mix(in oklab, #{map.get(tokens.$brand, black)} 5%, transparent);
+
+    .color-scheme--dark & {
+      border-bottom-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} 5%, transparent);
+    }
+  }
+
+  // Grid variant - vertical borders
+  .table--grid & {
+    border-left: 1px solid color-mix(in oklab, #{map.get(tokens.$brand, black)} 5%, transparent);
+
+    .color-scheme--dark & {
+      border-left-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} 5%, transparent);
+    }
+
+    &:first-child {
+      border-left: 0;
+    }
+  }
+
+  // Dense variant - reduced padding
+  .table--dense & {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
+
+  // Standard padding (non-dense)
+  .table:not(.table--dense) & {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  // Non-bleed padding adjustments
+  @media (min-width: map.get(tokens.$breakpoints, small)) {
+    .table:not(.table--bleed) & {
+      &:first-child {
+        padding-left: map.get(tokens.$spacing, xs);
+      }
+
+      &:last-child {
+        padding-right: map.get(tokens.$spacing, xs);
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Element: .table__row-link
+// -----------------------------------------------------------------------------
+
+.table__row-link {
+  // Visually hidden but interactive link for accessible row clicks
+  // Position and sizing handled by the cell's relative positioning
+  // The link itself can be styled as needed for focus states
+}
