@@ -10,45 +10,95 @@
   display: inline-flex;
   flex-direction: row;
 
+  padding: 0;
   margin: 0;
   border: 1;
 
   font-family: map.get(tokens.$fonts, sans);
 
-  @include mixins.pad(sm);
   font-size: map.get(tokens.$font-size, sm);
-  border-radius: map.get(tokens.$border-radius, lg);
+  font-family: map.get(tokens.$fonts, mono);
 
-  color: var(--lighter);
-  background-color: var(--darker);
-  @include mixins.light-mode {
-    color: var(--darker);
-    background-color: var(--lighter);
+  border-left: 1em solid var(--lighter);
+
+  &__container {
+    padding: 0 map.get(tokens.$padding, sm);
+    border-bottom: map.get(tokens.$border-width, sm) solid var(--lighter);
+  }
+
+  &__prefix {
+    justify-content: center;
+    padding-right: 0.5em;
+    text-transform: uppercase;
+  }
+
+  &__value {
+    font-weight: map.get(tokens.$font-weight, bold);
   }
 
   &.dsp-status-badge--identified {
-    --lighter: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: +80%, $saturation: -40%)};
-    --darker: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: -10%, $saturation: -40%)};
+    --lighter: #{color.scale(
+        map.get(tokens.$brand, rich-blue),
+        $lightness: +80%,
+        $saturation: -40%
+      )};
+    --darker: #{color.scale(
+        map.get(tokens.$brand, rich-blue),
+        $lightness: -10%,
+        $saturation: -40%
+      )};
   }
 
   &.dsp-status-badge--waiting {
-    --lighter: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: +80%, $saturation: -60%)};
-    --darker: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: -10%, $saturation: -60%)};
+    --lighter: #{color.scale(
+        map.get(tokens.$brand, rich-blue),
+        $lightness: +80%,
+        $saturation: -60%
+      )};
+    --darker: #{color.scale(
+        map.get(tokens.$brand, rich-blue),
+        $lightness: -10%,
+        $saturation: -60%
+      )};
   }
 
   &.dsp-status-badge--affected {
-    --lighter: #{color.scale(map.get(tokens.$brand, magenta), $lightness: +80%, $saturation: -10%)};
-    --darker: #{color.scale(map.get(tokens.$brand, magenta), $lightness: -20%, $saturation: -20%)};
+    --lighter: #{color.scale(
+        map.get(tokens.$brand, magenta),
+        $lightness: +80%,
+        $saturation: -10%
+      )};
+    --darker: #{color.scale(
+        map.get(tokens.$brand, magenta),
+        $lightness: -20%,
+        $saturation: -20%
+      )};
   }
 
   &.dsp-status-badge--not-affected {
-    --lighter: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: +80%, $saturation: -80%)};
-    --darker: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: -10%, $saturation: -80%)};
+    --lighter: #{color.scale(
+        map.get(tokens.$brand, rich-blue),
+        $lightness: +80%,
+        $saturation: -80%
+      )};
+    --darker: #{color.scale(
+        map.get(tokens.$brand, rich-blue),
+        $lightness: -10%,
+        $saturation: -80%
+      )};
   }
 
   &.dsp-status-badge--ignored {
-    --lighter: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: +80%, $saturation: -100%)};
-    --darker: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: -10%, $saturation: -100%)};
+    --lighter: #{color.scale(
+        map.get(tokens.$brand, rich-blue),
+        $lightness: +80%,
+        $saturation: -100%
+      )};
+    --darker: #{color.scale(
+        map.get(tokens.$brand, rich-blue),
+        $lightness: -10%,
+        $saturation: -100%
+      )};
   }
 
   &.dsp-status-badge--fixed {

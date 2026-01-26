@@ -55,9 +55,14 @@ export const Ignored: Story = {
 
 export const All = {
   render: () => {
-    return <div>
-    {STATUSES.map((status) => <div><DSPStatusBadge status={status} /></div>)}
-    </div>;
-  }
+    return (
+      <div>
+        {STATUSES.map((status) => (
+          <div>
+            <DSPStatusBadge status={status} />
+          </div>
+        ))}
+      </div>
+    );
+  },
 };
-
