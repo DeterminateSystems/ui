@@ -34,7 +34,6 @@
   }
 
   .header__elements {
-    align-items: center;
     display: flex;
     flex-direction: row;
     gap: map.get(tokens.$spacing, base);

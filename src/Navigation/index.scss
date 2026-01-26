@@ -1,0 +1,76 @@
+@use "sass:map";
+
+@use "../sass/mixins";
+@use "../sass/tokens";
+@use "../sass/functions";
+
+@media screen and (width >= 1024px) {
+  .navigation {
+    height: 100%;
+    padding: 4px; // Matches the svg-icon height used by the expander in closed mode
+    .navigation__expand {
+      display: none;
+    }
+
+    .navigation__elements {
+      height: 24px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1em;
+    }
+  }
+}
+
+@media screen and (width < 1024px) {
+  .navigation {
+    position: relative;
+
+    .navigation__expand {
+      @include mixins.svg-button;
+    }
+
+    .navigation__elements {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: map.get(tokens.$spacing, sm);
+
+      max-width: 100vw;
+
+      position: absolute;
+      transform-origin: 100% 0;
+      z-index: 10;
+      right: 0;
+      top: calc(100% + #{map.get(tokens.$spacing, xs)});
+
+      @include mixins.pad(base);
+      border-radius: map.get(tokens.$border-radius, base);
+
+      background-color: map.get(tokens.$brand, very-black);
+      $offset: map.get(tokens.$spacing, xs);
+      border-style: solid;
+      border-width: 1px;
+      border-color: map.get(tokens.$brand, black);
+      @include mixins.light-mode {
+        border: none;
+        background-color: map.get(tokens.$brand, white);
+        box-shadow:
+          $offset $offset $offset 0px map.get(tokens.$brand, light),
+          -$offset $offset $offset 0px map.get(tokens.$brand, light);
+      }
+    }
+
+    .navigation__element {
+      width: min(320px, 100vw);
+
+      @media screen and (width < 650px) {
+        width: 268px;
+      }
+    }
+  }
+
+  .navigation--closed .navigation__elements {
+    display: none;
+  }
+}
