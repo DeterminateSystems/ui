@@ -38,7 +38,9 @@ export const Default: Story = {
         justifyContent: "end",
       }}
     >
-      <Navigation {...props} />
+      <div style={{ height: "30px" }}>
+        <Navigation {...props} />
+      </div>
     </div>
   ),
 };
@@ -81,7 +83,9 @@ export const DefaultOpen: Story = {
           justifyContent: "end",
         }}
       >
-        <Navigation {...props} />
+        <div style={{ height: "30px" }}>
+          <Navigation {...props} />
+        </div>
       </div>
     </>
   ),
