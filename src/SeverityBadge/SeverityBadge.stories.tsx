@@ -55,9 +55,14 @@ export const Unknown: Story = {
 
 export const All = {
   render: () => {
-    return <div>
-    {SEVERITIES.map((severity) => <div><SeverityBadge severity={severity} /></div>)}
-    </div>;
-  }
+    return (
+      <div>
+        {SEVERITIES.map((severity) => (
+          <div>
+            <SeverityBadge severity={severity} />
+          </div>
+        ))}
+      </div>
+    );
+  },
 };
-

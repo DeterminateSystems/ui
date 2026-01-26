@@ -19,19 +19,17 @@
   font-size: map.get(tokens.$font-size, sm);
   font-family: map.get(tokens.$fonts, mono);
 
-  border-left: 1em solid var(--darker);
-  @include mixins.light-mode {
-    border-left-color: var(--lighter);
-  }
+  border-left: 1em solid var(--lighter);
 
   &__container {
     padding: 0 map.get(tokens.$padding, sm);
-    border-bottom: map.get(tokens.$border-width, sm) solid black;
+    border-bottom: map.get(tokens.$border-width, sm) solid var(--lighter);
   }
 
   &__prefix {
     justify-content: center;
     padding-right: 0.5em;
+    text-transform: uppercase;
   }
 
   &__value {
@@ -44,8 +42,11 @@
   }
 
   &.severity-badge--low {
-    --lighter: #{color.scale(map.get(tokens.$brand, ocean-blue), $lightness: +75%)};
-    --darker:  #{map.get(tokens.$brand, ocean-blue)};
+    --lighter: #{color.scale(
+        map.get(tokens.$brand, ocean-blue),
+        $lightness: +75%
+      )};
+    --darker: #{map.get(tokens.$brand, ocean-blue)};
   }
 
   &.severity-badge--medium {
