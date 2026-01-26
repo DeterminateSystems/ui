@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:color";
 
 @use "../sass/functions";
 @use "../sass/mixins";
@@ -16,40 +17,38 @@
 
   @include mixins.pad(sm);
   font-size: map.get(tokens.$font-size, sm);
-  font-weight: 600;
   border-radius: map.get(tokens.$border-radius, lg);
 
-  &.severity-badge--unknown {
-    background-color: map.get(tokens.$grays, light);
+  color: var(--lighter);
+  background-color: var(--darker);
+  @include mixins.light-mode {
+    color: var(--darker);
+    background-color: var(--lighter);
+  }
 
-    @include mixins.light-mode {
-      background-color: map.get(tokens.$grays, very-light);
-    }
+
+  &.severity-badge--unknown {
+    --lighter: #{map.get(tokens.$grays, light)};
+    --darker: #{map.get(tokens.$grays, very-light)};
   }
 
   &.severity-badge--low {
-    background-color: map.get(tokens.$brand, ocean-blue);
-    color: white;
+    --lighter: #{color.scale(map.get(tokens.$brand, ocean-blue), $lightness: +75%)};
+    --darker:  #{map.get(tokens.$brand, ocean-blue)};
   }
 
   &.severity-badge--medium {
-    color: map.get(tokens.$brand, yellow);
-
-    border: 1px solid functions.darken(map.get(tokens.$brand, yellow), 80%);
-    background-color: functions.darken(map.get(tokens.$brand, yellow), 80%);
+    --lighter: #{map.get(tokens.$brand, yellow)};
+    --darker: #{functions.darken(map.get(tokens.$brand, yellow), 80%)};
   }
 
   &.severity-badge--high {
-    color: map.get(tokens.$brand, orange);
-
-    border: 1px solid functions.darken(map.get(tokens.$brand, orange), 80%);
-    background-color: functions.darken(map.get(tokens.$brand, orange), 80%);
+    --lighter: #{map.get(tokens.$brand, orange)};
+    --darker: #{functions.darken(map.get(tokens.$brand, orange), 80%)};
   }
 
   &.severity-badge--critical {
-    color: map.get(tokens.$brand, red);
-
-    border: 1px solid functions.darken(map.get(tokens.$brand, red), 80%);
-    background-color: functions.darken(map.get(tokens.$brand, red), 80%);
+    --lighter: #{map.get(tokens.$brand, red)};
+    --darker: #{functions.darken(map.get(tokens.$brand, red), 80%)};
   }
 }
