@@ -2,8 +2,10 @@
 
 import clsx from 'clsx'
 import type React from 'react'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext } from 'react'
 import Link from '../Link'
+
+import './index.scss'
 
 const TableContext = createContext<{ bleed: boolean; dense: boolean; grid: boolean; striped: boolean }>({
   bleed: false,
@@ -101,11 +103,11 @@ export function TableHeader({ className, ...props }: React.ComponentPropsWithout
 
 export function TableCell({ className, children, ...props }: React.ComponentPropsWithoutRef<'td'>) {
   let { href, external, title } = useContext(TableRowContext)
-  let [cellRef, setCellRef] = useState<HTMLElement | null>(null)
+  // let [cellRef, setCellRef] = useState<HTMLElement | null>(null)
 
   return (
     <td
-      ref={href ? setCellRef : undefined}
+      // ref={href ? setCellRef : undefined}
       {...props}
       className={clsx('table__cell', className)}
     >

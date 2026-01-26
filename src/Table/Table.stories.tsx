@@ -5,7 +5,6 @@ const meta: Meta<typeof Table> = {
   title: 'Components/Table',
   component: Table,
   parameters: {
-    layout: 'padded',
     docs: {
       description: {
         component: `
