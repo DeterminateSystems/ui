@@ -1,0 +1,8 @@
+@use "sass:map";
+@use "../sass/tokens";
+
+.badges {
+  display: flex;
+  flex-direction: row;
+  gap: map.get(tokens.$spacing, base);
+}
