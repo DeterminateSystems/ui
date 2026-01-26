@@ -1,0 +1,55 @@
+@use "sass:map";
+
+@use "../sass/functions";
+@use "../sass/mixins";
+@use "../sass/tokens";
+
+.severity-badge {
+  align-self: self-start; // Prevents the button from occupying all available space inside a div
+  display: inline-flex;
+  flex-direction: row;
+
+  margin: 0;
+  border: 1;
+
+  font-family: map.get(tokens.$fonts, sans);
+
+  @include mixins.pad(sm);
+  font-size: map.get(tokens.$font-size, sm);
+  font-weight: 600;
+  border-radius: map.get(tokens.$border-radius, lg);
+
+  &.severity-badge--unknown {
+    background-color: map.get(tokens.$grays, light);
+
+    @include mixins.light-mode {
+      background-color: map.get(tokens.$grays, very-light);
+    }
+  }
+
+  &.severity-badge--low {
+    background-color: map.get(tokens.$brand, ocean-blue);
+    color: white;
+  }
+
+  &.severity-badge--medium {
+    color: map.get(tokens.$brand, yellow);
+
+    border: 1px solid functions.darken(map.get(tokens.$brand, yellow), 80%);
+    background-color: functions.darken(map.get(tokens.$brand, yellow), 80%);
+  }
+
+  &.severity-badge--high {
+    color: map.get(tokens.$brand, orange);
+
+    border: 1px solid functions.darken(map.get(tokens.$brand, orange), 80%);
+    background-color: functions.darken(map.get(tokens.$brand, orange), 80%);
+  }
+
+  &.severity-badge--critical {
+    color: map.get(tokens.$brand, red);
+
+    border: 1px solid functions.darken(map.get(tokens.$brand, red), 80%);
+    background-color: functions.darken(map.get(tokens.$brand, red), 80%);
+  }
+}
