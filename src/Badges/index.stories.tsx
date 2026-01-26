@@ -5,7 +5,7 @@ import SeverityBadge from "../SeverityBadge";
 import Badges from "./";
 
 const meta = {
-  title: 'Atoms/Badges',
+  title: "Atoms/Badges",
   component: Badges,
 } satisfies Meta<typeof Badges>;
 
@@ -21,5 +21,5 @@ export const Default: Story = {
         <SeverityBadge severity="Critical" />
       </Badges>
     </>
-  )
+  ),
 };

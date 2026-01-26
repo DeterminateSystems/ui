@@ -2,9 +2,7 @@ import type { PropsWithChildren } from "react";
 
 import "./index.scss";
 
-const Badges: React.FC<PropsWithChildren> = ({
-  children
-}) => (
+const Badges: React.FC<PropsWithChildren> = ({ children }) => (
   <div className="badges">{children}</div>
 );
 
