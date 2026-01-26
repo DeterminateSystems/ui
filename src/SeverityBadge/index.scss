@@ -10,22 +10,33 @@
   display: inline-flex;
   flex-direction: row;
 
+  padding: 0;
   margin: 0;
   border: 1;
 
   font-family: map.get(tokens.$fonts, sans);
 
-  @include mixins.pad(sm);
   font-size: map.get(tokens.$font-size, sm);
-  border-radius: map.get(tokens.$border-radius, lg);
+  font-family: map.get(tokens.$fonts, mono);
 
-  color: var(--lighter);
-  background-color: var(--darker);
+  border-left: 1em solid var(--darker);
   @include mixins.light-mode {
-    color: var(--darker);
-    background-color: var(--lighter);
+    border-left-color: var(--lighter);
   }
 
+  &__container {
+    padding: 0 map.get(tokens.$padding, sm);
+    border-bottom: map.get(tokens.$border-width, sm) solid black;
+  }
+
+  &__prefix {
+    justify-content: center;
+    padding-right: 0.5em;
+  }
+
+  &__value {
+    font-weight: map.get(tokens.$font-weight, bold);
+  }
 
   &.severity-badge--unknown {
     --lighter: #{map.get(tokens.$grays, light)};
@@ -42,7 +53,7 @@
     --darker: #{functions.darken(map.get(tokens.$brand, yellow), 80%)};
   }
 
-  &.severity-badge--high {
+  &.severity-badge--important {
     --lighter: #{map.get(tokens.$brand, orange)};
     --darker: #{functions.darken(map.get(tokens.$brand, orange), 80%)};
   }

@@ -3,7 +3,7 @@ import type { FC, PropsWithChildren } from "react";
 import "./index.scss";
 import clsx from "clsx";
 
-export const SEVERITIES = ["Unknown", "Low", "Medium", "High", "Critical"] as const;
+export const SEVERITIES = ["Unknown", "Low", "Medium", "Important", "Critical"] as const;
 
 export type Severity = (typeof SEVERITIES)[number];
 
@@ -22,10 +22,15 @@ const SeverityBadge: FC<PropsWithChildren<SeverityBadgeProps>> = ({
       "severity-badge--unknown": severity === "Unknown",
       "severity-badge--low": severity === "Low",
       "severity-badge--medium": severity === "Medium",
-      "severity-badge--high": severity === "High",
+      "severity-badge--important": severity === "Important",
       "severity-badge--critical": severity === "Critical",
     })}
-  >{severity}</div>
+  >
+    <div className="severity-badge__container">
+      <span className="severity-badge__prefix">SEV</span>
+      <span className="severity-badge__value">{severity}</span>
+    </div>
+  </div>
 );
 
 export default SeverityBadge;

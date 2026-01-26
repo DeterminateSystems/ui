@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    severity: "High",
+    severity: "Important",
   },
 };
 
@@ -29,9 +29,9 @@ export const Critical: Story = {
   },
 };
 
-export const High: Story = {
+export const Important: Story = {
   args: {
-    severity: "High",
+    severity: "Important",
   },
 };
 

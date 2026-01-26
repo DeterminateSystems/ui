@@ -69,6 +69,10 @@ $border-color: (
   dark: #364153,
 );
 
+$border-width: (
+  sm: 0.1em,
+);
+
 $border-radius: (
   sm: 0.25rem,
   base: 0.5rem,
@@ -85,10 +89,13 @@ $font-size: (
   sm: 0.75rem,
   base: 1rem,
   lg: 1.25rem,
+  xl: 1.5rem,
+  2xl: 2rem,
 );
 
 $font-weight: (
   md: 500,
+  bold: 600,
 );
 
 $duration: (
