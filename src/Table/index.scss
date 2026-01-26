@@ -17,7 +17,6 @@ $grid_transparency: 10%;
 $header_border_transparency: 10%;
 $row_transparency: 10%;
 
-
 .table {
   $block: &;
 
@@ -98,10 +97,18 @@ $row_transparency: 10%;
   // Striped variant (applied via parent modifier)
   .table--striped & {
     &:nth-child(even) {
-      background-color: color-mix(in oklab, #{map.get(tokens.$brand, black)} $row_transparency, transparent);
+      background-color: color-mix(
+        in oklab,
+        #{map.get(tokens.$brand, black)} $row_transparency,
+        transparent
+      );
 
       .color-scheme--dark & {
-        background-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} $row_transparency, transparent);
+        background-color: color-mix(
+          in oklab,
+          #{map.get(tokens.$brand, white)} $row_transparency,
+          transparent
+        );
       }
     }
   }
@@ -115,24 +122,44 @@ $row_transparency: 10%;
     }
 
     .color-scheme--dark &:focus-within {
-      background-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} $row_transparency, transparent);
+      background-color: color-mix(
+        in oklab,
+        #{map.get(tokens.$brand, white)} $row_transparency,
+        transparent
+      );
     }
 
     // Hover states
     &:hover {
       .table--striped & {
-        background-color: color-mix(in oklab, #{map.get(tokens.$brand, black)} $row_transparency, transparent);
+        background-color: color-mix(
+          in oklab,
+          #{map.get(tokens.$brand, black)} $row_transparency,
+          transparent
+        );
 
         .color-scheme--dark & {
-          background-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} $row_transparency, transparent);
+          background-color: color-mix(
+            in oklab,
+            #{map.get(tokens.$brand, white)} $row_transparency,
+            transparent
+          );
         }
       }
 
       .table:not(.table--striped) & {
-        background-color: color-mix(in oklab, #{map.get(tokens.$brand, black)} $row_transparency, transparent);
+        background-color: color-mix(
+          in oklab,
+          #{map.get(tokens.$brand, black)} $row_transparency,
+          transparent
+        );
 
         .color-scheme--dark & {
-          background-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} $row_transparency, transparent);
+          background-color: color-mix(
+            in oklab,
+            #{map.get(tokens.$brand, white)} $row_transparency,
+            transparent
+          );
         }
       }
     }
@@ -148,10 +175,15 @@ $row_transparency: 10%;
 
   padding: map.get(tokens.$spacing, sm) 1rem;
   font-weight: map.get(tokens.$font-weight, md);
-  border-bottom: 1px solid color-mix(in oklab, #{map.get(tokens.$brand, black)} 10%, transparent);
+  border-bottom: 1px solid
+    color-mix(in oklab, #{map.get(tokens.$brand, black)} 10%, transparent);
 
   .color-scheme--dark & {
-    border-bottom-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} 10%, transparent);
+    border-bottom-color: color-mix(
+      in oklab,
+      #{map.get(tokens.$brand, white)} 10%,
+      transparent
+    );
   }
 
   // First and last cell gutter handling
@@ -165,10 +197,19 @@ $row_transparency: 10%;
 
   // Grid variant - vertical borders
   .table--grid & {
-    border-left: 1px solid color-mix(in oklab, #{map.get(tokens.$brand, black)} $grid_transparency, transparent);
+    border-left: 1px solid
+      color-mix(
+        in oklab,
+        #{map.get(tokens.$brand, black)} $grid_transparency,
+        transparent
+      );
 
     .color-scheme--dark & {
-      border-left-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} $grid_transparency, transparent);
+      border-left-color: color-mix(
+        in oklab,
+        #{map.get(tokens.$brand, white)} $grid_transparency,
+        transparent
+      );
     }
 
     &:first-child {
@@ -211,19 +252,37 @@ $row_transparency: 10%;
 
   // Bottom border (when not striped)
   .table__element:not(.table--striped) & {
-    border-bottom: 1px solid color-mix(in oklab, #{map.get(tokens.$brand, black)} $header_border_transparency, transparent);
+    border-bottom: 1px solid
+      color-mix(
+        in oklab,
+        #{map.get(tokens.$brand, black)} $header_border_transparency,
+        transparent
+      );
 
     .color-scheme--dark & {
-      border-bottom-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} $header_border_transparency, transparent);
+      border-bottom-color: color-mix(
+        in oklab,
+        #{map.get(tokens.$brand, white)} $header_border_transparency,
+        transparent
+      );
     }
   }
 
   // Grid variant - vertical borders
   .table--grid & {
-    border-left: 1px solid color-mix(in oklab, #{map.get(tokens.$brand, black)} $grid_transparency, transparent);
+    border-left: 1px solid
+      color-mix(
+        in oklab,
+        #{map.get(tokens.$brand, black)} $grid_transparency,
+        transparent
+      );
 
     .color-scheme--dark & {
-      border-left-color: color-mix(in oklab, #{map.get(tokens.$brand, white)} $grid_transparency, transparent);
+      border-left-color: color-mix(
+        in oklab,
+        #{map.get(tokens.$brand, white)} $grid_transparency,
+        transparent
+      );
     }
 
     &:first-child {

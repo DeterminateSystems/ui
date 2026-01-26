@@ -1,18 +1,23 @@
-'use client'
+"use client";
 
-import clsx from 'clsx'
-import type React from 'react'
-import { createContext, useContext } from 'react'
-import Link from '../Link'
+import clsx from "clsx";
+import type React from "react";
+import { createContext, useContext } from "react";
+import Link from "../Link";
 
-import './index.scss'
+import "./index.scss";
 
-const TableContext = createContext<{ bleed: boolean; dense: boolean; grid: boolean; striped: boolean }>({
+const TableContext = createContext<{
+  bleed: boolean;
+  dense: boolean;
+  grid: boolean;
+  striped: boolean;
+}>({
   bleed: false,
   dense: false,
   grid: false,
   striped: false,
-})
+});
 
 export function Table({
   bleed = false,
@@ -22,30 +27,30 @@ export function Table({
   className,
   children,
   ...props
-}: { bleed?: boolean; dense?: boolean; grid?: boolean; striped?: boolean } & React.ComponentPropsWithoutRef<'div'>) {
+}: {
+  bleed?: boolean;
+  dense?: boolean;
+  grid?: boolean;
+  striped?: boolean;
+} & React.ComponentPropsWithoutRef<"div">) {
   return (
-    <TableContext.Provider value={{ bleed, dense, grid, striped } as React.ContextType<typeof TableContext>}>
-      <div className="table__wrapper">
-        <div
-          {...props}
-          className={clsx(
-            'table__container',
-            className
-          )}
+    <TableContext.Provider
+      value={
+        { bleed, dense, grid, striped } as React.ContextType<
+          typeof TableContext
         >
-          <div
-            className={clsx(
-              'table__inner',
-              bleed && 'table__inner--bleed'
-            )}
-          >
+      }
+    >
+      <div className="table__wrapper">
+        <div {...props} className={clsx("table__container", className)}>
+          <div className={clsx("table__inner", bleed && "table__inner--bleed")}>
             <table
               className={clsx(
-                'table__element',
-                bleed && 'table--bleed',
-                dense && 'table--dense',
-                grid && 'table--grid',
-                striped && 'table--striped'
+                "table__element",
+                bleed && "table--bleed",
+                dense && "table--dense",
+                grid && "table--grid",
+                striped && "table--striped",
               )}
             >
               {children}
@@ -54,22 +59,32 @@ export function Table({
         </div>
       </div>
     </TableContext.Provider>
-  )
+  );
 }
 
-export function TableHead({ className, ...props }: React.ComponentPropsWithoutRef<'thead'>) {
-  return <thead {...props} className={clsx('table__head', className)} />
+export function TableHead({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<"thead">) {
+  return <thead {...props} className={clsx("table__head", className)} />;
 }
 
-export function TableBody({ className, ...props }: React.ComponentPropsWithoutRef<'tbody'>) {
-  return <tbody {...props} className={clsx('table__body', className)} />
+export function TableBody({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<"tbody">) {
+  return <tbody {...props} className={clsx("table__body", className)} />;
 }
 
-const TableRowContext = createContext<{ href?: string; external?: boolean; title?: string }>({
+const TableRowContext = createContext<{
+  href?: string;
+  external?: boolean;
+  title?: string;
+}>({
   href: undefined,
   external: false,
   title: undefined,
-})
+});
 
 export function TableRow({
   href,
@@ -77,39 +92,49 @@ export function TableRow({
   title,
   className,
   ...props
-}: { href?: string; external?: boolean; title?: string } & React.ComponentPropsWithoutRef<'tr'>) {
+}: {
+  href?: string;
+  external?: boolean;
+  title?: string;
+} & React.ComponentPropsWithoutRef<"tr">) {
   return (
-    <TableRowContext.Provider value={{ href, external, title } as React.ContextType<typeof TableRowContext>}>
+    <TableRowContext.Provider
+      value={
+        { href, external, title } as React.ContextType<typeof TableRowContext>
+      }
+    >
       <tr
         {...props}
         className={clsx(
-          'table__row',
-          href && 'table__row--clickable',
-          className
+          "table__row",
+          href && "table__row--clickable",
+          className,
         )}
       />
     </TableRowContext.Provider>
-  )
+  );
 }
 
-export function TableHeader({ className, ...props }: React.ComponentPropsWithoutRef<'th'>) {
-  return (
-    <th
-      {...props}
-      className={clsx('table__header', className)}
-    />
-  )
+export function TableHeader({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<"th">) {
+  return <th {...props} className={clsx("table__header", className)} />;
 }
 
-export function TableCell({ className, children, ...props }: React.ComponentPropsWithoutRef<'td'>) {
-  let { href, external, title } = useContext(TableRowContext)
+export function TableCell({
+  className,
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<"td">) {
+  let { href, external, title } = useContext(TableRowContext);
   // let [cellRef, setCellRef] = useState<HTMLElement | null>(null)
 
   return (
     <td
       // ref={href ? setCellRef : undefined}
       {...props}
-      className={clsx('table__cell', className)}
+      className={clsx("table__cell", className)}
     >
       {href && (
         <Link
@@ -122,5 +147,5 @@ export function TableCell({ className, children, ...props }: React.ComponentProp
       )}
       {children}
     </td>
-  )
+  );
 }
