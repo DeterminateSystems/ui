@@ -1,0 +1,28 @@
+@use "sass:map";
+@use "../sass/tokens";
+@use "../sass/mixins";
+
+.dsa-id {
+  font-family: map.get(tokens.$fonts, mono);
+}
+
+.dsa-header {
+  &__reference {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+  }
+
+  &__dsa-id {
+    font-size: map.get(tokens.$font-size, lg);
+  }
+
+  &__title {
+    font-size: map.get(tokens.$font-size, 2xl);
+    font-weight: map.get(tokens.$font-weight, heavy);
+  }
+}
+
+.last-updated {
+  font-style: italic;
+}
