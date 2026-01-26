@@ -1,0 +1,58 @@
+@use "sass:map";
+@use "sass:color";
+
+@use "../sass/functions";
+@use "../sass/mixins";
+@use "../sass/tokens";
+
+.dsp-status-badge {
+  align-self: self-start; // Prevents the button from occupying all available space inside a div
+  display: inline-flex;
+  flex-direction: row;
+
+  margin: 0;
+  border: 1;
+
+  font-family: map.get(tokens.$fonts, sans);
+
+  @include mixins.pad(sm);
+  font-size: map.get(tokens.$font-size, sm);
+  border-radius: map.get(tokens.$border-radius, lg);
+
+  color: var(--lighter);
+  background-color: var(--darker);
+  @include mixins.light-mode {
+    color: var(--darker);
+    background-color: var(--lighter);
+  }
+
+  &.dsp-status-badge--identified {
+    --lighter: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: +80%, $saturation: -40%)};
+    --darker: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: -10%, $saturation: -40%)};
+  }
+
+  &.dsp-status-badge--waiting {
+    --lighter: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: +80%, $saturation: -60%)};
+    --darker: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: -10%, $saturation: -60%)};
+  }
+
+  &.dsp-status-badge--affected {
+    --lighter: #{color.scale(map.get(tokens.$brand, magenta), $lightness: +80%, $saturation: -10%)};
+    --darker: #{color.scale(map.get(tokens.$brand, magenta), $lightness: -20%, $saturation: -20%)};
+  }
+
+  &.dsp-status-badge--not-affected {
+    --lighter: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: +80%, $saturation: -80%)};
+    --darker: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: -10%, $saturation: -80%)};
+  }
+
+  &.dsp-status-badge--ignored {
+    --lighter: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: +80%, $saturation: -100%)};
+    --darker: #{color.scale(map.get(tokens.$brand, rich-blue), $lightness: -10%, $saturation: -100%)};
+  }
+
+  &.dsp-status-badge--fixed {
+    --lighter: #{functions.lighten(map.get(tokens.$brand, rich-blue), 60%)};
+    --darker: #{functions.darken(map.get(tokens.$brand, rich-blue), 50%)};
+  }
+}
