@@ -6,7 +6,7 @@
 
 @media screen and (width >= 1024px) {
   .navigation {
-    height: 24px; // Matches the svg-icon height used by the expander in closed mode
+    height: 100%;
     padding: 4px; // Matches the svg-icon height used by the expander in closed mode
     .navigation__expand {
       display: none;
@@ -32,6 +32,7 @@
 
     .navigation__elements {
       display: flex;
+      align-items: center;
       flex-direction: column;
       gap: map.get(tokens.$spacing, sm);
 
