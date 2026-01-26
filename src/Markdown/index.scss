@@ -1,0 +1,160 @@
+@use "sass:map";
+@use "../sass/tokens";
+@use "../sass/mixins";
+
+.dsui-prose {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: map.get(tokens.$font-weight, heavy);
+    padding-top: map.get(tokens.$padding, base);
+  }
+
+  h1 {
+    font-size: map.get(tokens.$font-size, 4xl);
+  }
+
+  h2 {
+    font-size: map.get(tokens.$font-size, 3xl);
+  }
+
+  h3 {
+    font-size: map.get(tokens.$font-size, 2xl);
+  }
+
+  h4 {
+    font-size: map.get(tokens.$font-size, xl);
+  }
+
+  h5 {
+    font-size: map.get(tokens.$font-size, lg);
+  }
+
+  h6 {
+    font-size: map.get(tokens.$font-size, lg);
+    font-weight: map.get(tokens.$font-weight, bold);
+  }
+
+  p + p {
+    margin-top: map.get(tokens.$spacing, base);
+  }
+
+  hr {
+    margin: map.get(tokens.$spacing, base) 0;
+  }
+
+  a {
+    text-decoration: underline;
+    font-weight: map.get(tokens.$font-weight, md);
+  }
+
+  ul,
+  ol {
+    padding-left: 1.25rem;
+    margin: 1rem 0;
+    list-style-position: outside;
+    list-style: revert;
+  }
+
+  ul,
+  ol > ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  li {
+    margin: 0.375rem 0;
+  }
+
+  li::marker {
+    color: color-mix(in srgb, currentColor 70%, transparent);
+  }
+
+  li > ul {
+    margin-top: 0.375rem;
+  }
+
+  pre {
+    padding: map.get(tokens.$padding, sm) 0 map.get(tokens.$padding, sm)
+      map.get(tokens.$padding, base);
+    margin: map.get(tokens.$spacing, base) 0;
+    border-left: 1px solid map.get(tokens.$brand, light);
+    @include mixins.light-mode {
+      border-left-color: map.get(tokens.$brand, black);
+    }
+  }
+
+  pre > code {
+    &::before,
+    &::after {
+      content: "";
+    }
+  }
+
+  code {
+    &::before,
+    &::after {
+      content: "`";
+    }
+
+    display: inline;
+    word-break: break-all;
+
+    font-family: map.get(tokens.$fonts, mono);
+    color: map.get(tokens.$brand, white);
+    @include mixins.light-mode {
+      color: map.get(tokens.$brand, black);
+    }
+  }
+
+  blockquote {
+    border-left: map.get(tokens.$padding, sm) solid
+      map.get(tokens.$grays, very-light);
+    padding: map.get(tokens.$padding, sm) 0 map.get(tokens.$padding, sm)
+      map.get(tokens.$padding, base);
+  }
+
+  blockquote blockquote {
+    margin-top: map.get(tokens.$padding, sm);
+  }
+
+  table {
+    width: 100%;
+    table-layout: auto;
+    text-align: left;
+    margin-top: map.get(tokens.$spacing, xl);
+    margin-bottom: map.get(tokens.$spacing, xl);
+  }
+
+  thead {
+    border-bottom-width: 1px;
+    border-bottom-color: var(--tw-prose-th-borders);
+  }
+
+  th {
+    &:not(:first-child) {
+      padding-left: map.get(tokens.$padding, base);
+    }
+    font-weight: map.get(tokens.$font-weight, bold);
+    vertical-align: bottom;
+    padding-right: map.get(tokens.$padding, base);
+    padding-bottom: map.get(tokens.$padding, base);
+  }
+
+  tr:not(:last-child) {
+    border-bottom-width: 1px;
+    border-bottom-color: var(--tw-prose-td-borders);
+  }
+
+  td {
+    padding-top: map.get(tokens.$padding, base);
+    padding-right: map.get(tokens.$padding, base);
+    padding-bottom: map.get(tokens.$padding, base);
+    padding-left: map.get(tokens.$padding, base);
+    vertical-align: baseline;
+  }
+}

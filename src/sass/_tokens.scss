@@ -88,14 +88,17 @@ $padding: (
 $font-size: (
   sm: 0.75rem,
   base: 1rem,
-  lg: 1.25rem,
-  xl: 1.5rem,
-  2xl: 2rem,
+  lg: 1rem,
+  xl: 1.125rem,
+  2xl: 1.375rem,
+  3xl: 1.75rem,
+  4xl: 2.25rem,
 );
 
 $font-weight: (
   md: 500,
   bold: 600,
+  heavy: 700,
 );
 
 $duration: (
@@ -109,6 +112,7 @@ $spacing: (
   xs: 0.25rem,
   sm: 0.5rem,
   base: 0.75rem,
+  xl: 2rem,
 );
 
 $breakpoints: (
