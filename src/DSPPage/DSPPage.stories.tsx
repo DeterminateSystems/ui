@@ -36,6 +36,16 @@ const single: DSAVuln = {
   last_update: new Date(Date.now() - 238_476_234_234),
 
   properties: {
+    vectors: [
+      {
+        note: "DetSys",
+        vector: "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      },
+      {
+        note: "NVD",
+        vector: "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+      },
+    ],
     cve_ids: ["CVE-2024-12345", "CVE-2024-456"],
     references: [
       "https://www.cve.org/CVERecord?id=CVE-2026-1190",
