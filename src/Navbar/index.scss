@@ -1,0 +1,61 @@
+@use "sass:map";
+
+@use "../sass/mixins";
+@use "../sass/tokens";
+
+.navbar {
+  top: 0;
+
+  display: flex;
+  align-items: center;
+
+  font-family: map.get(tokens.$fonts, sans);
+
+  .navbar--fixed {
+    position: fixed;
+  }
+
+  .navbar--container {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 80%; // TODO: make this responsive
+
+    .navbar--brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem; // TODO: make this responsive
+    }
+
+    .navbar--menu {
+      display: flex;
+      align-items: center;
+      gap: 1rem; // TODO: make this responsive
+    }
+  }
+
+  @each $color,
+    $scheme
+      in (
+        "black": (
+            "bg": black,
+            "text": white,
+          ),
+        "white": (
+            "bg": white,
+            "text": black,
+          ),
+        "gray": (
+            "bg": gray,
+            "text": white,
+          )
+      )
+  {
+    &.navbar--#{$color} {
+      background-color: map.get(tokens.$brand, map.get($scheme, bg));
+      * {
+        color: map.get(tokens.$brand, map.get($scheme, text));
+      }
+    }
+  }
+}
