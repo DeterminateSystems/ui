@@ -56,9 +56,35 @@ export function attachPhid(
   }, 500);
 }
 
-/** Aliases an id that arrived from a sibling to this visitor. */
+/**
+ * An id that arrived before PostHog was up or before the visitor opted in,
+ * kept until it can be aliased. Nothing leaves the page while it waits.
+ */
+let pending: string | undefined;
+let unsubscribe: (() => void) | undefined;
+
+function flushPending(): void {
+  if (!pending || !analyticsEnabled()) return;
+  posthog.alias(pending);
+  pending = undefined;
+  unsubscribe?.();
+  unsubscribe = undefined;
+}
+
+/**
+ * Aliases an id that arrived from a sibling to this visitor. Before PostHog
+ * is up, or while consent is pending, the id is held in memory and aliased on
+ * the first event captured once capturing is allowed (opting in captures
+ * one), so a consent banner doesn't lose the handoff.
+ */
 export function adoptPhid(phid: string): void {
-  if (phid && analyticsEnabled()) posthog.alias(phid);
+  if (!phid) return;
+  pending = phid;
+  if (analyticsEnabled()) {
+    flushPending();
+    return;
+  }
+  unsubscribe ??= posthog.on("eventCaptured", flushPending);
 }
 
 /**

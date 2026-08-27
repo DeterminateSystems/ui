@@ -1,8 +1,31 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { attachPhid, withPhid } from "./phid";
+import { adoptPhid, attachPhid, withPhid } from "./phid";
 
 const SITE = "https://determinate.systems/";
+
+// A stand-in for posthog-js: `enabled` plays the part of "loaded and opted
+// in", and `capture` fires the listeners `on("eventCaptured")` registered.
+const fake = vi.hoisted(() => {
+  const listeners = new Set<() => void>();
+  return {
+    enabled: false,
+    listeners,
+    alias: vi.fn(),
+    on: vi.fn((_event: string, cb: () => void) => {
+      listeners.add(cb);
+      return () => listeners.delete(cb);
+    }),
+    capture: () => {
+      for (const cb of [...listeners]) cb();
+    },
+  };
+});
+
+vi.mock("./posthog", () => ({
+  analyticsEnabled: () => fake.enabled,
+  posthog: { alias: fake.alias, on: fake.on },
+}));
 
 describe("withPhid", () => {
   it("adds the id to links to a sibling and nothing else", () => {
@@ -51,5 +74,38 @@ describe("attachPhid", () => {
     const sibling = { href: "https://flakehub.com/" } as HTMLAnchorElement;
     attachPhid(sibling, undefined);
     expect(sibling.href).toBe("https://flakehub.com/");
+  });
+});
+
+describe("adoptPhid", () => {
+  beforeEach(() => {
+    fake.enabled = false;
+    fake.listeners.clear();
+    fake.alias.mockClear();
+  });
+
+  it("aliases right away when analytics are enabled", () => {
+    fake.enabled = true;
+    adoptPhid("abc");
+    expect(fake.alias).toHaveBeenCalledWith("abc");
+    expect(fake.listeners.size).toBe(0);
+  });
+
+  it("holds the id until consent, then aliases it once", () => {
+    adoptPhid("abc");
+    expect(fake.alias).not.toHaveBeenCalled();
+
+    // Still pending: events fired while opted out don't flush it.
+    fake.capture();
+    expect(fake.alias).not.toHaveBeenCalled();
+
+    fake.enabled = true;
+    fake.capture();
+    expect(fake.alias).toHaveBeenCalledTimes(1);
+    expect(fake.alias).toHaveBeenCalledWith("abc");
+
+    fake.capture();
+    expect(fake.alias).toHaveBeenCalledTimes(1);
+    expect(fake.listeners.size).toBe(0);
   });
 });
