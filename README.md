@@ -20,6 +20,26 @@ And, add this to your `<head>` so fonts work:
 />
 ```
 
+## Analytics
+
+`@determinate-systems/ui/analytics` is the [PostHog](https://posthog.com) setup shared by the Determinate sites, plus the rule for links between them. It has no React dependency, so it works from Astro, Alpine, and whatever else too. `posthog-js` comes with it; sites don't need their own copy.
+
+```typescript
+import {
+  absorbPhid,
+  attachPhid,
+  externalLinkAttrs,
+  initAnalytics,
+} from "@determinate-systems/ui/analytics";
+```
+
+All Determinate sites (`determinate.systems` and its subdomains, `flakehub.com`, `zero-to-nix.com`) report to one PostHog project, but they're separate origins, so a visitor who crosses between them would count as two people. The visitor's id travels as a `?phid=` query parameter instead:
+
+- `initAnalytics(options?)` starts PostHog with the shared project and proxy. Browser only, once only. Options override the defaults (a site behind a consent banner passes `opt_out_capturing_by_default: true`).
+- `attachPhid(link)` goes in the click handler of a link: it sets `?phid=` on the href for that navigation only, then restores it. `withPhid(href)` is the pure version for hrefs computed at render time. Both leave links alone unless they lead to another Determinate site.
+- `absorbPhid()` runs once on page load, after `initAnalytics`: it aliases an incoming `?phid=` to this visitor and returns the page URL without it, for the site's router (or `history.replaceState`) to put in the address bar. Routers that parse the query themselves can call `adoptPhid(id)` directly.
+- `isSiblingHost(hostname)`, `isSiblingProperty(href, base?)` and `isExternal(href, base?)` are the rule itself; `externalLinkAttrs(href, base?)` turns it into `target`, `rel` and whether the link should carry a phid. `base` is the site's own URL and defaults to the current page, so pass it when calling at build time.
+
 ## Development
 
 Run `process-compose` to start the various processes.

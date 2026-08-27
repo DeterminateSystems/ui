@@ -8,7 +8,10 @@ import ts from "@rollup/plugin-typescript";
 import { defineConfig } from "rollup";
 
 export default defineConfig({
-  input: "src/index.ts",
+  input: {
+    index: "src/index.ts",
+    analytics: "src/analytics.ts",
+  },
   output: {
     dir: "lib",
     format: "esm",
@@ -17,7 +20,7 @@ export default defineConfig({
   jsx: {
     mode: "automatic",
   },
-  external: [/node_modules\/react\//],
+  external: [/node_modules\/react\//, /node_modules\/posthog-js\//],
   plugins: [
     svg({
       stringify: true,
@@ -26,7 +29,12 @@ export default defineConfig({
     ts({
       declaration: true,
       declarationDir: "lib",
-      exclude: ["lib/**/*", "**/*.stories.ts", "**/*.stories.d.ts"],
+      exclude: [
+        "lib/**/*",
+        "**/*.stories.ts",
+        "**/*.stories.d.ts",
+        "**/*.test.ts",
+      ],
       noEmitOnError: true,
     }),
     sass({

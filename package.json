@@ -5,6 +5,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./lib/index.js",
+    "./analytics": "./lib/analytics.js",
     "./*.css": "./lib/*.css"
   },
   "types": "./lib/index.d.ts",
@@ -21,6 +22,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepack": "npm run build",
+    "test": "vitest run --project unit",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "chromatic": "chromatic --exit-zero-on-changes"
@@ -61,6 +63,7 @@
     "@shikijs/themes": "^3.5.0",
     "@shikijs/types": "^3.5.0",
     "clsx": "^2.1.1",
+    "posthog-js": "^1.422.0",
     "react-icons": "^5.5.0"
   }
 }
