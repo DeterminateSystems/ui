@@ -23,6 +23,12 @@ describe("isSiblingHost", () => {
     }
   });
 
+  it("ignores case", () => {
+    expect(isSiblingHost("Docs.Determinate.Systems")).toBe(true);
+    expect(isSiblingHost("FlakeHub.com")).toBe(true);
+    expect(isSiblingHost("Status.Determinate.Systems")).toBe(false);
+  });
+
   it("rejects third-party subdomains and everyone else", () => {
     for (const host of [
       "status.determinate.systems",

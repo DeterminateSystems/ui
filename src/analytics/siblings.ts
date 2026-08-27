@@ -14,8 +14,12 @@ export const THIRD_PARTY_HOSTS: ReadonlySet<string> = new Set([
   "trust.determinate.systems",
 ]);
 
-/** Whether a hostname is one of the Determinate Systems web properties. */
+/**
+ * Whether a hostname is one of the Determinate Systems web properties.
+ * Case-insensitive, as hostnames are.
+ */
 export function isSiblingHost(hostname: string): boolean {
+  hostname = hostname.toLowerCase();
   if (THIRD_PARTY_HOSTS.has(hostname)) return false;
   return (
     hostname === "flakehub.com" ||
