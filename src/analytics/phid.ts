@@ -65,10 +65,13 @@ let unsubscribe: (() => void) | undefined;
 
 function flushPending(): void {
   if (!pending || !analyticsEnabled()) return;
-  posthog.alias(pending);
+  // Aliasing captures an event of its own, which lands back here
+  // synchronously: let go of the id and the listener before it does.
+  const phid = pending;
   pending = undefined;
   unsubscribe?.();
   unsubscribe = undefined;
+  posthog.alias(phid);
 }
 
 /**

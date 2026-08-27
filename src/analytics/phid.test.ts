@@ -84,6 +84,21 @@ describe("adoptPhid", () => {
     fake.alias.mockClear();
   });
 
+  it("aliases once even though aliasing captures an event itself", () => {
+    // posthog.alias captures $create_alias, which fires eventCaptured
+    // synchronously, re-entering the flush.
+    fake.alias.mockImplementation(() => fake.capture());
+    try {
+      adoptPhid("abc");
+      fake.enabled = true;
+      fake.capture();
+      expect(fake.alias).toHaveBeenCalledTimes(1);
+      expect(fake.listeners.size).toBe(0);
+    } finally {
+      fake.alias.mockReset();
+    }
+  });
+
   it("aliases right away when analytics are enabled", () => {
     fake.enabled = true;
     adoptPhid("abc");
