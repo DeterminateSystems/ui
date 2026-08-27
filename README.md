@@ -22,7 +22,7 @@ And, add this to your `<head>` so fonts work:
 
 ## Analytics
 
-`@determinate-systems/ui/analytics` is the PostHog setup shared by the Determinate sites, plus the rule for links between them. It has no React dependency, so it works from Astro, Alpine and plain scripts too. `posthog-js` comes with it; sites don't need their own copy.
+`@determinate-systems/ui/analytics` is the [PostHog](https://posthog.com) setup shared by the Determinate sites, plus the rule for links between them. It has no React dependency, so it works from Astro, Alpine, and whatever else too. `posthog-js` comes with it; sites don't need their own copy.
 
 ```typescript
 import {
