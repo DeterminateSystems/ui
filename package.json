@@ -32,11 +32,14 @@
     "@storybook/addon-a11y": "^10.2.0",
     "@storybook/addon-docs": "^10.2.0",
     "@storybook/addon-onboarding": "^10.2.0",
-    "@storybook/addon-vitest": "^10.2.0",
+    "@storybook/addon-vitest": "^10.6.3",
     "@storybook/react-vite": "^10.4.6",
     "@types/react": "^19.1.4",
+    "@vitest/browser": "^5.0.5",
+    "@vitest/coverage-v8": "^5.0.5",
     "chromatic": "^12.2.0",
     "esbuild": "^0.28.1",
+    "playwright": "^1.56.1",
     "prettier": "^3.5.3",
     "rollup": "^4.41.0",
     "rollup-plugin-sass": "^1.15.2",
@@ -44,10 +47,7 @@
     "sass": "^1.89.0",
     "storybook": "^10.4.6",
     "typescript": "^5.8.3",
-    "vitest": "^4.1.8",
-    "@vitest/browser": "^4.1.10",
-    "playwright": "^1.56.1",
-    "@vitest/coverage-v8": "^4.1.8"
+    "vitest": "^5.0.5"
   },
   "peerDependencies": {
     "react": "^19.1.0"
