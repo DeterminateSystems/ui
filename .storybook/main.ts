@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import type { InlineConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -13,6 +14,20 @@ const config: StorybookConfig = {
     options: {
       strictMode: true,
     },
+  },
+  viteFinal: async (config) => {
+    const { mergeConfig } = await import("vite");
+
+    return mergeConfig<InlineConfig, InlineConfig>(config, {
+      server: {
+        watch: {
+          ignored: ["**/.direnv/**/*", "**/.jj/**/*", "**/node_modules/**/*"],
+        },
+      },
+    });
+  },
+  core: {
+    builder: "@storybook/builder-vite",
   },
 };
 
