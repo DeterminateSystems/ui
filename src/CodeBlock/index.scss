@@ -1,8 +1,0 @@
-@use "sass:map";
-
-@use "../sass/mixins";
-@use "../sass/tokens";
-
-.code-block__heading {
-  @include mixins.pad-bottom(lg);
-}
