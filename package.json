@@ -35,8 +35,11 @@
     "@storybook/addon-vitest": "^10.2.0",
     "@storybook/react-vite": "^10.4.6",
     "@types/react": "^19.1.4",
+    "@vitest/browser": "^4.1.10",
+    "@vitest/coverage-v8": "^4.1.8",
     "chromatic": "^12.2.0",
     "esbuild": "^0.28.1",
+    "playwright": "^1.56.1",
     "prettier": "^3.5.3",
     "rollup": "^4.41.0",
     "rollup-plugin-sass": "^1.15.2",
@@ -44,22 +47,13 @@
     "sass": "^1.89.0",
     "storybook": "^10.4.6",
     "typescript": "^5.8.3",
-    "vitest": "^4.1.8",
-    "@vitest/browser": "^4.1.10",
-    "playwright": "^1.56.1",
-    "@vitest/coverage-v8": "^4.1.8"
+    "vitest": "^4.1.8"
   },
   "peerDependencies": {
     "react": "^19.1.0"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@radix-ui/react-icons": "^1.0.3",
-    "@shikijs/core": "^3.5.0",
-    "@shikijs/engine-javascript": "^3.5.0",
-    "@shikijs/langs": "^3.5.0",
-    "@shikijs/themes": "^3.5.0",
-    "@shikijs/types": "^3.5.0",
     "clsx": "^2.1.1",
     "react-icons": "^5.5.0"
   }
