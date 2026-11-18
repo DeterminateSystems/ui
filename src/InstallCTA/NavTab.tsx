@@ -1,33 +1,40 @@
 import type { FC } from "react";
-
-import type { InstallTarget } from "./types";
+import type { IconType } from "react-icons";
 
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/16/solid";
 
+import type { InstallTarget } from "./types";
+
 export interface NavTabProps {
   name: InstallTarget;
-  icon: FC;
+  icon: IconType;
   href: string;
-  external?: boolean;
 }
 
-const NavTab: FC<NavTabProps> = ({
-  name,
-  icon: Icon,
-  href,
-  external = false,
-}) => (
-  <li className="install-cta__tab">
-    <a
-      href={href}
-      className="install-cta__link"
-      target={external ? "_blank" : undefined}
-      rel="noopener noreferrer"
-    >
-      <Icon /> {name}
-    </a>
-    <ArrowTopRightOnSquareIcon className="install-cta__external" />
-  </li>
-);
+/** A tab that leads to another page instead of switching the panel. */
+const NavTab: FC<NavTabProps> = ({ name, icon: Icon, href }) => {
+  // Decided from the URL alone, so the server and the browser agree.
+  const external = /^https?:\/\//.test(href);
+
+  return (
+    <li className="install-cta__tab">
+      <a
+        href={href}
+        className="install-cta__link"
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+      >
+        <Icon className="install-cta__icon" aria-hidden />
+        {name}
+        {external && (
+          <ArrowTopRightOnSquareIcon
+            className="install-cta__external"
+            aria-label="(opens in a new tab)"
+          />
+        )}
+      </a>
+    </li>
+  );
+};
 
 export default NavTab;

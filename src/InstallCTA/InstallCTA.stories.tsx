@@ -34,3 +34,10 @@ export const Linux: Story = {
     initialTab: InstallTarget.Linux,
   },
 };
+
+export const SameSiteNixOSLink: Story = {
+  name: "Same-site NixOS link",
+  args: {
+    nixosHref: "/guides/advanced-installation#nixos",
+  },
+};
