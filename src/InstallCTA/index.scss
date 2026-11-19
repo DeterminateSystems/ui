@@ -195,6 +195,11 @@ $shadow-sm:
   width: 2.5rem;
   height: 2.5rem;
   flex-shrink: 0;
+
+  @media (width < map.get(tokens.$breakpoints, small)) {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 .install-cta__download-label {
@@ -253,6 +258,11 @@ $shadow-sm:
     @include mixins.light-mode {
       border-color: $gray-200;
     }
+
+    // Room for the larger copy button.
+    @media (pointer: coarse) {
+      padding-right: 4.25rem;
+    }
   }
 }
 
@@ -301,11 +311,22 @@ $shadow-sm:
   &.install-cta__copy--copied:hover {
     color: map.get(tokens.$colors, success);
   }
+
+  // A full-size touch target where the pointer is a finger.
+  @media (pointer: coarse) {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
 }
 
 .install-cta__copy-icon {
   width: 1rem;
   height: 1rem;
+
+  @media (pointer: coarse) {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 
   // A heavier stroke so the "copied" check reads at a glance.
   .install-cta__copy--copied & {
