@@ -1,11 +1,17 @@
-import { useEffect, useState, type FC } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type FC,
+  type KeyboardEvent,
+} from "react";
 import type { IconType } from "react-icons";
-import { FaApple, FaLinux, FaWindows } from "react-icons/fa6";
-import { SiNixos } from "react-icons/si";
-
-import MacInstaller from "../MacInstaller";
+import { FaWindows } from "react-icons/fa6";
+import { SiApple, SiLinux, SiNixos } from "react-icons/si";
 
 import InstallFromCurl from "./InstallFromCurl";
+import MacDownload from "./MacDownload";
 import NavTab from "./NavTab";
 import TabSelector from "./TabSelector";
 import { InstallTarget, detectInstallTarget } from "./types";
@@ -26,20 +32,20 @@ const panels: {
 }[] = [
   {
     target: InstallTarget.MacOS,
-    icon: FaApple,
+    icon: SiApple,
     lead: "Use our package installer",
     action: "pkg",
   },
   {
-    target: InstallTarget.WSL,
-    icon: FaWindows,
-    lead: "Use the Determinate Nix Installer CLI",
+    target: InstallTarget.Linux,
+    icon: SiLinux,
+    lead: "Use our Determinate Nix Installer CLI",
     action: "cli",
   },
   {
-    target: InstallTarget.Linux,
-    icon: FaLinux,
-    lead: "Use the Determinate Nix Installer CLI",
+    target: InstallTarget.WSL,
+    icon: FaWindows,
+    lead: "Use our Determinate Nix Installer CLI",
     action: "cli",
   },
 ];
@@ -78,33 +84,85 @@ const InstallCTA: FC<InstallCTAProps> = ({
     }
   }, [initialTab]);
 
-  const panel = panels.find(({ target }) => target === activeTab) ?? panels[0];
+  const id = useId();
+  const panelId = `${id}-panel`;
+  const tabId = (index: number) => `${id}-tab-${index}`;
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const activeIndex = Math.max(
+    panels.findIndex(({ target }) => target === activeTab),
+    0,
+  );
+  const panel = panels[activeIndex];
+
+  // Arrow keys, Home and End move focus between tabs and select the tab they
+  // land on, per the WAI-ARIA tabs pattern.
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const last = panels.length - 1;
+    let next: number;
+
+    switch (event.key) {
+      case "ArrowRight":
+        next = activeIndex === last ? 0 : activeIndex + 1;
+        break;
+      case "ArrowLeft":
+        next = activeIndex === 0 ? last : activeIndex - 1;
+        break;
+      case "Home":
+        next = 0;
+        break;
+      case "End":
+        next = last;
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    setActiveTab(panels[next].target);
+    tabRefs.current[next]?.focus();
+  };
 
   return (
     <div className="install-cta">
-      <div className="install-cta__body">
+      <div
+        className="install-cta__panel"
+        id={panelId}
+        role="tabpanel"
+        aria-labelledby={tabId(activeIndex)}
+      >
         <div className="install-cta__header">
           <p className="install-cta__title">
             Get Determinate for {panel.target}
           </p>
           <p className="install-cta__lead">{panel.lead}</p>
         </div>
-        {panel.action === "pkg" ? <MacInstaller /> : <InstallFromCurl />}
+        {panel.action === "pkg" ? <MacDownload /> : <InstallFromCurl />}
       </div>
-      <nav className="install-cta__tabs" aria-label="Operating system">
-        <ul className="install-cta__links">
-          {panels.map(({ target, icon }) => (
+      <div className="install-cta__tabs">
+        <div
+          className="install-cta__tablist"
+          role="tablist"
+          aria-label="Choose your platform"
+          onKeyDown={handleKeyDown}
+        >
+          {panels.map(({ target, icon }, index) => (
             <TabSelector
               key={target}
+              ref={(el) => {
+                tabRefs.current[index] = el;
+              }}
+              id={tabId(index)}
+              panelId={panelId}
               name={target}
               icon={icon}
-              active={target === panel.target}
+              active={index === activeIndex}
               onClick={() => setActiveTab(target)}
             />
           ))}
-          <NavTab name={InstallTarget.NixOS} icon={SiNixos} href={nixosHref} />
-        </ul>
-      </nav>
+        </div>
+        <NavTab name={InstallTarget.NixOS} icon={SiNixos} href={nixosHref} />
+      </div>
     </div>
   );
 };
