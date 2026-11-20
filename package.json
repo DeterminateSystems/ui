@@ -56,7 +56,6 @@
     "react": "^19.1.0"
   },
   "dependencies": {
-    "@heroicons/react": "^2.2.0",
     "clsx": "^2.1.1"
   }
 }

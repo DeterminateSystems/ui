@@ -2,7 +2,7 @@ import { useId, useState, type FC } from "react";
 
 import React from "react";
 import clsx from "clsx";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { MenuIcon } from "../icons";
 import { svgButton } from "../styles/classes";
 
 export interface NavigationProps {
@@ -33,7 +33,7 @@ const Navigation: FC<NavigationProps> = ({
         aria-controls={navigationId}
         onClick={toggleNavigation}
       >
-        <Bars3Icon aria-hidden="true" focusable="false" />
+        <MenuIcon />
       </button>
       <div
         id={navigationId}

@@ -75,7 +75,8 @@ export const AutoOnDark: Story = {
     await userEvent.click(canvas.getByLabelText(labels.dark));
     expect(scheme("dark")).not.toBeNull();
 
-    canvas.getByLabelText(labels.system);
+    // The clicks leave the toggle focused; drop the focus ring from the snapshot
+    canvas.getByLabelText(labels.system).blur();
   },
 };
 
@@ -100,7 +101,8 @@ export const AutoOnLight: Story = {
     await userEvent.click(canvas.getByLabelText(labels.dark));
     expect(scheme("light")).not.toBeNull();
 
-    canvas.getByLabelText(labels.system);
+    // The clicks leave the toggle focused; drop the focus ring from the snapshot
+    canvas.getByLabelText(labels.system).blur();
   },
 };
 
