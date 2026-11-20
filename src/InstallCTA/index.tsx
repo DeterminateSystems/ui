@@ -67,7 +67,7 @@ const InstallCTA: FC<InstallCTAProps> = ({ initialTab }) => {
         <NavTab
           name={InstallTarget.NixOS}
           icon={() => null}
-          href="https://docs.determinate.systems/guides/advanced-installation/#nixos"
+          href="https://docs.determinate.systems/guides/nixos-installation"
           external={true}
         />
       </ul>
