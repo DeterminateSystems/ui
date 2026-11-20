@@ -155,12 +155,12 @@ const nextSchemePreference = (
   preference: ColorSchemePreference,
 ): ColorSchemePreference => {
   switch (preference) {
-    case "auto":
+    case "light":
       return "dark";
     case "dark":
-      return "light";
-    case "light":
       return "auto";
+    case "auto":
+      return "light";
   }
 };
 

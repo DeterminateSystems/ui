@@ -1,7 +1,0 @@
-@use "sass:map";
-
-@use "../sass/mixins";
-
-.copy-button {
-  @include mixins.svg-button;
-}

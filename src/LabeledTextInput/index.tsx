@@ -1,6 +1,5 @@
 import React, { type FC } from "react";
 
-import "./index.scss";
 import clsx from "clsx";
 import LabeledInput from "../LabeledInput";
 
@@ -35,8 +34,16 @@ const LabeledTextInput: FC<LabeledTextInputProps> = ({
           aria-describedby={describedById}
           defaultValue={defaultValue}
           className={clsx(
-            "labeled-text-input",
-            error && "labeled-text-input--error",
+            "ui:block ui:w-full ui:rounded-base ui:border-[2.5px] ui:border-solid ui:px-pad-lg ui:py-pad-base ui:text-base",
+            "ui:transition-[border-color,outline-color,outline-width] ui:duration-150",
+            "ui:bg-gray-light ui:text-white ui:light:bg-light ui:light:text-black",
+            error
+              ? "ui:border-danger"
+              : "ui:border-gray-light ui:light:border-gray-very-light",
+            "ui:placeholder:text-gray-very-light ui:placeholder:opacity-60 ui:light:placeholder:text-gray-dark",
+            "ui:focus-visible:border-rich-blue ui:light:focus-visible:border-rich-blue",
+            "ui:disabled:cursor-not-allowed ui:disabled:border-gray-light ui:disabled:bg-gray-light ui:disabled:opacity-60",
+            "ui:light:disabled:border-gray-very-light ui:light:disabled:bg-gray-very-light",
           )}
         />
       )}

@@ -1,7 +1,5 @@
 import React, { useId, type FC } from "react";
 
-import "./index.scss";
-
 export interface LabeledInputRenderProps {
   controlId: string;
   labelId: string;
@@ -35,21 +33,28 @@ const LabeledInput: FC<LabeledInputProps> = ({
     [errorId, helpId].filter(Boolean).join(" ") || undefined;
 
   return (
-    <div className="labeled-input">
-      <label id={labelId} htmlFor={controlId}>
+    <div className="ui:grid ui:gap-pad-lg">
+      <label
+        id={labelId}
+        htmlFor={controlId}
+        className="ui:block ui:text-base ui:leading-6 ui:font-medium ui:text-white ui:light:text-gray-dark"
+      >
         {label}
       </label>
 
       {children({ labelId, controlId, errorId, describedById })}
 
       {error && (
-        <p id={errorId} role="alert" className="labeled-input__error">
+        <p id={errorId} role="alert" className="ui:text-base ui:text-danger">
           {error}
         </p>
       )}
 
       {help && (
-        <p id={helpId} className="labeled-input__help">
+        <p
+          id={helpId}
+          className="ui:text-sm ui:text-white ui:light:text-gray-light"
+        >
           {help}
         </p>
       )}

@@ -3,8 +3,10 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: 2rem;
+}
 
-  @media screen and (width < 768px) {
+@media screen and (width < 768px) {
+  .preview-wrapper {
     padding: 0;
   }
 }

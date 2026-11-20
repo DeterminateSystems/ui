@@ -1,0 +1,208 @@
+/*
+  Component styles, published as `index.min.css`.
+
+  The reset lives in `reset.css` so that consumers can opt out of it.
+*/
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme) prefix(ui);
+@import "tailwindcss/utilities.css" layer(utilities) source(none) prefix(ui);
+
+@source "../";
+@source not "../**/*.stories.{ts,tsx}";
+
+/*
+  Dark is the default scheme. `ColorProvider` (via `applyTheme`) puts
+  `.color-scheme--light` or `.color-scheme--dark` on the root element.
+*/
+@custom-variant light (&:where(.color-scheme--light, .color-scheme--light *));
+
+@theme {
+  /* Colors: only the Determinate palette is available */
+  --color-*: initial;
+
+  --color-red: #ec2c5b;
+  --color-yellow: #faa61a;
+  --color-magenta: #cd1e88;
+  --color-violet: #8b2cbf;
+  --color-sky-blue: #1e9fd9;
+  --color-ocean-blue: #086bb5;
+  --color-rich-blue: #0d4d9c;
+  --color-dark-blue: #1f1953;
+  --color-orange: #ea741f;
+  --color-light: #ededef;
+  --color-gray: #545454;
+  --color-black: #231f20;
+  --color-very-black: oklch(0.13 0.028 261.692);
+  --color-white: #ffffff;
+
+  /* Hover and focus shades of the colors above */
+  --color-white-dim: #d9d9d9;
+  --color-black-soft: #6a5e61;
+
+  /* Quiet text and the surface behind it on hover, per scheme */
+  --color-muted: #b3b3b3;
+  --color-surface: #252532;
+  --color-gray-wash: oklch(0.967 0.003 264.542);
+
+  --color-gray-faint: color-mix(
+    in oklab,
+    oklch(0.985 0.002 247.839) 95%,
+    transparent
+  );
+  --color-gray-less-faint: oklch(0.928 0.006 264.531);
+  --color-gray-very-light: oklch(0.872 0.01 258.338);
+  --color-gray-light: oklch(0.446 0.03 256.802);
+  --color-gray-dark: oklch(0.21 0.034 264.665);
+
+  --color-line-light: #ebe6e7;
+  --color-line-dark: #364153;
+
+  --color-primary: var(--ui-color-orange);
+  --color-secondary: var(--ui-color-magenta);
+  /*
+    NOTE(lucperkins): Semantic colors are not great and borrowed from Bootstrap solely as an
+    initial basis to be changed later:
+    https://getbootstrap.com/docs/4.0/utilities/colors
+  */
+  --color-success: rgb(40, 167, 69);
+  --color-info: rgb(23, 162, 184);
+  --color-warning: rgb(255, 193, 7);
+  --color-danger: rgb(220, 53, 69);
+
+  /* Typography */
+  --font-sans: "Work Sans", sans-serif;
+
+  --text-*: initial;
+  --text-sm: 0.75rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+
+  /* Shape and spacing */
+  --radius-*: initial;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-base: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  --spacing-pad-sm: 0.2rem;
+  --spacing-pad-base: 0.4rem;
+  --spacing-pad-lg: 0.6rem;
+
+  /* Layout: `container` stops growing at `xl` */
+  --breakpoint-2xl: initial;
+  --container-page-min: 360px;
+}
+
+@theme inline {
+  --animate-busy-pulse: busy-icon-pulse var(--busy-duration)
+    var(--busy-duration) infinite forwards;
+  --animate-busy-finish: busy-icon-finish var(--busy-duration) 1 forwards;
+}
+
+@layer base {
+  body {
+    font-family: var(--ui-font-sans);
+  }
+
+  .color-scheme--dark {
+    color: var(--ui-color-white);
+    background-color: var(--ui-color-very-black);
+  }
+
+  .color-scheme--light {
+    color: var(--ui-color-black);
+    background-color: var(--ui-color-white);
+  }
+}
+
+/*
+  BusyIcon: each keyframe says which segments of the mark are lit. The segments
+  read these custom properties as their fill and transition between the steps.
+*/
+@keyframes busy-icon-pulse {
+  0% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  25% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  50% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-active);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  75% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-active);
+    --busy-end: var(--busy-inactive);
+  }
+  100% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+}
+
+@keyframes busy-icon-finish {
+  0%,
+  20% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  40% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  60% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-active);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  80% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-active);
+    --busy-step-3: var(--busy-active);
+    --busy-end: var(--busy-inactive);
+  }
+  100% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-active);
+    --busy-step-3: var(--busy-active);
+    --busy-end: var(--busy-active);
+  }
+}

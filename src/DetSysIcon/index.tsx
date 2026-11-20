@@ -1,11 +1,23 @@
 import { type FC } from "react";
 
-import "./index.scss";
 import brandmark from "./brandmark.svg";
 
 export interface DetSysIconProps {
-  size: "sm" | "base" | "lg";
+  /** Defaults to `base`. */
+  size?: "sm" | "base" | "lg";
+
+  /**
+   * Text alternative. Leave it out when the mark is decorative; set it when
+   * the mark is the only content of a link or button.
+   */
+  alt?: string;
 }
+
+const sizes: Record<NonNullable<DetSysIconProps["size"]>, string> = {
+  sm: "ui:h-6 ui:w-full",
+  base: "ui:h-9 ui:w-full",
+  lg: "ui:h-12 ui:w-full",
+};
 
 function svgToDataUri(svg: string) {
   if (svg.startsWith("data:image/svg+xml")) {
@@ -20,13 +32,13 @@ function svgToDataUri(svg: string) {
   return `data:image/svg+xml;utf8,${encoded}`;
 }
 
-const DetSysIcon: FC<DetSysIconProps> = ({ size }) => {
+const DetSysIcon: FC<DetSysIconProps> = ({ size = "base", alt = "" }) => {
   return (
     <img
-      className={`brandmark--${size}`}
+      className={sizes[size]}
       src={svgToDataUri(brandmark)}
-      alt=""
-      role="presentation"
+      alt={alt}
+      role={alt ? undefined : "presentation"}
     />
   );
 };

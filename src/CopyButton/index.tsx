@@ -1,10 +1,13 @@
 import { type FC } from "react";
 
-import "./index.scss";
 import useCopy from "../hooks/useCopy";
 import ClipboardIcon from "../ClipboardIcon";
+import { svgButton } from "../styles/classes";
 
-export interface CopyButtonProps {
+export interface CopyButtonProps extends Omit<
+  React.ComponentPropsWithRef<"button">,
+  "children" | "className" | "type" | "onClick"
+> {
   /**
    * Text data to write to the user's clipboard.
    */
@@ -16,11 +19,17 @@ export interface CopyButtonProps {
  *
  * A small amount of visual feedback is given when the data is copied successfully.
  */
-const CopyButton: FC<CopyButtonProps> = ({ data }) => {
+const CopyButton: FC<CopyButtonProps> = ({ data, ...props }) => {
   const [handleCopy, copied] = useCopy(data);
 
   return (
-    <button className="copy-button" onClick={handleCopy} aria-label="Copy text">
+    <button
+      type="button"
+      className={svgButton}
+      onClick={handleCopy}
+      aria-label={copied ? "Copied" : "Copy text"}
+      {...props}
+    >
       <ClipboardIcon copied={copied} />
     </button>
   );

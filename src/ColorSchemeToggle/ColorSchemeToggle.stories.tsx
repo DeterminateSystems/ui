@@ -48,33 +48,34 @@ function withColorScheme(Story: React.FC, context: StoryContext) {
   );
 }
 
+const labels = {
+  system: "Theme: system. Switch to light",
+  light: "Theme: light. Switch to dark",
+  dark: "Theme: dark. Switch to system",
+};
+
 export const AutoOnDark: Story = {
   parameters: {
     preferredColorScheme: "auto",
     simulatedColorScheme: "dark",
   },
   decorators: [withColorScheme],
-  play: async ({ canvas, userEvent }) => {
-    expect(canvas.getByTestId("color-scheme__icon")?.classList).toContain(
-      "color-scheme-toggle__icon--dark",
-    );
+  play: async ({ canvas, canvasElement, userEvent }) => {
+    const scheme = (name: string) =>
+      canvasElement.querySelector(`.color-scheme--${name}`);
 
-    await userEvent.click(canvas.getByLabelText("Dark mode (automatic)"));
-    expect(canvas.getByTestId("color-scheme__icon")?.classList).toContain(
-      "color-scheme-toggle__icon--dark",
-    );
+    expect(scheme("dark")).not.toBeNull();
 
-    await userEvent.click(canvas.getByLabelText("Dark mode"));
-    expect(canvas.getByTestId("color-scheme__icon")?.classList).toContain(
-      "color-scheme-toggle__icon--light",
-    );
+    await userEvent.click(canvas.getByLabelText(labels.system));
+    expect(scheme("light")).not.toBeNull();
 
-    await userEvent.click(canvas.getByLabelText("Light mode"));
-    expect(canvas.getByTestId("color-scheme__icon")?.classList).toContain(
-      "color-scheme-toggle__icon--dark",
-    );
+    await userEvent.click(canvas.getByLabelText(labels.light));
+    expect(scheme("dark")).not.toBeNull();
 
-    canvas.getByLabelText("Dark mode (automatic)");
+    await userEvent.click(canvas.getByLabelText(labels.dark));
+    expect(scheme("dark")).not.toBeNull();
+
+    canvas.getByLabelText(labels.system);
   },
 };
 
@@ -84,27 +85,22 @@ export const AutoOnLight: Story = {
     simulatedColorScheme: "light",
   },
   decorators: [withColorScheme],
-  play: async ({ canvas, userEvent }) => {
-    expect(canvas.getByTestId("color-scheme__icon")?.classList).toContain(
-      "color-scheme-toggle__icon--light",
-    );
+  play: async ({ canvas, canvasElement, userEvent }) => {
+    const scheme = (name: string) =>
+      canvasElement.querySelector(`.color-scheme--${name}`);
 
-    await userEvent.click(canvas.getByLabelText("Light mode (automatic)"));
-    expect(canvas.getByTestId("color-scheme__icon")?.classList).toContain(
-      "color-scheme-toggle__icon--dark",
-    );
+    expect(scheme("light")).not.toBeNull();
 
-    await userEvent.click(canvas.getByLabelText("Dark mode"));
-    expect(canvas.getByTestId("color-scheme__icon")?.classList).toContain(
-      "color-scheme-toggle__icon--light",
-    );
+    await userEvent.click(canvas.getByLabelText(labels.system));
+    expect(scheme("light")).not.toBeNull();
 
-    await userEvent.click(canvas.getByLabelText("Light mode"));
-    expect(canvas.getByTestId("color-scheme__icon")?.classList).toContain(
-      "color-scheme-toggle__icon--light",
-    );
+    await userEvent.click(canvas.getByLabelText(labels.light));
+    expect(scheme("dark")).not.toBeNull();
 
-    canvas.getByLabelText("Light mode (automatic)");
+    await userEvent.click(canvas.getByLabelText(labels.dark));
+    expect(scheme("light")).not.toBeNull();
+
+    canvas.getByLabelText(labels.system);
   },
 };
 
@@ -135,6 +131,57 @@ export const PrefersDarkOnDark: Story = {
 export const PrefersDarkOnLight: Story = {
   parameters: {
     preferredColorScheme: "dark",
+    simulatedColorScheme: "light",
+  },
+  decorators: [withColorScheme],
+};
+
+export const ColoredOnDark: Story = {
+  args: { variant: "colored" },
+  parameters: {
+    preferredColorScheme: "dark",
+    simulatedColorScheme: "dark",
+  },
+  decorators: [withColorScheme],
+};
+
+export const ColoredOnLight: Story = {
+  args: { variant: "colored" },
+  parameters: {
+    preferredColorScheme: "light",
+    simulatedColorScheme: "light",
+  },
+  decorators: [withColorScheme],
+};
+
+export const ColoredAuto: Story = {
+  args: { variant: "colored" },
+  parameters: {
+    preferredColorScheme: "auto",
+    simulatedColorScheme: "dark",
+  },
+  decorators: [withColorScheme],
+};
+
+export const CustomColorsOnDark: Story = {
+  args: {
+    variant: "colored",
+    colors: { dark: "#faa61a", light: "#cd1e88" },
+  },
+  parameters: {
+    preferredColorScheme: "dark",
+    simulatedColorScheme: "dark",
+  },
+  decorators: [withColorScheme],
+};
+
+export const CustomColorsOnLight: Story = {
+  args: {
+    variant: "colored",
+    colors: { dark: "#faa61a", light: "#cd1e88" },
+  },
+  parameters: {
+    preferredColorScheme: "light",
     simulatedColorScheme: "light",
   },
   decorators: [withColorScheme],

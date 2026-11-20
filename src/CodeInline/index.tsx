@@ -1,6 +1,5 @@
 import { type FC } from "react";
 
-import "./index.scss";
 import useCopy from "../hooks/useCopy";
 import ClipboardIcon from "../ClipboardIcon";
 
@@ -14,12 +13,17 @@ const CodeInline: FC<CodeInlineProps> = ({ code }) => {
   return (
     <button
       type="button"
-      className="code-inline"
+      className="ui:inline ui:cursor-pointer ui:appearance-none ui:rounded-base ui:bg-gray-light ui:px-2 ui:py-1 ui:text-[80%] ui:light:bg-gray-very-light"
       onClick={handleCopy}
-      aria-label="Copy text"
+      aria-label={copied ? `Copied ${code}` : `Copy ${code}`}
     >
-      <code className="code-inline__code">{code}</code>
-      <ClipboardIcon className="code-inline__copy" copied={copied} />
+      <code className="ui:inline ui:font-mono ui:break-all ui:text-white ui:light:text-black">
+        {code}
+      </code>
+      <ClipboardIcon
+        className="ui:-mt-0.5 ui:inline ui:size-[1.75em] ui:pl-1 ui:align-middle"
+        copied={copied}
+      />
     </button>
   );
 };

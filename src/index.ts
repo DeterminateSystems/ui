@@ -1,7 +1,3 @@
-// CSS
-import "./sass/preflight.scss";
-import "./sass/reset.scss";
-
 export { applyTheme, themeForScheme } from "./theme";
 
 // Components
@@ -21,6 +17,7 @@ export {
 
 export {
   type ColorSchemeToggleProps,
+  type ColorSchemeToggleVariant,
   default as ColorSchemeToggle,
 } from "./ColorSchemeToggle";
 

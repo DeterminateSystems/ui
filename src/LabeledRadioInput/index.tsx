@@ -1,6 +1,6 @@
 import React, { type FC } from "react";
 
-import "./index.scss";
+import clsx from "clsx";
 import LabeledInput from "../LabeledInput";
 
 export type RadioOptionProps = {
@@ -27,13 +27,14 @@ const LabeledRadioInput: FC<LabeledRadioInputProps> = ({
   options,
   error,
   help,
+  className,
   ...props
 }) => {
   return (
     <LabeledInput label={label} error={error} help={help} id={id}>
       {({ labelId, controlId, errorId, describedById = "" }) => (
         <fieldset
-          className="labeled-radio-input"
+          className="ui:flex ui:flex-col ui:gap-2"
           aria-labelledby={labelId}
           aria-invalid={!!error}
           aria-errormessage={errorId}
@@ -41,17 +42,18 @@ const LabeledRadioInput: FC<LabeledRadioInputProps> = ({
         >
           {options.map(({ value, children }) => {
             return (
-              <div key={value} className="labeled-radio-input__row">
+              <div key={value} className="ui:flex ui:items-start ui:gap-3">
                 <input
                   id={`${controlId}-${value}`}
                   defaultChecked={selected === value}
                   value={value}
                   type="radio"
                   {...props}
+                  className={clsx("ui:mt-1", className)}
                 />
 
                 <label
-                  className="labeled-radio-input__label"
+                  className="ui:block ui:text-sm ui:leading-5 ui:font-medium ui:text-white ui:light:text-gray-dark"
                   htmlFor={`${controlId}-${value}`}
                   id={`${controlId}-${value}-description`}
                 >
