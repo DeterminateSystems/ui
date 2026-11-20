@@ -27,10 +27,14 @@ const CopyButton: FC<CopyButtonProps> = ({ data, ...props }) => {
       type="button"
       className={svgButton}
       onClick={handleCopy}
-      aria-label={copied ? "Copied" : "Copy text"}
+      aria-label="Copy text"
       {...props}
     >
       <ClipboardIcon copied={copied} />
+      {/* A reader hears the outcome without the button's name changing. */}
+      <span role="status" className="ui:sr-only">
+        {copied ? "Copied to the clipboard." : ""}
+      </span>
     </button>
   );
 };

@@ -37,7 +37,6 @@ const Navigation: FC<NavigationProps> = ({
       </button>
       <div
         id={navigationId}
-        aria-hidden={!menuOpen}
         className={clsx(
           // Small screens: a dropdown anchored under the expander
           menuOpen ? "ui:flex" : "ui:hidden",
