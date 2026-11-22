@@ -15,7 +15,7 @@ export const Placeholder: FC<
   return (
     <div
       id={id}
-      className="ui:grid ui:place-items-center ui:rounded-base ui:border ui:border-solid ui:border-line-dark ui:bg-gray ui:text-white ui:light:border-line-light ui:light:bg-light ui:light:text-black"
+      className="grid place-items-center rounded-lg border border-solid border-ds-line-dark bg-ds-slate text-ds-white light:border-ds-line-light light:bg-ds-mist light:text-ds-ink"
       style={{
         width: width ?? "100%",
         height,

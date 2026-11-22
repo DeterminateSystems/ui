@@ -17,8 +17,10 @@ const config: StorybookConfig = {
   },
   viteFinal: async (config) => {
     const { mergeConfig } = await import("vite");
+    const { default: tailwindcss } = await import("@tailwindcss/vite");
 
     return mergeConfig<InlineConfig, InlineConfig>(config, {
+      plugins: [tailwindcss()],
       server: {
         watch: {
           ignored: ["**/.direnv/**/*", "**/.jj/**/*", "**/node_modules/**/*"],

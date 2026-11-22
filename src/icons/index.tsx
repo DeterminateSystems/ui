@@ -14,7 +14,7 @@ export interface IconProps {
 }
 
 const Icon: FC<IconProps & { children: ReactNode }> = ({
-  className = "ui:size-6",
+  className = "size-6",
   strokeWidth = 1.75,
   children,
 }) => (

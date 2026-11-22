@@ -2,6 +2,7 @@ import { type FC } from "react";
 
 import React from "react";
 import clsx from "clsx";
+import { container } from "../styles/classes";
 
 export interface PageLayoutProps {
   width?: "full";
@@ -13,8 +14,7 @@ export interface PageLayoutProps {
 
 // Wide enough to make the flex wrap nicely at all widths: the page's minimum
 // width, less the inline padding of the main element.
-const column =
-  "ui:flex ui:min-w-[calc(var(--ui-container-page-min)-(--spacing(3)*2))] ui:flex-col ui:gap-3";
+const column = "flex min-w-[calc(360px-(--spacing(3)*2))] flex-col gap-3";
 
 const PageLayout: FC<PageLayoutProps> = ({
   width = "full",
@@ -26,15 +26,15 @@ const PageLayout: FC<PageLayoutProps> = ({
   return (
     <div
       className={clsx(
-        "ui:flex ui:min-h-screen ui:min-w-page-min ui:flex-col ui:gap-3",
-        width === "full" && "ui:w-full",
+        "flex min-h-screen min-w-[360px] flex-col gap-3",
+        width === "full" && "w-full",
       )}
     >
       {header}
-      <main className="ui:container ui:mx-auto ui:flex ui:flex-row ui:flex-wrap ui:gap-3 ui:px-3">
-        <div className={clsx(column, "ui:flex-2")}>{content}</div>
+      <main className={clsx(container, "flex flex-row flex-wrap gap-3")}>
+        <div className={clsx(column, "flex-2")}>{content}</div>
         {panes.length > 0 && (
-          <div className={clsx(column, "ui:flex-1")}>
+          <div className={clsx(column, "flex-1")}>
             {panes.map((pane, idx) => (
               <div key={pane.key ?? idx}>{pane}</div>
             ))}
@@ -42,9 +42,7 @@ const PageLayout: FC<PageLayoutProps> = ({
         )}
       </main>
       {!!footer && (
-        <footer className="ui:mt-auto ui:w-full ui:place-self-end">
-          {footer}
-        </footer>
+        <footer className="mt-auto w-full place-self-end">{footer}</footer>
       )}
     </div>
   );

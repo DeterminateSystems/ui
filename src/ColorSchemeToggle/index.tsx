@@ -17,16 +17,16 @@ export interface ColorSchemeToggleProps {
   /**
    * Colors for the `colored` variant, one per color scheme, as any CSS color.
    * They can also be set from a stylesheet, on the toggle or any ancestor,
-   * with `--ui-toggle-color-dark` and `--ui-toggle-color-light`.
+   * with `--ds-toggle-color-dark` and `--ds-toggle-color-light`.
    */
   colors?: { dark?: string; light?: string };
 }
 
 const variants: Record<ColorSchemeToggleVariant, string> = {
   muted:
-    "ui:text-muted ui:hover:text-white ui:light:text-gray-light ui:light:hover:text-gray-dark",
+    "text-ds-gray-light hover:text-ds-white light:text-ds-gray-600 light:hover:text-ds-gray-900",
   colored:
-    "ui:text-(--ui-toggle-color-dark,var(--ui-color-sky-blue)) ui:light:text-(--ui-toggle-color-light,var(--ui-color-ocean-blue))",
+    "text-(--ds-toggle-color-dark,var(--color-ds-sky-blue)) light:text-(--ds-toggle-color-light,var(--color-ds-ocean-blue))",
 };
 
 /** What each preference is called in the toggle's label. */
@@ -53,19 +53,19 @@ const ColorSchemeToggle: FC<ColorSchemeToggleProps> = ({
       title={`Theme: ${names[preference]}`}
       style={
         {
-          "--ui-toggle-color-dark": colors?.dark,
-          "--ui-toggle-color-light": colors?.light,
+          "--ds-toggle-color-dark": colors?.dark,
+          "--ds-toggle-color-light": colors?.light,
         } as CSSProperties
       }
       className={clsx(
-        "ui:box-border ui:inline-flex ui:size-9 ui:cursor-pointer ui:items-center ui:justify-center ui:rounded-md",
-        "ui:transition-[color,background-color] ui:duration-300 ui:motion-reduce:transition-none",
-        "ui:hover:bg-surface ui:light:hover:bg-gray-wash",
-        "ui:focus-visible:outline-2 ui:focus-visible:outline-offset-2 ui:focus-visible:outline-ocean-blue",
+        "box-border inline-flex size-9 cursor-pointer items-center justify-center rounded-md",
+        "transition-[color,background-color] duration-300 motion-reduce:transition-none",
+        "hover:bg-ds-surface-3 light:hover:bg-ds-gray-100",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ds-ocean-blue",
         variants[variant],
       )}
     >
-      <Icon className="ui:size-5" strokeWidth={2} />
+      <Icon className="size-5" strokeWidth={2} />
     </button>
   );
 };

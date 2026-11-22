@@ -13,19 +13,19 @@ const CodeInline: FC<CodeInlineProps> = ({ code }) => {
   return (
     <button
       type="button"
-      className="ui:inline ui:cursor-pointer ui:appearance-none ui:rounded-base ui:bg-gray-light ui:px-2 ui:py-1 ui:text-[80%] ui:light:bg-gray-very-light"
+      className="inline cursor-pointer appearance-none rounded-lg bg-ds-gray-600 px-2 py-1 text-[80%] light:bg-ds-gray-300"
       onClick={handleCopy}
       aria-label={`Copy ${code}`}
     >
-      <code className="ui:inline ui:font-mono ui:break-all ui:text-white ui:light:text-black">
+      <code className="inline font-mono break-all text-ds-white light:text-ds-ink">
         {code}
       </code>
       <ClipboardIcon
-        className="ui:-mt-0.5 ui:inline ui:size-[1.75em] ui:pl-1 ui:align-middle"
+        className="-mt-0.5 inline size-[1.75em] pl-1 align-middle"
         copied={copied}
       />
       {/* A reader hears the outcome without the button's name changing. */}
-      <span role="status" className="ui:sr-only">
+      <span role="status" className="sr-only">
         {copied ? "Copied to the clipboard." : ""}
       </span>
     </button>

@@ -1,5 +1,6 @@
 /*
-  Tailwind's preflight reset, published as `reset.min.css`.
+  Tailwind's preflight reset, published as `reset.min.css` to go with
+  `index.min.css`. An application with its own Tailwind build already has it.
 
   The layer order is declared here and in `index.css` so that the component
   utilities always win over the reset, regardless of import order.

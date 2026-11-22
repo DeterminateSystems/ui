@@ -34,16 +34,16 @@ const LabeledTextInput: FC<LabeledTextInputProps> = ({
           aria-describedby={describedById}
           defaultValue={defaultValue}
           className={clsx(
-            "ui:block ui:w-full ui:rounded-base ui:border-[2.5px] ui:border-solid ui:px-pad-lg ui:py-pad-base ui:text-base",
-            "ui:transition-[border-color,outline-color,outline-width] ui:duration-150",
-            "ui:bg-gray-light ui:text-white ui:light:bg-light ui:light:text-black",
+            "block w-full rounded-lg border-[2.5px] border-solid px-[0.6rem] py-[0.4rem] text-base",
+            "transition-[border-color,outline-color,outline-width] duration-150",
+            "bg-ds-gray-600 text-ds-white light:bg-ds-mist light:text-ds-ink",
             error
-              ? "ui:border-danger"
-              : "ui:border-gray-light ui:light:border-gray-very-light",
-            "ui:placeholder:text-gray-very-light ui:placeholder:opacity-60 ui:light:placeholder:text-gray-dark",
-            "ui:focus-visible:border-rich-blue ui:light:focus-visible:border-rich-blue",
-            "ui:disabled:cursor-not-allowed ui:disabled:border-gray-light ui:disabled:bg-gray-light ui:disabled:opacity-60",
-            "ui:light:disabled:border-gray-very-light ui:light:disabled:bg-gray-very-light",
+              ? "border-ds-danger"
+              : "border-ds-gray-600 light:border-ds-gray-300",
+            "placeholder:text-ds-gray-300 placeholder:opacity-60 light:placeholder:text-ds-gray-900",
+            "focus-visible:border-ds-rich-blue light:focus-visible:border-ds-rich-blue",
+            "disabled:cursor-not-allowed disabled:border-ds-gray-600 disabled:bg-ds-gray-600 disabled:opacity-60",
+            "light:disabled:border-ds-gray-300 light:disabled:bg-ds-gray-300",
           )}
         />
       )}

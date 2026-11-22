@@ -19,15 +19,15 @@ export interface BusyIconProps {
 }
 
 const widths: Record<BusyIconSize, string> = {
-  sm: "ui:w-4",
-  base: "ui:w-8",
-  lg: "ui:w-12",
+  sm: "w-4",
+  base: "w-8",
+  lg: "w-12",
 };
 
 // Each segment's fill is driven by a custom property that the
-// `busy-icon-pulse` and `busy-icon-finish` keyframes flip between colors.
+// `ds-busy-pulse` and `ds-busy-finish` keyframes flip between colors.
 const segment =
-  "ui:transition-[fill] ui:duration-[calc(var(--busy-duration)/2)] ui:ease-linear";
+  "transition-[fill] duration-[calc(var(--busy-duration)/2)] ease-linear";
 
 const BusyIcon: FC<BusyIconProps> = ({
   size = "base",
@@ -36,15 +36,15 @@ const BusyIcon: FC<BusyIconProps> = ({
 }) => (
   <div
     className={clsx(
-      "ui:inline-block ui:aspect-square ui:h-auto",
+      "inline-block aspect-square h-auto",
       widths[size],
-      "ui:[--busy-duration:500ms]",
-      "ui:[--busy-active:var(--ui-color-white)] ui:[--busy-inactive:var(--ui-color-gray)]",
-      "ui:light:[--busy-active:var(--ui-color-black)] ui:light:[--busy-inactive:var(--ui-color-light)]",
+      "[--busy-duration:500ms]",
+      "[--busy-active:var(--color-ds-white)] [--busy-inactive:var(--color-ds-slate)]",
+      "light:[--busy-active:var(--color-ds-ink)] light:[--busy-inactive:var(--color-ds-mist)]",
       complete
-        ? "ui:animate-busy-finish"
+        ? "animate-ds-busy-finish"
         : // Shorten the pending animation, but NOT the "complete" swipe
-          "ui:animate-busy-pulse ui:motion-reduce:[--busy-duration:1ms] ui:motion-reduce:[animation-iteration-count:1]",
+          "animate-ds-busy-pulse motion-reduce:[--busy-duration:1ms] motion-reduce:[animation-iteration-count:1]",
     )}
     role="status"
     aria-live="polite"
@@ -66,7 +66,7 @@ const BusyIcon: FC<BusyIconProps> = ({
     >
       <g transform="matrix(1,0,0,1,-0.0883418,-0.11004)">
         <g
-          className="ui:fill-[var(--busy-start,transparent)]"
+          className="fill-[var(--busy-start,transparent)]"
           transform="matrix(1,0,0,1,0.142464,6.30416)"
         >
           <path
@@ -75,7 +75,7 @@ const BusyIcon: FC<BusyIconProps> = ({
           />
         </g>
         <g
-          className="ui:fill-[var(--busy-step-0,transparent)]"
+          className="fill-[var(--busy-step-0,transparent)]"
           transform="matrix(1,0,0,1,0.142464,6.30416)"
         >
           <path
@@ -84,7 +84,7 @@ const BusyIcon: FC<BusyIconProps> = ({
           />
         </g>
         <g
-          className="ui:fill-[var(--busy-step-1,transparent)]"
+          className="fill-[var(--busy-step-1,transparent)]"
           transform="matrix(1,0,0,1,0.142464,6.30416)"
         >
           <path
@@ -93,7 +93,7 @@ const BusyIcon: FC<BusyIconProps> = ({
           />
         </g>
         <g
-          className="ui:fill-[var(--busy-step-2,transparent)]"
+          className="fill-[var(--busy-step-2,transparent)]"
           transform="matrix(1,0,0,1,0.142464,6.30416)"
         >
           <path
@@ -102,7 +102,7 @@ const BusyIcon: FC<BusyIconProps> = ({
           />
         </g>
         <g
-          className="ui:fill-[var(--busy-step-3,transparent)]"
+          className="fill-[var(--busy-step-3,transparent)]"
           transform="matrix(1,0,0,1,0.142464,6.30416)"
         >
           <path
@@ -111,7 +111,7 @@ const BusyIcon: FC<BusyIconProps> = ({
           />
         </g>
         <g
-          className="ui:fill-[var(--busy-end,transparent)]"
+          className="fill-[var(--busy-end,transparent)]"
           transform="matrix(1,0,0,1,0.142464,6.30416)"
         >
           <path

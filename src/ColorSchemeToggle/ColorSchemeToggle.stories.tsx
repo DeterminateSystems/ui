@@ -3,7 +3,6 @@ import type { Meta, StoryContext, StoryObj } from "@storybook/react-vite";
 import ColorSchemeToggle from ".";
 import ColorProvider from "../ColorProvider";
 import { useState } from "react";
-import "../../lib/index.min.css";
 import { expect } from "storybook/test";
 
 const meta = {

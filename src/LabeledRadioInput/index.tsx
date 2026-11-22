@@ -34,7 +34,7 @@ const LabeledRadioInput: FC<LabeledRadioInputProps> = ({
     <LabeledInput label={label} error={error} help={help} id={id}>
       {({ labelId, controlId, errorId, describedById = "" }) => (
         <fieldset
-          className="ui:flex ui:flex-col ui:gap-2"
+          className="flex flex-col gap-2"
           aria-labelledby={labelId}
           aria-invalid={!!error}
           aria-errormessage={errorId}
@@ -42,18 +42,18 @@ const LabeledRadioInput: FC<LabeledRadioInputProps> = ({
         >
           {options.map(({ value, children }) => {
             return (
-              <div key={value} className="ui:flex ui:items-start ui:gap-3">
+              <div key={value} className="flex items-start gap-3">
                 <input
                   id={`${controlId}-${value}`}
                   defaultChecked={selected === value}
                   value={value}
                   type="radio"
                   {...props}
-                  className={clsx("ui:mt-1", className)}
+                  className={clsx("mt-1", className)}
                 />
 
                 <label
-                  className="ui:block ui:text-sm ui:leading-5 ui:font-medium ui:text-white ui:light:text-gray-dark"
+                  className="block text-xs leading-5 font-medium text-ds-white light:text-ds-gray-900"
                   htmlFor={`${controlId}-${value}`}
                   id={`${controlId}-${value}-description`}
                 >

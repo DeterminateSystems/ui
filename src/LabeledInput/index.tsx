@@ -33,11 +33,11 @@ const LabeledInput: FC<LabeledInputProps> = ({
     [errorId, helpId].filter(Boolean).join(" ") || undefined;
 
   return (
-    <div className="ui:grid ui:gap-pad-lg">
+    <div className="grid gap-[0.6rem]">
       <label
         id={labelId}
         htmlFor={controlId}
-        className="ui:block ui:text-base ui:leading-6 ui:font-medium ui:text-white ui:light:text-gray-dark"
+        className="block text-base leading-6 font-medium text-ds-white light:text-ds-gray-900"
       >
         {label}
       </label>
@@ -45,7 +45,7 @@ const LabeledInput: FC<LabeledInputProps> = ({
       {children({ labelId, controlId, errorId, describedById })}
 
       {error && (
-        <p id={errorId} role="alert" className="ui:text-base ui:text-danger">
+        <p id={errorId} role="alert" className="text-base text-ds-danger">
           {error}
         </p>
       )}
@@ -53,7 +53,7 @@ const LabeledInput: FC<LabeledInputProps> = ({
       {help && (
         <p
           id={helpId}
-          className="ui:text-sm ui:text-white ui:light:text-gray-light"
+          className="text-xs leading-normal text-ds-white light:text-ds-gray-600"
         >
           {help}
         </p>

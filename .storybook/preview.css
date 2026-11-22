@@ -1,12 +1,9 @@
-.preview-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 2rem;
-}
+/*
+  Storybook runs Tailwind itself, the way an application using the library
+  does: Tailwind, then the theme. The theme finds the components; the line
+  below adds the classes used here in `.storybook`.
+*/
+@import "tailwindcss";
+@import "../src/theme.css";
 
-@media screen and (width < 768px) {
-  .preview-wrapper {
-    padding: 0;
-  }
-}
+@source "./";

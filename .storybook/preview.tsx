@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import type { Preview, StoryContext } from "@storybook/react-vite";
 
-import "../lib/reset.min.css";
-import "../lib/index.min.css";
 import "./preview.css";
 import ColorProvider from "../src/ColorProvider";
 import type { ColorScheme } from "../src/ColorContext";
@@ -57,7 +55,7 @@ const Wrapper: React.FC<
   const [root, setRoot] = useState<HTMLElement | null>(null);
 
   return (
-    <div ref={setRoot} className="preview-wrapper">
+    <div ref={setRoot} className="flex flex-wrap justify-center p-8 max-md:p-0">
       {root !== null && (
         <ColorProvider
           simulatedSystemColorScheme={simulatedSystemColorScheme}

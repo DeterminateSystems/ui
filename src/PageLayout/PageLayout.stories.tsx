@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FC } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import clsx from "clsx";
 
 import PageLayout from ".";
 import { Placeholder } from "../Placeholder";
@@ -12,7 +13,10 @@ import Navigation from "../Navigation";
  * Story-only: outlines the layout and its centered container, and reports the
  * size of the view and of the container, so it's clear where each one ends.
  */
-const Bounds: FC<React.PropsWithChildren> = ({ children }) => {
+const Bounds: FC<React.PropsWithChildren<{ compact: boolean }>> = ({
+  compact,
+  children,
+}) => {
   const frame = useRef<HTMLDivElement>(null);
   const [sizes, setSizes] = useState("");
 
@@ -39,25 +43,16 @@ const Bounds: FC<React.PropsWithChildren> = ({ children }) => {
   }, []);
 
   return (
-    <div ref={frame} className="page-layout-bounds">
-      <style>{`
-        .page-layout-bounds { width: 100%; outline: 1px dashed #ec2c5b; }
-        .page-layout-bounds main { outline: 1px dashed #1e9fd9; }
-      `}</style>
+    <div
+      ref={frame}
+      className={clsx(
+        "w-full outline outline-dashed outline-ds-red",
+        "[&_main]:outline [&_main]:outline-dashed [&_main]:outline-ds-sky-blue",
+        compact && "[&>div]:min-h-0",
+      )}
+    >
       {children}
-      <output
-        style={{
-          position: "fixed",
-          right: 8,
-          bottom: 8,
-          zIndex: 20,
-          padding: "2px 8px",
-          borderRadius: 4,
-          font: "12px ui-monospace, monospace",
-          color: "#ffffff",
-          background: "#231f20",
-        }}
-      >
+      <output className="fixed right-2 bottom-2 z-20 rounded-sm bg-ds-ink px-2 py-0.5 font-mono text-xs text-ds-white">
         {sizes}
       </output>
     </div>
@@ -78,8 +73,11 @@ const meta = {
   },
   component: PageLayout,
   decorators: [
-    (Story) => (
-      <Bounds>
+    // The layout is at least as tall as the view. Without a chosen screen
+    // size that's just the height of the Storybook pane, so let the layout
+    // be as tall as its content instead.
+    (Story, { globals }) => (
+      <Bounds compact={!globals.viewport?.value}>
         <Story />
       </Bounds>
     ),

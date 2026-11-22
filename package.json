@@ -18,9 +18,8 @@
   "scripts": {
     "build": "npm run build:js && npm run build:css",
     "build:js": "rollup -c rollup.config.mjs",
-    "build:css": "tailwindcss -i src/styles/reset.css -o lib/reset.min.css --minify && tailwindcss -i src/styles/index.css -o lib/index.min.css --minify",
+    "build:css": "cp src/theme.css lib/theme.css && tailwindcss -i src/styles/reset.css -o lib/reset.min.css --minify && tailwindcss -i src/styles/index.css -o lib/index.min.css --minify",
     "watch": "rollup -w -c rollup.config.mjs",
-    "watch:css": "tailwindcss -i src/styles/reset.css -o lib/reset.min.css --minify && tailwindcss -i src/styles/index.css -o lib/index.min.css --minify --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepack": "npm run build",
@@ -38,6 +37,7 @@
     "@storybook/addon-vitest": "^10.6.3",
     "@storybook/react-vite": "^10.4.6",
     "@tailwindcss/cli": "^4.3.5",
+    "@tailwindcss/vite": "^4.3.5",
     "@types/react": "^19.1.4",
     "@vitest/browser": "^5.0.5",
     "@vitest/coverage-v8": "^5.0.5",

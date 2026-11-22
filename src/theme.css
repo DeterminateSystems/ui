@@ -1,0 +1,191 @@
+/*
+  The Determinate Systems theme for Tailwind CSS v4.
+
+  An application with its own Tailwind build imports this file once, after
+  `tailwindcss`:
+
+    @import "tailwindcss";
+    @import "@determinate-systems/ui/theme.css";
+
+  It adds the design tokens, the `light:` variant and a few base rules, and
+  tells Tailwind to generate the classes the components use. Everything it
+  defines is namespaced (`ds-`) so that it can't change the meaning of the
+  application's own Tailwind classes.
+*/
+
+/* The components, which sit next to this file once the package is built. */
+@source "./";
+
+/*
+  Dark is the default scheme. `ColorProvider` (via `applyTheme`) puts
+  `.color-scheme--light` or `.color-scheme--dark` on the root element.
+*/
+@custom-variant light (&:where(.color-scheme--light, .color-scheme--light *));
+
+@theme {
+  /* Brand */
+  --color-ds-red: #ec2c5b;
+  --color-ds-yellow: #faa61a;
+  --color-ds-magenta: #cd1e88;
+  --color-ds-violet: #8b2cbf;
+  --color-ds-sky-blue: #1e9fd9;
+  --color-ds-ocean-blue: #086bb5;
+  --color-ds-rich-blue: #0d4d9c;
+  --color-ds-dark-blue: #1f1953;
+  --color-ds-orange: #ea741f;
+
+  /* Text and page backgrounds, darkest to lightest */
+  --color-ds-midnight: oklch(0.13 0.028 261.692);
+  --color-ds-ink: #231f20;
+  --color-ds-ink-soft: #6a5e61;
+  --color-ds-slate: #545454;
+  --color-ds-gray-light: #b3b3b3;
+  --color-ds-white-dim: #d9d9d9;
+  --color-ds-mist: #ededef;
+  --color-ds-white: #ffffff;
+
+  /* A raised surface in the dark scheme */
+  --color-ds-surface-3: #252532;
+
+  /* Cool grays, numbered like the Tailwind steps they match */
+  --color-ds-gray-50: color-mix(
+    in oklab,
+    oklch(0.985 0.002 247.839) 95%,
+    transparent
+  );
+  --color-ds-gray-100: oklch(0.967 0.003 264.542);
+  --color-ds-gray-200: oklch(0.928 0.006 264.531);
+  --color-ds-gray-300: oklch(0.872 0.01 258.338);
+  --color-ds-gray-600: oklch(0.446 0.03 256.802);
+  --color-ds-gray-900: oklch(0.21 0.034 264.665);
+
+  --color-ds-line-light: #ebe6e7;
+  --color-ds-line-dark: #364153;
+
+  --color-ds-primary: var(--color-ds-orange);
+  --color-ds-secondary: var(--color-ds-magenta);
+  /*
+    NOTE(lucperkins): Semantic colors are not great and borrowed from Bootstrap solely as an
+    initial basis to be changed later:
+    https://getbootstrap.com/docs/4.0/utilities/colors
+  */
+  --color-ds-success: rgb(40, 167, 69);
+  --color-ds-info: rgb(23, 162, 184);
+  --color-ds-warning: rgb(255, 193, 7);
+  --color-ds-danger: rgb(220, 53, 69);
+
+  --font-ds-sans: "Work Sans", sans-serif;
+}
+
+@theme inline {
+  --animate-ds-busy-pulse: ds-busy-pulse var(--busy-duration)
+    var(--busy-duration) infinite forwards;
+  --animate-ds-busy-finish: ds-busy-finish var(--busy-duration) 1 forwards;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-ds-sans);
+  }
+
+  .color-scheme--dark {
+    color: var(--color-ds-white);
+    background-color: var(--color-ds-midnight);
+  }
+
+  .color-scheme--light {
+    color: var(--color-ds-ink);
+    background-color: var(--color-ds-white);
+  }
+}
+
+/*
+  BusyIcon: each keyframe says which segments of the mark are lit. The segments
+  read these custom properties as their fill and transition between the steps.
+*/
+@keyframes ds-busy-pulse {
+  0% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  25% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  50% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-active);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  75% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-active);
+    --busy-end: var(--busy-inactive);
+  }
+  100% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+}
+
+@keyframes ds-busy-finish {
+  0%,
+  20% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-inactive);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  40% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-inactive);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-inactive);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  60% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-active);
+    --busy-step-3: var(--busy-inactive);
+    --busy-end: var(--busy-inactive);
+  }
+  80% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-active);
+    --busy-step-3: var(--busy-active);
+    --busy-end: var(--busy-inactive);
+  }
+  100% {
+    --busy-start: var(--busy-active);
+    --busy-step-0: var(--busy-active);
+    --busy-step-1: var(--busy-active);
+    --busy-step-2: var(--busy-active);
+    --busy-step-3: var(--busy-active);
+    --busy-end: var(--busy-active);
+  }
+}

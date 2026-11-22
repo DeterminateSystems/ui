@@ -32,7 +32,7 @@ const CopyButton: FC<CopyButtonProps> = ({ data, ...props }) => {
     >
       <ClipboardIcon copied={copied} />
       {/* A reader hears the outcome without the button's name changing. */}
-      <span role="status" className="ui:sr-only">
+      <span role="status" className="sr-only">
         {copied ? "Copied to the clipboard." : ""}
       </span>
     </button>

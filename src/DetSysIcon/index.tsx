@@ -14,9 +14,9 @@ export interface DetSysIconProps {
 }
 
 const sizes: Record<NonNullable<DetSysIconProps["size"]>, string> = {
-  sm: "ui:h-6 ui:w-full",
-  base: "ui:h-9 ui:w-full",
-  lg: "ui:h-12 ui:w-full",
+  sm: "h-6 w-full",
+  base: "h-9 w-full",
+  lg: "h-12 w-full",
 };
 
 function svgToDataUri(svg: string) {
